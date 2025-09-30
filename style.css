@@ -1,6 +1,5 @@
 
 body {
-  padding-top: 50px;
   margin: 0;
   font-family: 'Times New Roman', serif;
   background-color: black;
@@ -20,10 +19,12 @@ p{
 .navbar {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   background-color: black;
-  border-bottom: 3px solid rgba(255, 255, 255, 0.8);
-  z-index: 999;
+  border-bottom: 3px solid lightgrey;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 9999999;
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -50,14 +51,27 @@ p{
   background-size: cover;
   background-position: center;
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   text-align: center;
+  overflow: hidden;
 }
 
 .centered {
+  position: absolute;
+  bottom: 2.5%;            /* stick to bottom of #home */
+  left: 50%;            /* center horizontally */
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2;           /* above mound and collage */
   color: white;
   font-size: 20pt;
+}
+
+.big-title.compressed-center {
+  white-space: nowrap;   /* keep words on one line */
+  display: inline-block; /* shrink-wrap to content */
 }
 
 .about-section {
@@ -83,7 +97,7 @@ p{
 .title-block {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: baseline;
 }
 
 .transparent {
@@ -107,8 +121,9 @@ p{
   color: #4b5b6b;
   font-size: 72px;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding-bottom: none;
+  margin-top: 4.5vh;
 }
 
 .secondary-title {
@@ -129,7 +144,7 @@ p{
   content: "";
   display: block;
   width: 50%;
-  border-top: 1px solid white;
+  border-top: 1px solid lightgrey;
   margin-bottom: 10px;
 }
 
@@ -140,11 +155,52 @@ p{
   margin: 0px auto; /* adjust this value to control spacing */
 }
 
+.hr1{
+  height:40px;
+  background-color: lightgrey;
+  border: none;
+  margin: 0;
+}
+
+.hr2{
+  height:40px;
+  background-color: #869cb3;
+  border: none;
+  margin: 0;
+}
+
+.hr3{
+  height:40px;
+  background-color: #4b5b6b;
+  border: none;
+  margin: 0;
+}
+
+.animated-line {
+  height: 40px;
+  width: 0%; /* start at 0 */
+  transition: width 0s; /* we'll handle updates manually */
+  margin: 0;
+  border: none;
+  transform-origin: left;
+}
+
+#shadow {
+  background-color: transparent;
+  position: absolute;
+  width: 105vw;
+  left: -25vw;
+  z-index: 2;
+  top: 0;
+  border-top: 3px solid lightgrey;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+}
+
 .footer {
   background-color: #5e5e5e;
   height: 150px;
   padding: 20px;
-  border-top: 3px solid rgba(255, 255, 255, 0.8);
+  border-top: 3px solid lightgrey;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -157,6 +213,10 @@ p{
   font-size: 48px;
 }
 
+.extra-space {
+  padding-top: 120px;
+}
+
 .compressed {
   display: inline-block;
   transform: scaleX(0.75);
@@ -165,6 +225,74 @@ p{
 
 .compressed-center {
   display: inline-block;
-  transform: scaleX(0.75);
+  transform: scaleX(0.7);
   transform-origin: center;
 }
+
+.with-image {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* align image to top of text */
+}
+
+.text-and-image {
+  display: flex;
+  align-items: center; /* Aligns the middle of the image with the midline of the paragraph */
+  gap: 20px;
+}
+
+.about-image {
+  width: 300px;
+  height: 600px;
+  object-fit: cover;
+  margin-right: 0px;
+  margin-left: 20px;
+}
+
+/*=====================================================*/
+/*Collage*/
+/*=====================================================*/
+
+/* Collage grid stays underneath */
+/* Collage grid stays behind */
+.collage-grid {
+  position: absolute;
+  padding-top: 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+/* Mound above collage, bottom-aligned */
+#mound {
+  position: absolute;
+  bottom: 0;    /* align directly with bottom of collage */
+  left: 0;
+  width: 100%;
+  z-index: -1;  /* sits above collage, below text */
+}
+
+#mound svg {
+  display: block;
+  width: 100%;   /* stretch full width */
+  height: auto;
+}
+
+.collage-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.collage-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/*=====================================================*/
