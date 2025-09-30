@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const imageCount = 15;
   const collageBoxes = Array.from(document.querySelectorAll(".collage-box"));
-  const imagePaths = Array.from({ length: imageCount }, (_, i) => `collage/${i + 1}.png`);
+  const imagePaths = Array.from({ length: imageCount }, (_, i) => `${i + 1}.png`);
 
   // Offsets in seconds for each box (relative to cycle start)
   const offsets = {
@@ -94,30 +94,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Animate horizontal lines when they come into view
 
-  const scrollLines = document.querySelectorAll('.animated-line');
+const scrollLines = document.querySelectorAll('.animated-line');
 
-  function updateScrollLines() {
-    const scrollY = window.scrollY;
-    const windowHeight = window.innerHeight;
+function updateScrollLines() {
+  const scrollY = window.scrollY;
+  const windowHeight = window.innerHeight;
 
-    scrollLines.forEach(line => {
-      const rect = line.getBoundingClientRect();
-      const elementTop = rect.top + scrollY;
-      
-      // How far the element is from bottom of viewport
-      const relativeScroll = (scrollY + windowHeight - elementTop) / windowHeight;
+  scrollLines.forEach(line => {
+    const rect = line.getBoundingClientRect();
+    const elementTop = rect.top + scrollY;
+    
+    // How far the element is from bottom of viewport
+    const relativeScroll = (scrollY + windowHeight - elementTop) / windowHeight;
 
-      // Clamp between 0 and 1
-      const progress = Math.max(0, Math.min(1, relativeScroll));
+    // Clamp between 0 and 1
+    const progress = Math.max(0, Math.min(1, relativeScroll));
 
-      // Set width based on scroll position
-      line.style.width = `${progress * 100}%`;
-    });
-  }
+    // Set width based on scroll position
+    line.style.width = `${progress * 100}%`;
+  });
+}
 
-  window.addEventListener('scroll', updateScrollLines);
-  window.addEventListener('resize', updateScrollLines);
-  window.addEventListener('DOMContentLoaded', updateScrollLines);
-
-
-
+window.addEventListener('scroll', updateScrollLines);
+window.addEventListener('resize', updateScrollLines);
+window.addEventListener('DOMContentLoaded', updateScrollLines);
