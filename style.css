@@ -60,7 +60,7 @@ p{
 
 .centered {
   position: absolute;
-  bottom: 2.5%;            /* stick to bottom of #home */
+  bottom: 0%;            /* stick to bottom of #home */
   left: 50%;            /* center horizontally */
   transform: translateX(-50%);
   text-align: center;
@@ -123,7 +123,7 @@ p{
   text-transform: uppercase;
   margin-bottom: 10px;
   padding-bottom: none;
-  margin-top: 4.5vh;
+  margin-top: 4vh;
 }
 
 .secondary-title {
