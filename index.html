@@ -8,33 +8,63 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="navbar">
-    <button onclick="navigateTo('home')">HOME</button>
-    <button onclick="navigateTo('about')">ABOUT ME</button>
-    <button onclick="window.location.href='insights.html'">KEY INSIGHTS</button>
-    <button onclick="window.location.href='leadership.html'">LEADERSHIP</button>
-  </header>
+<header class="navbar">
+  <button onclick="navigateTo('home')">HOME</button>
+  <button onclick="navigateTo('about')">ABOUT ME</button>
+  <button onclick="window.location.href='insights.html'">KEY INSIGHTS</button>
+  <button onclick="window.location.href='leadership.html'">LEADERSHIP</button>
+</header>
 
-  <section id="home" class="fullscreen-image" style="background-image: url('../d7c7a719-3e0c-4968-8c44-bb9a50a7e3b3.png');">
+  <section id="home" class="fullscreen-image">
+    <!-- Animated background collage -->
+    <div class="collage-grid">
+      <div class="collage-box" id="box-0"></div>
+      <div class="collage-box" id="box-1"></div>
+      <div class="collage-box" id="box-2"></div>
+      <div class="collage-box" id="box-3"></div>
+      <div class="collage-box" id="box-4"></div>
+      <div class="collage-box" id="box-5"></div>
+    </div>
+
     <div class="centered">
-      <h1 class="big-title compressed-center">Title Placeholder</h1>
+      <hr id="shadow" />
+      <h1 class="big-title compressed-center">Samuel Harmon</h1>
       <div class="title-divider"></div>
-      <p class="subtitle">Subtitle Placeholder</p>
+      <p class="subtitle">
+        <span style="color:#869cb3">B.S. Biological Sciences</span><br>
+        Graduation with Leadership Distinction in Research | ePortfolio
+      </p>
     </div>
   </section>
+
+  <hr class="hr1 animated-line" />
+  <hr class="hr2 animated-line" />
+  <hr class="hr3 animated-line" />
 
   <section id="about" class="about-section">
     <div class="about-content">
       <h2 class="main-title compressed">About Me</h2>
-      <p class="paragraph">Paragraph placeholder</p>
+      <div class="text-and-image">
+        <p class="paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed pulvinar tellus, mattis bibendum turpis. Integer egestas enim ex, non dictum massa tincidunt eget. Donec posuere, elit maximus cursus ultrices, sem odio condimentum urna, at porttitor tellus libero in purus. Cras pharetra porttitor ante nec molestie. Nunc eget odio dolor. Aliquam dapibus diam volutpat dolor varius mollis. Nulla at magna ante.
+          <br><br>
+          Etiam et eros eget eros convallis lobortis. Sed efficitur tempus mi non elementum. Vivamus blandit dui eu lectus rutrum vehicula. Phasellus scelerisque pharetra malesuada. Integer vel laoreet elit, eu gravida neque. Sed interdum faucibus convallis. Aenean at urna in lacus euismod iaculis ut in nunc. Sed pharetra enim in elit fermentum porttitor a sit amet nulla. Fusce venenatis maximus sem, in auctor erat dictum id. Nullam est massa, convallis vel euismod ac, consectetur sed leo. Nunc imperdiet dui ac orci suscipit, ac viverra ligula viverra. Aliquam aliquam porta vulputate. Sed quis ipsum id turpis finibus congue id eget sapien. Etiam erat magna, imperdiet non nisi sit amet, lobortis luctus lorem.
+          <br><br>
+          Ut malesuada augue massa, nec pulvinar justo dignissim sit amet. Donec placerat blandit sapien vitae egestas. Aliquam eu nunc purus. Sed lacinia nulla quam, a commodo magna molestie nec. Morbi egestas posuere suscipit. Ut feugiat dictum pretium. Integer ut dui turpis. Curabitur fringilla hendrerit nunc, nec euismod sem suscipit vel. Fusce quis lectus eu ex maximus pretium. Quisque tellus ex, malesuada vel volutpat vel, aliquam vel nisi. Maecenas venenatis risus at nulla dignissim elementum. Fusce nec nunc id sapien.
+        </p>
+        <img src="headshot.jpeg" alt="Headshot" class="about-image" />
+      </div>
     </div>
   </section>
+
+  <hr class="hr3 animated-line" />
+  <hr class="hr2 animated-line" />
+  <hr class="hr1 animated-line" />
 
   <footer class="footer">
     <h2 class="secondary-title compressed">Footer Title</h2>
     <p class="paragraph">Footer content placeholder</p>
-    <br>
-    <p>Created with support from ChatGPT. | 2025</p>
+    <h6>Developed with coding support from ChatGPT. | 2025</h6>
   </footer>
 
   <script src="script.js"></script>
