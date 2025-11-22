@@ -1,3 +1,4 @@
+/* ===================== Collage ===================== */
 document.addEventListener('DOMContentLoaded', () => {
   const imageCount = 15;
   const collageBoxes = Array.from(document.querySelectorAll(".collage-box"));
@@ -12,9 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     8: 0.8
   };
 
-  const cycleLength = 6800; // ms (last offset 0.8s + 6s hold time)
+  const cycleLength = 6800; // ms
 
-  // Shuffle utility
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function crossfadeImage(box, newSrc) {
     const oldImg = box.querySelector("img");
-
     const newImg = document.createElement("img");
     newImg.src = newSrc;
     newImg.style.opacity = 0;
@@ -36,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
     newImg.style.width = "100%";
     newImg.style.height = "100%";
     newImg.style.objectFit = "cover";
-
     box.appendChild(newImg);
 
     requestAnimationFrame(() => {
@@ -45,16 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     setTimeout(() => {
-      if (oldImg && oldImg.parentNode === box) {
-        box.removeChild(oldImg);
-      }
+      if (oldImg && oldImg.parentNode === box) box.removeChild(oldImg);
     }, 1000);
   }
 
   function initialize() {
-    // pick 9 unique images for first cycle
     const images = shuffle([...imagePaths]).slice(0, collageBoxes.length);
-
     collageBoxes.forEach((box, i) => {
       const img = document.createElement("img");
       img.src = images[i];
@@ -71,31 +65,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function runCycle() {
-    // select 9 unique new images for this cycle
     const images = shuffle([...imagePaths]).slice(0, collageBoxes.length);
-
     collageBoxes.forEach((box, i) => {
-      const offset = offsets[i] * 1000;
-      setTimeout(() => {
-        crossfadeImage(box, images[i]);
-      }, 6000 + offset); // all start fading after 6s + offset
+      const offset = (offsets[i] || 0) * 1000;
+      setTimeout(() => { crossfadeImage(box, images[i]); }, 6000 + offset);
     });
-
-    // schedule next cycle
     setTimeout(runCycle, cycleLength);
   }
 
-  // Initialize first set
   initialize();
-  // Start loop
   runCycle();
 });
 
-
-// Animate horizontal lines when they come into view
-
+/* ===================== Animated lines (middle of index only) ===================== */
 const scrollLines = document.querySelectorAll('.animated-line');
-
 function updateScrollLines() {
   const scrollY = window.scrollY;
   const windowHeight = window.innerHeight;
@@ -103,18 +86,117 @@ function updateScrollLines() {
   scrollLines.forEach(line => {
     const rect = line.getBoundingClientRect();
     const elementTop = rect.top + scrollY;
-    
-    // How far the element is from bottom of viewport
     const relativeScroll = (scrollY + windowHeight - elementTop) / windowHeight;
-
-    // Clamp between 0 and 1
     const progress = Math.max(0, Math.min(1, relativeScroll));
-
-    // Set width based on scroll position
     line.style.width = `${progress * 100}%`;
   });
 }
 
+/* ===================== Key Insights: Click-to-Reveal + Arrows (scoped) ===================== */
+document.addEventListener('DOMContentLoaded', () => {
+  const isInsightsPage =
+    /key insights/i.test(document.title || '') ||
+    /key insights/i.test((document.querySelector('h1.main-title')?.textContent || ''));
+
+  if (!isInsightsPage) return;
+
+  document.body.classList.add('is-insights-page');
+
+  const container = document.querySelector('.content-container');
+  if (!container) return;
+
+  const titles = Array.from(container.querySelectorAll('.secondary-title'));
+
+  titles.forEach((title) => {
+    const blocks = [];
+    let ptr = title.nextElementSibling;
+    while (ptr && !ptr.classList.contains('secondary-title')) {
+      blocks.push(ptr);
+      ptr = ptr.nextElementSibling;
+    }
+    if (!blocks.length) return;
+
+    let body = title.nextElementSibling;
+    if (!(body && body.classList && body.classList.contains('insight-body'))) {
+      body = document.createElement('div');
+      body.className = 'insight-body';
+      title.parentNode.insertBefore(body, blocks[0]);
+      blocks.forEach(n => body.appendChild(n));
+    }
+
+    title.setAttribute('role', 'button');
+    title.setAttribute('tabindex', '0');
+    title.setAttribute('aria-expanded', 'false');
+
+    let downBtn = title.querySelector('.insight-caret');
+    if (!downBtn) {
+      downBtn = document.createElement('button');
+      downBtn.className = 'insight-caret';
+      downBtn.type = 'button';
+      downBtn.setAttribute('aria-label', 'Expand key insight');
+      title.appendChild(downBtn);
+    }
+
+    let upBtn = body.querySelector('.insight-collapse');
+    if (!upBtn) {
+      upBtn = document.createElement('button');
+      upBtn.className = 'insight-collapse';
+      upBtn.type = 'button';
+      upBtn.setAttribute('aria-label', 'Collapse key insight');
+      body.appendChild(upBtn);
+    }
+
+    const open = () => {
+      if (body.classList.contains('revealed')) return;
+      body.classList.add('revealed');
+      body.style.maxHeight = body.scrollHeight + 'px';
+      title.setAttribute('aria-expanded', 'true');
+      title.classList.add('is-open');
+      downBtn.setAttribute('aria-hidden', 'true');
+    };
+
+    const close = () => {
+      if (!body.classList.contains('revealed')) return;
+      if (body.style.maxHeight === '' || body.style.maxHeight === 'none') {
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+      void body.offsetHeight;
+      body.classList.remove('revealed');
+      body.style.maxHeight = '0px';
+      title.setAttribute('aria-expanded', 'false');
+      title.classList.remove('is-open');
+      downBtn.removeAttribute('aria-hidden');
+    };
+
+    const toggle = () => (body.classList.contains('revealed') ? close() : open());
+
+    title.addEventListener('click', toggle);
+    title.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+    downBtn.addEventListener('click', (e) => { e.stopPropagation(); toggle(); });
+    upBtn.addEventListener('click', (e) => { e.stopPropagation(); if (body.classList.contains('revealed')) close(); });
+
+    body.addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'max-height' && body.classList.contains('revealed')) {
+        body.style.maxHeight = 'none';
+      }
+    });
+  });
+});
+
+/* PDF “View” buttons: add a brief pressed animation on click */
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('a.pdf-pill:not([aria-disabled="true"])');
+  if (!btn) return;
+  btn.classList.add('pressed');
+  setTimeout(() => btn.classList.remove('pressed'), 180);
+});
+
+
 window.addEventListener('scroll', updateScrollLines);
 window.addEventListener('resize', updateScrollLines);
 window.addEventListener('DOMContentLoaded', updateScrollLines);
+
+/* ===================== Sheen: reverted to simple hover (no cursor-follow) ===================== */
+/* No JS needed. Pure CSS in style.css controls the effect. */
