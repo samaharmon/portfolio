@@ -649,7 +649,7 @@ body.is-insights-page .insight-body .insight-collapse::before {
    ========================================= */
 .about-headshot-placeholder {
   width: 320px;
-  height: 470px;
+  height: 460px;
   aspect-ratio: 3 / 4;
   border: 1px solid #444;
   box-shadow: 0 4px 14px rgba(0,0,0,0.25);
@@ -682,7 +682,7 @@ body.is-insights-page .insight-body .insight-collapse::before {
    This CSS scopes the headshot placeholder only to the about page. */
 body.about-page .about-headshot-placeholder {
   width: 320px;
-  height: 470px;
+  height: 460px;
   float: left;              /* restore the original floating behavior if desired */
   margin-right: 20px;
   margin-bottom: 20px;
