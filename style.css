@@ -962,7 +962,7 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
   position: absolute;
   /* a little breathing room around the text block */
   inset: -18px -28px;      /* top/bottom, left/right expansion from the text box */
-  background: rgba(0, 0, 0, 0.6);   /* requested 0.6 opacity black */
+  background: rgba(0, 0, 0, 0.8);   /* requested 0.6 opacity black */
   border-radius: 14px;
   box-shadow: 0 16px 40px rgba(0,0,0,0.45);  /* soft drop shadow */
   z-index: -1;             /* behind the text, but still above collage because parent is z-index:2 */
@@ -997,7 +997,7 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
   content: "";
   position: absolute;
   inset: -10px -22px;           /* expand a bit around the text block */
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0.8);
   border-radius: 14px;
   box-shadow: 0 16px 34px rgba(0,0,0,0.55);  /* soft drop shadow on collage */
   z-index: 1;                   /* under the text, over the collage */
@@ -1054,7 +1054,7 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
   content: "";
   position: absolute;
   inset: -12px -24px;            /* space around the text block */
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.8);
   border-radius: 14px;
   box-shadow: 0 16px 40px rgba(0,0,0,0.45);
   z-index: -1;                   /* behind text, still over collage */
@@ -1161,7 +1161,7 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
   content: "";
   position: absolute;
   inset: -12px -24px;            /* extra space around the text block */
-  background: rgba(0,0,0,0.6);   /* requested 0.6 opacity */
+  background: rgba(0,0,0,0.8);   /* requested 0.6 opacity */
   border-radius: 14px;
   box-shadow: 0 16px 40px rgba(0,0,0,0.45);  /* soft drop shadow */
   z-index: -1;                   /* behind text, still over collage */
@@ -1216,7 +1216,7 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
   content: "";
   position: absolute;
   inset: -12px -24px;                   /* space around the words */
-  background: rgba(0,0,0,0.60);         /* requested 0.6 opacity */
+  background: rgba(0,0,0,0.80);         /* requested 0.6 opacity */
   border-radius: 14px;
   box-shadow: 0 16px 40px rgba(0,0,0,0.45);
   z-index: -1;                          /* behind the text, above the collage */
@@ -1275,7 +1275,7 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
   content: "";
   position: absolute;
   inset: -12px -24px;                 /* spacing around the text block */
-  background: rgba(0,0,0,0.60);       /* requested 0.6 opacity */
+  background: rgba(0,0,0,0.80);       /* requested 0.6 opacity */
   border-radius: 0;                   /* perfect rectangle */
   box-shadow: 0 16px 40px rgba(0,0,0,0.45);  /* soft drop shadow */
   z-index: -1;                        /* behind the text, above collage */
