@@ -130,7 +130,7 @@ body.is-insights-page .content-container .secondary-title::before {
   content: counter(insight-counter);
   position: absolute; left: -140px; top: 50%; transform: translateY(-50%);
   display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 5;
-  width: 110px; height: 110px; border-radius: 50%; box-sizing: border-box;
+  width: 110px; height: 110px; box-sizing: border-box;
   background-color: #869cb3; border: 3px solid #4b5b6b; color: #fff;
   font-family: 'Times New Roman', serif; font-weight: 700; font-size: 48px; line-height: 1;
   box-shadow: 0 6px 18px rgba(0,0,0,0.4);
@@ -603,7 +603,6 @@ body.is-insights-page .insight-body .insight-collapse::before {
   width: min(780px, 92%);
   aspect-ratio: 16 / 9;
   margin: 16px auto 28px auto;          /* centered */
-  border-radius: 10px;
   border: 1px solid #444;
   box-shadow: 0 4px 14px rgba(0,0,0,0.25);
   background:
@@ -650,8 +649,8 @@ body.is-insights-page .insight-body .insight-collapse::before {
    ========================================= */
 .about-headshot-placeholder {
   width: 320px;
+  height: auto;
   aspect-ratio: 3 / 4;
-  border-radius: 10px;
   border: 1px solid #444;
   box-shadow: 0 4px 14px rgba(0,0,0,0.25);
   background:
@@ -974,3 +973,28 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
     0 12px 0 rgba(255,255,255,0.72);
 }
 
+/* ===================== HOME — title overlay ===================== */
+/* Center the title stack and create a stacking context */
+#home .centered {
+  position: absolute;      /* anchor to the hero */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);  /* true center */
+  z-index: 2;              /* above the collage grid (which is z-index:0) */
+  text-align: center;
+}
+
+/* The overlay rectangle behind the title/subtitle */
+#home .centered::before {
+  content: "";
+  position: absolute;
+  /* a little breathing room around the text block */
+  inset: -18px -28px;      /* top/bottom, left/right expansion from the text box */
+  background: rgba(0, 0, 0, 0.6);   /* requested 0.6 opacity black */
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.45);  /* soft drop shadow */
+  z-index: -1;             /* behind the text, but still above collage because parent is z-index:2 */
+}
+
+/* Hide the extra horizontal line, just in case it's still in the DOM */
+#home #shadow { display: none !important; }
