@@ -23,8 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     return array;
   }
 
+  // *** Robust crossfade that waits for decode() so the fade always occurs ***
   function crossfadeImage(box, newSrc) {
     const oldImg = box.querySelector("img");
+
     const newImg = document.createElement("img");
     newImg.src = newSrc;
     newImg.style.opacity = 0;
@@ -37,14 +39,29 @@ document.addEventListener('DOMContentLoaded', () => {
     newImg.style.objectFit = "cover";
     box.appendChild(newImg);
 
-    requestAnimationFrame(() => {
-      newImg.style.opacity = 1;
-      if (oldImg) oldImg.style.opacity = 0;
-    });
+    const startFade = () => {
+      // Ensure transition is committed before toggling opacity
+      requestAnimationFrame(() => {
+        newImg.style.opacity = 1;
+        if (oldImg) {
+          oldImg.style.transition = "opacity 1s ease-in-out";
+          oldImg.style.opacity = 0;
+        }
+      });
+      // Remove the old image after the fade completes
+      setTimeout(() => {
+        if (oldImg && oldImg.parentNode === box) box.removeChild(oldImg);
+      }, 1100);
+    };
 
-    setTimeout(() => {
-      if (oldImg && oldImg.parentNode === box) box.removeChild(oldImg);
-    }, 1000);
+    if (newImg.decode) {
+      // decode() guarantees we start the transition *after* the image can paint
+      newImg.decode().then(startFade).catch(startFade);
+    } else if (newImg.complete) {
+      startFade();
+    } else {
+      newImg.onload = startFade;
+    }
   }
 
   function initialize() {
@@ -185,46 +202,29 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* PDF “View” buttons: add a brief pressed animation on click */
+/* PDF “View” buttons: open in new tab + pressed animation (single, de‑duplicated block) */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a.pdf-pill').forEach(a => {
+    const href = (a.getAttribute('href') || '').trim();
+    if (href) {
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+      if (a.hasAttribute('aria-disabled')) a.removeAttribute('aria-disabled');
+    }
+    a.addEventListener('click', () => {
+      a.classList.add('pressed');
+      setTimeout(() => a.classList.remove('pressed'), 180);
+    });
+  });
+});
+
+/* Global “pressed” animation for any dynamically-added pdf-pill (optional) */
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('a.pdf-pill:not([aria-disabled="true"])');
   if (!btn) return;
   btn.classList.add('pressed');
   setTimeout(() => btn.classList.remove('pressed'), 180);
 });
-
-/* ============ PDF “View” buttons: open in new tab + pressed animation ============ */
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('a.pdf-pill').forEach(a => {
-    const href = (a.getAttribute('href') || '').trim();
-    if (href) {
-      a.setAttribute('target', '_blank');
-      a.setAttribute('rel', 'noopener');
-      if (a.hasAttribute('aria-disabled')) a.removeAttribute('aria-disabled');
-    }
-    a.addEventListener('click', () => {
-      a.classList.add('pressed');
-      setTimeout(() => a.classList.remove('pressed'), 180);
-    });
-  });
-});
-
-/* PDF “View” buttons: open in a new tab + pressed animation */
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('a.pdf-pill').forEach(a => {
-    const href = (a.getAttribute('href') || '').trim();
-    if (href) {
-      a.setAttribute('target', '_blank');
-      a.setAttribute('rel', 'noopener');
-      if (a.hasAttribute('aria-disabled')) a.removeAttribute('aria-disabled');
-    }
-    a.addEventListener('click', () => {
-      a.classList.add('pressed');
-      setTimeout(() => a.classList.remove('pressed'), 180);
-    });
-  });
-});
-
 
 window.addEventListener('scroll', updateScrollLines);
 window.addEventListener('resize', updateScrollLines);
