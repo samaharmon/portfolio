@@ -867,19 +867,6 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
   text-align: center;
 }
 
-/* Fill the entire hero with a 3 x 2 grid (you have 6 tiles) */
-#home .collage-grid {
-  position: absolute;
-  inset: 0;                     /* top/right/bottom/left: 0 */
-  padding-top: 0 !important;    /* override old 100px gap */
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  z-index: 0;                   /* stays behind the overlay */
-}
-
 /* Each tile is a cover image and cross-fades smoothly */
 #home .collage-box { position: relative; overflow: hidden; }
 #home .collage-box img {
@@ -968,15 +955,6 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
 }
 
 /* ===================== HOME — title overlay ===================== */
-/* Center the title stack and create a stacking context */
-#home .centered {
-  position: absolute;      /* anchor to the hero */
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);  /* true center */
-  z-index: 2;              /* above the collage grid (which is z-index:0) */
-  text-align: center;
-}
 
 /* The overlay rectangle behind the title/subtitle */
 #home .centered::before {
@@ -1002,14 +980,6 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
   align-items: center;          /* vertical center */
   justify-content: center;      /* horizontal center */
   text-align: center;
-}
-
-/* Ensure the collage fills the hero and stays behind */
-#home .collage-grid {
-  position: absolute;
-  inset: 0;                     /* top/right/bottom/left: 0 */
-  padding-top: 0 !important;    /* override any previous 100px padding */
-  z-index: 0;
 }
 
 /* Center the title/subtitle block; neutralize old transform/border */
@@ -1057,19 +1027,6 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
   align-items: center;           /* vertical center */
   justify-content: center;       /* horizontal center */
   text-align: center;
-}
-
-/* Fill the whole hero with a 3×2 collage (you have 6 tiles) */
-#home .collage-grid {
-  position: absolute;
-  inset: 0;                      /* top/right/bottom/left: 0 */
-  width: 100%;
-  height: 100%;
-  padding-top: 0 !important;     /* override old 100px gap */
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);   /* 2 rows (not 3) */
-  z-index: 0;                    /* behind the overlay */
 }
 
 /* Each tile cross-fades smoothly */
@@ -1178,20 +1135,6 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
   min-height: 100vh;             /* safety: fill viewport */
 }
 
-/* Fill the hero with a 3 × 2 collage grid (6 tiles) */
-#home .collage-grid {
-  position: absolute;
-  inset: 0;                      /* top/right/bottom/left = 0 */
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 0;
-  padding-top: 0 !important;     /* defeat any old 100px padding */
-  z-index: 0;                    /* stays behind the overlay */
-}
-
 #home .collage-box { position: relative; overflow: hidden; }
 #home .collage-box img {
   position: absolute;
@@ -1246,18 +1189,6 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
   text-align: center;
 }
 
-/* Collage fills the whole hero in a 3×2 grid (because index.html renders 6 boxes) */
-#home .collage-grid {
-  position: absolute;
-  inset: 0;                      /* top/right/bottom/left: 0 */
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);    /* *** was 3 rows; that caused the extra band *** */
-  gap: 0;
-  padding-top: 0 !important;            /* *** kills the old 100px push-down *** */
-  z-index: 0;                            /* sits behind the overlay */
-}
-
 #home .collage-box { position: relative; overflow: hidden; }
 #home .collage-box img {
   position: absolute; inset: 0;
@@ -1292,4 +1223,63 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
 }
 
 /* Hide the extra horizontal line above the main title if it's still in the DOM */
+#home #shadow { display: none !important; }
+
+/* ===================== HOME — final (centered overlay + full-bleed collage) ===================== */
+
+/* Full-bleed hero container */
+#home.fullscreen-image {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: block;                /* let the absolute overlay position itself */
+  text-align: center;
+}
+
+/* Collage fills the hero in a 3×2 grid (you render 6 boxes in index.html) */
+#home .collage-grid {
+  position: absolute;
+  inset: 0;                      /* top/right/bottom/left: 0 */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0;
+  padding-top: 0 !important;     /* nixes the old 100px push-down */
+  z-index: 0;                    /* behind the overlay */
+}
+
+/* Smooth cross-fades for all collage images */
+#home .collage-box { position: relative; overflow: hidden; }
+#home .collage-box img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 1;
+  transition: opacity 1.1s ease-in-out !important; /* guarantees fade */
+  will-change: opacity;
+}
+
+/* Centered overlay: title + divider + subtitle */
+#home .centered {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) !important;   /* true center */
+  z-index: 2;                                     /* above collage */
+  margin: 0;
+  border-top: 0 !important;                       /* remove stray line */
+  padding: 12px 24px;                             /* breathing room for the backdrop */
+}
+
+/* Black rectangular backdrop (no rounded edges) behind the text */
+#home .centered::before {
+  content: "";
+  position: absolute;
+  inset: -12px -24px;                 /* spacing around the text block */
+  background: rgba(0,0,0,0.60);       /* requested 0.6 opacity */
+  border-radius: 0;                   /* perfect rectangle */
+  box-shadow: 0 16px 40px rgba(0,0,0,0.45);  /* soft drop shadow */
+  z-index: -1;                        /* behind the text, above collage */
+}
+
+/* Hide the old horizontal line if it still exists in the DOM */
 #home #shadow { display: none !important; }
