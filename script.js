@@ -193,6 +193,21 @@ document.addEventListener('click', (e) => {
   setTimeout(() => btn.classList.remove('pressed'), 180);
 });
 
+/* ============ PDF “View” buttons: open in new tab + pressed animation ============ */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a.pdf-pill').forEach(a => {
+    const href = (a.getAttribute('href') || '').trim();
+    if (href) {
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+      if (a.hasAttribute('aria-disabled')) a.removeAttribute('aria-disabled');
+    }
+    a.addEventListener('click', () => {
+      a.classList.add('pressed');
+      setTimeout(() => a.classList.remove('pressed'), 180);
+    });
+  });
+});
 
 window.addEventListener('scroll', updateScrollLines);
 window.addEventListener('resize', updateScrollLines);
