@@ -1282,7 +1282,7 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
   inset: -12px -24px;                 /* spacing around the text block */
   background: rgba(0,0,0,0.80);       /* requested 0.6 opacity */
   border-radius: 0;                   /* perfect rectangle */
-  border-color: 3 px solid lightgrey !important;
+  border: 3px solid lightgrey !important;
   box-shadow: 0 16px 40px rgba(0,0,0,0.45);  /* soft drop shadow */
   z-index: -1;                        /* behind the text, above collage */
 }
