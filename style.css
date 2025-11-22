@@ -649,7 +649,7 @@ body.is-insights-page .insight-body .insight-collapse::before {
    ========================================= */
 .about-headshot-placeholder {
   width: 320px;
-  height: 490px;
+  height: 470px;
   aspect-ratio: 3 / 4;
   border: 1px solid #444;
   box-shadow: 0 4px 14px rgba(0,0,0,0.25);
