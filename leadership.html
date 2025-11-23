@@ -28,9 +28,11 @@
 
   <!-- NEW: centered page image placeholder below page divider (above “Issue”) -->
 <!--
-  <img src="lab.png"
-      class="section-image placeholder page-hero-placeholder" role="img" aria-label="Leadership page image placeholder">
-
+  <figure class="media-with-caption">
+    <div class="section-image placeholder page-hero-placeholder"
+        role="img" aria-label="Leadership page image placeholder"></div>
+    <figcaption class="media-caption">Placeholder caption for the Leadership hero image.</figcaption>
+  </figure>
   <br>
 -->
 
@@ -50,8 +52,12 @@
     </p>
 
     <!-- NEW: centered image placeholder above “Solution” -->
-    <img src="daphnia.png"
-        class="section-image placeholder subsection-placeholder" role="img" aria-label="Leadership Solution section image placeholder">
+    <figure class="media-with-caption">
+      <img src="daphnia.png"
+          class="section-image placeholder subsection-placeholder"
+          role="img" aria-label="Leadership Solution section image placeholder">
+      <figcaption class="media-caption">Placeholder caption for the Solution section image.</figcaption>
+    </figure>
 
     <!-- SOLUTION -->
     <p class="paragraph"><span class="leadership-section">Solution</span></p>
@@ -71,8 +77,12 @@
     </span></p>
 
     <!-- NEW: centered experiment diagram placeholder OUTSIDE the list (no bullet) -->
-    <img src="experiment.png" class="section-image placeholder experiment-diagram"
-      role="img" aria-label="Experiment diagram placeholder">
+    <figure class="media-with-caption">
+      <img src="experiment.png"
+          class="section-image placeholder experiment-diagram"
+          role="img" aria-label="Experiment diagram placeholder">
+      <figcaption class="media-caption">Placeholder caption for the experiment diagram.</figcaption>
+    </figure>
 
     <!-- EXPERIMENT LIST (with centered diagram not in a bullet) -->
     <ol class="leadership-experiment-list paragraph">
@@ -119,6 +129,16 @@
   <footer class="footer">
     <h2 class="secondary-title compressed">Contact Information</h2>
     <p class="paragraph"><span style="font-weight:bold; margin-bottom: 0px"> Samuel Harmon</span> | samaharmon@icloud.com | (864) 409-6231 </p>
+    <div class="footer-social">
+      <a class="social-link linkedin"
+        href="https://www.linkedin.com/in/YOUR-USERNAME"
+        target="_blank" rel="noopener" aria-label="LinkedIn profile">
+        <!-- Simple white LinkedIn SVG -->
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.45 20.45h-3.6v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66h-3.6V9h3.46v1.56h.05c.48-.9 1.65-1.85 3.4-1.85 3.63 0 4.3 2.39 4.3 5.49v6.25zM5.34 7.43a2.08 2.08 0 1 1 0-4.16 2.08 2.08 0 0 1 0 4.16zM7.14 20.45H3.54V9h3.6v11.45z"/>
+        </svg>
+      </a>
+    </div>
     <h6>Developed with coding support from ChatGPT. | 2025</h6>
   </footer>
 
