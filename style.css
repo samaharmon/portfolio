@@ -1289,3 +1289,98 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
 
 /* Hide the old horizontal line if it still exists in the DOM */
 #home #shadow { display: none !important; }
+
+/* =========================================================
+   MEDIA CAPTIONS (non-collage images)
+   - 14pt Times New Roman white text
+   - Over black 80% background
+   - Works for <img> or <div.section-image> placeholders
+   ========================================================= */
+.media-with-caption {
+  position: relative;
+  display: block;
+  max-width: min(980px, 92vw);
+  margin: 0 auto 22px;
+}
+.media-with-caption > img,
+.media-with-caption > .section-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  border: 3px solid #fff;                 /* 2) white border */
+}
+.media-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);            /* 1) 80% black */
+  color: #fff;
+  font-family: "Times New Roman", serif;  /* 1) Times New Roman */
+  font-size: 14pt;                        /* 1) 14pt */
+  line-height: 1.35;
+  padding: 8px 12px;
+}
+
+/* Also give non-collage images a white border by default */
+.section-image,
+img.section-image {
+  border: 3px solid #fff;                 /* 2) white border */
+  box-sizing: border-box;
+}
+.collage-box img { border: 0; }           /* never border the collage */
+
+/* =========================================================
+   KEY INSIGHTS — caret position (vertically centered)
+   - The caret sits beside the title, centered within the title row
+   - Color flips to black on highlighted (hovered) title
+   ========================================================= */
+body.is-insights-page .content-container .secondary-title {
+  display: inline-flex !important;        /* keep text + caret on one line */
+  align-items: center !important;         /* 4) center vertically */
+  gap: 12px;
+}
+body.is-insights-page .content-container .secondary-title .insight-caret {
+  position: relative !important;          /* inline box */
+  width: 44px; height: 28px;
+  margin-left: 8px;
+  border: 0; padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+body.is-insights-page .content-container .secondary-title .insight-caret::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;                    /* 4) true middle */
+  transform: translate(-50%, -50%);
+  width: 0; height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 12px solid #fff;
+}
+body.is-insights-page .content-container .secondary-title:hover .insight-caret::before,
+body.is-insights-page .content-container .secondary-title:focus-visible .insight-caret::before {
+  border-top-color: #000;                 /* 4) flips to black under highlight */
+}
+
+/* =========================================================
+   FOOTER — add space + LinkedIn icon styles
+   ========================================================= */
+.footer {
+  min-height: 190px;                      /* 3) room for social row */
+}
+.footer-social {
+  display: flex; gap: 14px; margin-top: 10px;
+}
+.footer .social-link {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+}
+.footer .social-link svg {
+  width: 28px; height: 28px; fill: #fff; transition: transform .15s ease, fill .15s ease;
+}
+.footer .social-link:hover svg { transform: translateY(-2px); fill: #cfd6de; }
+
+/* =========================================================
+   KEY INSIGHTS hero & leadership page tweaks already present
+   (kept from your latest style.css)
+   ========================================================= */
