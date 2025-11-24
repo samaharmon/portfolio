@@ -1324,7 +1324,7 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
 /* Also give non-collage images a white border by default */
 .section-image,
 img.section-image {
-  border: 3px solid #fff;                 /* 2) white border */
+  border: 3px solid lightgrey;                 /* 2) white border */
   box-sizing: border-box;
 }
 .collage-box img { border: 0; }           /* never border the collage */
@@ -1384,3 +1384,75 @@ body.is-insights-page .content-container .secondary-title:focus-visible .insight
    KEY INSIGHTS hero & leadership page tweaks already present
    (kept from your latest style.css)
    ========================================================= */
+
+/* =========================================================
+   Photo captions (overlay band that stays inside the border)
+   ========================================================= */
+.photo-card {
+  position: relative;
+  display: inline-block;           /* shrink-wrap to the image */
+  margin: 18px auto;
+}
+
+.photo-card > img.section-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+/* Caption band: sits on top of the image, inside the 3px border */
+.photo-caption {
+  position: absolute;
+  left: 3px;                       /* inset by border thickness */
+  right: 3px;                      /* inset by border thickness */
+  bottom: 3px;                     /* inset by border thickness */
+  background: rgba(0,0,0,0.80);
+  color: #fff;
+  font-family: "Times New Roman", serif;
+  font-size: 14px;
+  line-height: 1.35;
+  padding: 6px 10px;
+  pointer-events: none;            /* the image underneath stays interactive */
+}
+
+/* =========================================================
+   Borders for non-collage images (now LIGHTGREY)
+   ========================================================= */
+.section-image {
+  border: 3px solid lightgrey;     /* global non-collage border */
+  box-sizing: border-box;
+}
+.collage-box img { border: 0 !important; }  /* never border the collage */
+
+/* Headshot uses the same rule via its .section-image class on index.html. */
+
+/* =========================================================
+   Key Insights caret – keep centered next to highlighted title
+   (this preserves your current layout, just reiterates centering)
+   ========================================================= */
+body.is-insights-page .content-container .secondary-title .insight-caret {
+  position: relative; display: inline-block;
+  width: 34px; height: 22px; margin-left: 12px;
+  border: 0; background: transparent; padding: 0;
+  cursor: pointer; vertical-align: middle;
+}
+body.is-insights-page .content-container .secondary-title .insight-caret::before {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%); /* true middle */
+  width: 0; height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 8px solid lightgrey;
+}
+
+/* =========================================================
+   Footer – LinkedIn (brand blue square with drop shadow)
+   ========================================================= */
+.footer { min-height: 190px; padding-top: 24px; padding-bottom: 24px; }
+.footer-social { display: flex; align-items: center; gap: 14px; margin-top: 8px; }
+.footer-social a { display: inline-flex; width: 36px; height: 36px; }
+.footer-social a .li-badge {
+  width: 100%; height: 100%;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35)); /* soft shadow like other elements */
+}
