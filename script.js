@@ -1,91 +1,65 @@
-/* ===================== Collage ===================== */
+/* ===================== Collage (robust crossfade) ===================== */
 document.addEventListener('DOMContentLoaded', () => {
   const imageCount = 15;
-  const collageBoxes = Array.from(document.querySelectorAll(".collage-box"));
-  const imagePaths = Array.from({ length: imageCount }, (_, i) => `${i + 1}.png`);
+  const collageBoxes = Array.from(document.querySelectorAll('.collage-box'));
+  const imagePaths  = Array.from({ length: imageCount }, (_, i) => `${i + 1}.png`);
 
-  // Offsets in seconds for each box (relative to cycle start)
-  const offsets = {
-    0: 0.0,
-    1: 0.2, 3: 0.2,
-    2: 0.4, 4: 0.4, 6: 0.4,
-    5: 0.6, 7: 0.6,
-    8: 0.8
-  };
-
+  // staggered offsets (seconds)
+  const offsets = { 0:0.0, 1:0.2, 3:0.2, 2:0.4, 4:0.4, 6:0.4, 5:0.6, 7:0.6, 8:0.8 };
   const cycleLength = 6800; // ms
 
-  function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
+  function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]] } return a; }
 
-  // *** Robust crossfade that waits for decode() so the fade always occurs ***
-  function crossfadeImage(box, newSrc) {
-    const oldImg = box.querySelector("img");
+  function crossfadeImage(box, newSrc){
+    const oldImg = box.querySelector('img');
 
-    const newImg = document.createElement("img");
+    const newImg = document.createElement('img');
     newImg.src = newSrc;
-    newImg.style.opacity = 0;
-    newImg.style.transition = "opacity 1s ease-in-out";
-    newImg.style.position = "absolute";
-    newImg.style.top = 0;
-    newImg.style.left = 0;
-    newImg.style.width = "100%";
-    newImg.style.height = "100%";
-    newImg.style.objectFit = "cover";
+    Object.assign(newImg.style, {
+      position:'absolute', top:0, left:0, width:'100%', height:'100%', objectFit:'cover',
+      opacity:0, transition:'opacity 1s ease-in-out', zIndex:'1', willChange:'opacity', pointerEvents:'none'
+    });
     box.appendChild(newImg);
 
+    // keep the outgoing image above so its fade-out is visible
+    if (oldImg) {
+      oldImg.style.zIndex = '2';
+      oldImg.style.transition = 'opacity 1s ease-in-out';
+    }
+
     const startFade = () => {
-      // Ensure transition is committed before toggling opacity
       requestAnimationFrame(() => {
-        newImg.style.opacity = 1;
-        if (oldImg) {
-          oldImg.style.transition = "opacity 1s ease-in-out";
-          oldImg.style.opacity = 0;
-        }
+        newImg.style.opacity = '1';
+        if (oldImg) oldImg.style.opacity = '0';
       });
-      // Remove the old image after the fade completes
-      setTimeout(() => {
-        if (oldImg && oldImg.parentNode === box) box.removeChild(oldImg);
-      }, 1100);
+      setTimeout(() => { if (oldImg && oldImg.parentNode === box) box.removeChild(oldImg); }, 1100);
+      // allow the new image to become the next "old" image cleanly
+      setTimeout(() => { newImg.style.zIndex = ''; }, 1200);
     };
 
-    if (newImg.decode) {
-      // decode() guarantees we start the transition *after* the image can paint
-      newImg.decode().then(startFade).catch(startFade);
-    } else if (newImg.complete) {
-      startFade();
-    } else {
-      newImg.onload = startFade;
-    }
+    if (newImg.decode) newImg.decode().then(startFade).catch(startFade);
+    else if (newImg.complete) startFade();
+    else newImg.onload = startFade;
   }
 
-  function initialize() {
+  function initialize(){
     const images = shuffle([...imagePaths]).slice(0, collageBoxes.length);
     collageBoxes.forEach((box, i) => {
-      const img = document.createElement("img");
+      const img = document.createElement('img');
+      Object.assign(img.style, {
+        position:'absolute', top:0, left:0, width:'100%', height:'100%', objectFit:'cover',
+        opacity:1, transition:'opacity 1s ease-in-out'
+      });
       img.src = images[i];
-      img.style.opacity = 1;
-      img.style.transition = "opacity 1s ease-in-out";
-      img.style.position = "absolute";
-      img.style.top = 0;
-      img.style.left = 0;
-      img.style.width = "100%";
-      img.style.height = "100%";
-      img.style.objectFit = "cover";
       box.appendChild(img);
     });
   }
 
-  function runCycle() {
+  function runCycle(){
     const images = shuffle([...imagePaths]).slice(0, collageBoxes.length);
     collageBoxes.forEach((box, i) => {
       const offset = (offsets[i] || 0) * 1000;
-      setTimeout(() => { crossfadeImage(box, images[i]); }, 6000 + offset);
+      setTimeout(() => crossfadeImage(box, images[i]), 6000 + offset);
     });
     setTimeout(runCycle, cycleLength);
   }
@@ -93,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initialize();
   runCycle();
 });
+
 
 /* ===================== Animated lines (middle of index only) ===================== */
 const scrollLines = document.querySelectorAll('.animated-line');
