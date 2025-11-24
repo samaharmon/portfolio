@@ -1517,3 +1517,59 @@ body.is-insights-page .content-container .secondary-title .insight-caret::before
   width: 22px; height: 22px; display: block;
   filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));
 }
+
+/* ---------- Captions: fixed width inside border (exactly matches image) ---------- */
+figure.media-with-caption { margin: 18px auto 24px; max-width: min(1100px, 92vw); }
+figure.media-with-caption > img.section-image { display:block; width:100%; height:auto; box-sizing:border-box; }
+.media-caption{
+  position:absolute; left:3px; right:3px; bottom:3px;        /* 3px = border thickness */
+  background:rgba(0,0,0,.80); color:#fff; font-family:"Times New Roman",serif;
+  font-size:14pt; line-height:1.35; padding:6px 10px; pointer-events:none;
+}
+figure.media-with-caption{ position:relative; }
+
+/* Center the stand-alone page hero image (when not using <figure>) */
+.page-hero-placeholder{ display:block; margin:18px auto 16px; max-width:min(1100px,92vw); }
+
+/* Global non-collage image border (incl. headshot) */
+.section-image{ border:3px solid lightgrey !important; box-sizing:border-box; }
+.collage-box img{ border:0 !important; }
+
+/* Headshot — match site shadows */
+.about-headshot-placeholder{ box-shadow:0 10px 24px rgba(0,0,0,.45); }
+
+/* Key Insights: restore larger dropdown caret size and true vertical centering */
+body.is-insights-page .content-container .secondary-title .insight-caret{
+  position:relative; display:inline-block; width:44px; height:28px; margin-left:12px;
+  background:transparent; border:0; padding:0; cursor:pointer; vertical-align:middle;
+}
+body.is-insights-page .content-container .secondary-title .insight-caret::before{
+  content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  width:0; height:0; border-left:12px solid transparent; border-right:12px solid transparent; border-top:12px solid lightgrey;
+}
+body.is-insights-page .insight-body .insight-collapse{ display:none; width:44px; height:28px; margin:12px auto 0; position:relative; }
+body.is-insights-page .insight-body .insight-collapse::before{
+  content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  width:0; height:0; border-left:12px solid transparent; border-right:12px solid transparent; border-bottom:12px solid lightgrey;
+}
+body.is-insights-page .insight-body.revealed .insight-collapse{ display:block; }
+
+/* Make caret dark when the title highlight goes white */
+body.is-insights-page .content-container .secondary-title:hover .insight-caret::before{ border-top-color:#000; }
+
+/* Footer height: revert to the original smaller size */
+.footer{ height:150px; min-height:150px; }
+
+/* Shadow on the three lines (bottom of page and mid‑index animated set) */
+.hr1, .hr2, .hr3{ box-shadow:0 2px 10px rgba(0,0,0,.35); }
+
+/* Remove the “random” line that appears when a paragraph follows an image */
+.section-image + .paragraph::before,
+figure.media-with-caption + .paragraph::before{ content:none; }
+
+/* Hanging indent + highlighted “Source:” label */
+.hanging-cite{ font-family:"Times New Roman",serif; font-size:14pt; line-height:1.5; margin:10px 0 0; padding-left:28px; text-indent:-28px; }
+.hanging-cite .source-label{ color:#869cb3; font-weight:600; }
+
+/* Defensive: neutralize older caption classes if they exist */
+.photo-card .photo-caption{ display:none; }
