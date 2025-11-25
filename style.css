@@ -1383,8 +1383,9 @@ body.is-insights-page .content-container .secondary-title:focus-visible .insight
   position: absolute !important;
   inset: 0 !important;                /* exactly the size of .centered */
   background: rgba(0, 0, 0, 0.6) !important;
+  border: 3 px solid lightgrey !important; /* lightgrey border */
   border-radius: 0 !important;        /* square corners (no rounding) */
-  box-shadow: 0 20px 40px rgba(0,0,0,.45) !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,.80) !important;
   z-index: 1 !important;              /* behind text, above collage */
   pointer-events: none !important;
 }
