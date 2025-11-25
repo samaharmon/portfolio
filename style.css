@@ -1346,3 +1346,67 @@ body.is-insights-page .content-container .secondary-title:focus-visible .insight
   font-size:14pt;line-height:1.5;
 }
 .citation .source-label{color:#869cb3;font-weight:700;}
+
+/* ===========================
+   HOME HERO — Authoritative Overrides
+   =========================== */
+
+/* Ensure the hero section is a positioning context */
+#home.fullscreen-image {
+  position: relative !important;
+}
+
+/* Center the title block both horizontally & vertically */
+#home .centered {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+
+  /* layout & sizing */
+  display: inline-block !important;
+  max-width: min(92vw, 960px) !important;
+  padding: 32px 48px 28px !important; /* room for the backdrop */
+
+  /* reset any stray styles that crept in */
+  text-align: center !important;
+  border: 0 !important;               /* kills an old border-top */
+  z-index: 3 !important;              /* above the collage */
+}
+
+/* Remove the old extra line if it ever reappears */
+#home #shadow { display: none !important; }
+
+/* The dark rectangular backdrop behind the text */
+#home .centered::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;                /* exactly the size of .centered */
+  background: rgba(0, 0, 0, 0.6) !important;
+  border-radius: 0 !important;        /* square corners (no rounding) */
+  box-shadow: 0 20px 40px rgba(0,0,0,.45) !important;
+  z-index: 1 !important;              /* behind text, above collage */
+  pointer-events: none !important;
+}
+
+/* Keep the text above the backdrop */
+#home .centered > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Tidy hero typography so margins don’t push the block around */
+#home .big-title {
+  margin: 0 0 16px !important;
+  color: #4b5b6b !important;
+}
+#home .title-divider {
+  width: 140px !important;
+  height: 2px !important;
+  background: #fff !important;
+  margin: 0 auto 12px !important;
+}
+#home .subtitle {
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
