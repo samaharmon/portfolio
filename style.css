@@ -157,13 +157,6 @@ body.is-insights-page .insight-body::before {
 body.is-insights-page .insight-body.revealed { opacity: 1; }
 body.is-insights-page .insight-body.revealed::before { transform: scaleY(0); }
 
-/* Carets */
-body.is-insights-page .content-container .secondary-title .insight-caret {
-  position: relative; display: inline-block; width: 34px; height: 22px; margin-left: 12px;
-  background: transparent; border: 0; padding: 0; cursor: pointer; vertical-align: baseline;
-}
-
-body.is-insights-page .content-container .secondary-title .insight-caret:focus-visible { outline: 2px solid lightgrey; outline-offset: 2px; }
 body.is-insights-page .content-container .secondary-title.is-open .insight-caret { display: none; }
 body.is-insights-page .insight-body .insight-collapse {
   display: none; width: 44px; height: 28px; background: transparent; border: 0; padding: 0; cursor: pointer; margin: 12px auto 0; position: relative; z-index: 2;
@@ -270,23 +263,6 @@ body.is-insights-page .content-container .secondary-title {
   margin-top: 42px;
 }
 
-/* Override older absolute-position caret rules */
-body.is-insights-page .content-container .secondary-title .insight-caret {
-  position: static !important;         /* inline */
-  left: auto !important;
-  top: auto !important;
-  width: 0;
-  height: 0;
-  line-height: 0;
-  margin-left: 8px;
-  background: transparent;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  /* nudge up so the tip sits on the same baseline as the text */
-  transform: translateY(-0.08em);
-}
-
 /* Size and colors for the triangle carats */
 :root {
   /* Adjust these two numbers if you want the caret bigger/smaller */
@@ -363,20 +339,6 @@ body.is-insights-page .content-container .secondary-title {
   display: inline-flex;       /* overrides earlier block */
   align-items: baseline;      /* baseline with the text */
   gap: 12px;                  /* space before caret */
-}
-
-/* Override any previous absolute caret placement */
-body.is-insights-page .content-container .secondary-title .insight-caret {
-  position: relative !important;   /* inline element next to text */
-  display: inline-block;
-  width: 44px;                     /* container size to match collapse arrow */
-  height: 28px;
-  margin-left: 8px;
-  vertical-align: baseline;        /* align this box to text baseline */
-  background: transparent;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
 }
 
 /* Keep your existing bottom collapse arrow as-is, but ensure it matches sizing */
@@ -1038,23 +1000,6 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
   margin: 0 auto 22px;
 }
 .media-with-caption > img,
-.media-with-caption > .section-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;
-  border: 3px solid #fff;                 /* 2) white border */
-}
-.media-caption {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.8);            /* 1) 80% black */
-  color: #fff;
-  font-family: "Times New Roman", serif;  /* 1) Times New Roman */
-  font-size: 14pt;                        /* 1) 14pt */
-  line-height: 1.35;
-  padding: 8px 12px;
-}
 
 /* Also give non-collage images a white border by default */
 .section-image,
@@ -1073,14 +1018,6 @@ body.is-insights-page .content-container .secondary-title {
   display: inline-flex !important;        /* keep text + caret on one line */
   align-items: center !important;         /* 4) center vertically */
   gap: 12px;
-}
-body.is-insights-page .content-container .secondary-title .insight-caret {
-  position: relative !important;          /* inline box */
-  width: 44px; height: 28px;
-  margin-left: 8px;
-  border: 0; padding: 0;
-  background: transparent;
-  cursor: pointer;
 }
 
 /* =========================================================
@@ -1118,17 +1055,6 @@ body.is-insights-page .content-container .secondary-title .insight-caret {
 /* Headshot uses the same rule via its .section-image class on index.html. */
 
 /* =========================================================
-   Key Insights caret – keep centered next to highlighted title
-   (this preserves your current layout, just reiterates centering)
-   ========================================================= */
-body.is-insights-page .content-container .secondary-title .insight-caret {
-  position: relative; display: inline-block;
-  width: 34px; height: 22px; margin-left: 12px;
-  border: 0; background: transparent; padding: 0;
-  cursor: pointer; vertical-align: middle;
-}
-
-/* =========================================================
    Footer – LinkedIn (brand blue square with drop shadow)
    ========================================================= */
 .footer { min-height: 190px; padding-top: 24px; padding-bottom: 24px; }
@@ -1151,21 +1077,6 @@ body.is-insights-page .content-container .secondary-title .insight-caret {
   width: 100%;
   height: auto;
   box-sizing: border-box;
-}
-
-/* Caption sits ON TOP of the image, inset by border thickness (3px) */
-.media-caption {
-  position: absolute;
-  left: 3px;                        /* exactly inside the border */
-  right: 3px;
-  bottom: 3px;
-  background: rgba(0,0,0,0.80);
-  color: #fff;
-  font-family: "Times New Roman", serif;
-  font-size: 14pt;
-  line-height: 1.35;
-  padding: 6px 10px;
-  pointer-events: none;
 }
 
 /* ===== Non‑collage image borders (headshot included) ===== */
@@ -1203,11 +1114,7 @@ body.is-insights-page .content-container .secondary-title .insight-caret {
 /* ---------- Captions: fixed width inside border (exactly matches image) ---------- */
 figure.media-with-caption { margin: 18px auto 24px; max-width: min(1100px, 92vw); }
 figure.media-with-caption > img.section-image { display:block; width:100%; height:auto; box-sizing:border-box; }
-.media-caption{
-  position:absolute; left:3px; right:3px; bottom:3px;        /* 3px = border thickness */
-  background:rgba(0,0,0,.80); color:#fff; font-family:"Times New Roman",serif;
-  font-size:14pt; line-height:1.35; padding:6px 10px; pointer-events:none;
-}
+
 figure.media-with-caption{ position:relative; }
 
 /* Center the stand-alone page hero image (when not using <figure>) */
@@ -1219,12 +1126,6 @@ figure.media-with-caption{ position:relative; }
 
 /* Headshot — match site shadows */
 .about-headshot-placeholder{ box-shadow:0 10px 24px rgba(0,0,0,.45); }
-
-/* Key Insights: restore larger dropdown caret size and true vertical centering */
-body.is-insights-page .content-container .secondary-title .insight-caret{
-  position:relative; display:inline-block; width:44px; height:28px; margin-left:12px;
-  background:transparent; border:0; padding:0; cursor:pointer; vertical-align:middle;
-}
 
 body.is-insights-page .insight-body .insight-collapse{ display:none; width:44px; height:28px; margin:12px auto 0; position:relative; }
 body.is-insights-page .insight-body .insight-collapse::before{
@@ -1278,17 +1179,7 @@ figure.media-with-caption + .paragraph::before{ content:none; }
 :root{ --media-width: min(980px, 92vw); }
 
 /* -------- Image + bottom caption band (inside the border) -------- */
-.media-with-caption{
-  position:relative;display:block;width:var(--media-width);
-  margin:0 auto 22px;border:3px solid #fff; /* default border for non-collage images */
-  box-shadow:0 10px 30px rgba(0,0,0,.45);overflow:hidden;line-height:0;
-}
 .media-with-caption > img.section-image{display:block;width:100%;height:auto;border:0;}
-.media-caption{
-  position:absolute;left:0;right:0;bottom:0;margin:0;padding:8px 12px;
-  background:rgba(0,0,0,.8);color:#fff;font-family:"Times New Roman",serif;
-  font-size:14pt;line-height:1.35;
-}
 
 /* Headshot: 3px light‑grey border + the same soft shadow */
 .about-headshot-placeholder{
@@ -1313,17 +1204,7 @@ figure.media-with-caption + .paragraph::before{ content:none; }
 body.is-insights-page .content-container .secondary-title{
   display:inline-flex;align-items:baseline;gap:12px;
 }
-body.is-insights-page .content-container .secondary-title .insight-caret{
-  position:relative !important;display:inline-block;margin-left:8px;
-  width:calc(var(--caret-h)*2 + 8px);height:calc(var(--caret-v) + 16px);
-  background:transparent;border:0;padding:0;cursor:pointer;vertical-align:baseline;
-}
-/* ▼ drop-down */
-body.is-insights-page .content-container .secondary-title .insight-caret::before{
-  content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);
-  width:0;height:0;border-left:var(--caret-h) solid transparent;
-  border-right:var(--caret-h) solid transparent;border-top:var(--caret-v) solid var(--caret-color);
-}
+
 /* ▲ fold‑up (already present on your page) — ensure same sizing */
 body.is-insights-page .insight-body .insight-collapse::before{
   border-left:var(--caret-h) solid transparent;border-right:var(--caret-h) solid transparent;
@@ -1409,4 +1290,118 @@ body.is-insights-page .content-container .secondary-title:focus-visible .insight
 #home .subtitle {
   margin: 0 !important;
   line-height: 1.4 !important;
+}
+
+/* =========================================================
+   FIX PACK — captions, carets, line shadows, footer text
+   (Drop in at the END of style.css)
+   ========================================================= */
+
+/* ---------- Captions: fixed width inside border (exactly matches image) ---------- */
+figure.media-with-caption { 
+  position: relative; 
+  display: inline-block;    /* wrapper shrinks to image width */
+  line-height: 0; 
+  margin: 18px auto 22px; 
+  max-width: min(1100px, 92vw); 
+}
+
+figure.media-with-caption > img.section-image,
+figure.media-with-caption > .section-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  /* Keep the non‑collage 3px border */
+  border: 3px solid lightgrey !important;
+}
+
+/* Caption sits ON TOP of the image, inset by the border thickness (3px) */
+.media-caption {
+  position: absolute;
+  left: 3px;            /* exactly inside the 3px image border */
+  right: 3px;
+  bottom: 3px;
+  padding: 6px 10px;
+  background: rgba(0,0,0,0.80);
+  color: #fff;
+  font-family: "Times New Roman", serif;
+  font-size: 14pt;
+  line-height: 1.35;
+  pointer-events: none; /* avoids stealing clicks from image links */
+}
+
+/* Global non‑collage image border (incl. headshot) */
+.section-image { 
+  border: 3px solid lightgrey !important; 
+  box-sizing: border-box; 
+}
+.collage-box img { border: 0 !important; }  /* no borders on collage tiles */
+
+/* Headshot — add the site’s soft shadow */
+.about-headshot-placeholder { 
+  box-shadow: 0 10px 24px rgba(0,0,0,.45); 
+}
+
+/* ---------- Key Insights: dropdown caret (▼) aligned + matched to fold‑up (▲) ---------- */
+body.is-insights-page .content-container .secondary-title {
+  display: inline-flex !important;
+  align-items: center !important;  /* vertical centering for text + caret */
+  gap: 12px;
+}
+body.is-insights-page .content-container .secondary-title .insight-caret {
+  position: relative !important;
+  display: inline-block;
+  width: 44px !important;
+  height: 28px !important;
+  margin-left: 12px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  vertical-align: middle;
+  cursor: pointer;
+}
+body.is-insights-page .content-container .secondary-title .insight-caret::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* true middle */
+  width: 0; height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid lightgrey;       /* ▼ same visual weight as ▲ */
+}
+/* Keep the fold‑up arrow the same geometry */
+body.is-insights-page .insight-body .insight-collapse {
+  display: none;
+  width: 44px; height: 28px; margin: 12px auto 0; position: relative;
+}
+body.is-insights-page .insight-body .insight-collapse::before {
+  content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  width:0; height:0;
+  border-left:12px solid transparent; 
+  border-right:12px solid transparent; 
+  border-bottom:12px solid lightgrey;    /* ▲ */
+}
+body.is-insights-page .insight-body.revealed .insight-collapse { display: block; }
+
+/* ---------- Line shadows: below each line (both static and animated sets) ---------- */
+.hr1, .hr2, .hr3,
+.hr1.animated-line, .hr2.animated-line, .hr3.animated-line {
+  /* positive Y-offset => shadow below the line */
+  box-shadow: 0 10px 18px rgba(0,0,0,.35);
+}
+
+/* ---------- Footer contact info: 14pt regardless of markup variant ---------- */
+.footer .paragraph,
+.footer .footer-contact {
+  font-size: 14pt !important;
+  line-height: 1.55;
+}
+
+/* ---------- Remove the stray rule that draws a line after an image ---------- */
+.section-image + .paragraph::before,
+figure.media-with-caption + .paragraph::before {
+  content: none !important;
 }
