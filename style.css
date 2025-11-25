@@ -1405,3 +1405,90 @@ body.is-insights-page .insight-body.revealed .insight-collapse { display: block;
 figure.media-with-caption + .paragraph::before {
   content: none !important;
 }
+
+/* =========================================================
+   FIX PACK — 4 issues (hero sizing/centering, caption alignment,
+   KI caret vertical centering, home-title border)
+   ========================================================= */
+
+/* 1) Canonical image + caption wrapper (used for hero images too)
+   - keeps images centered
+   - prevents left shift / oversized image
+   - makes caption EXACTLY as wide as the visible image
+   - seats caption flush on the bottom INSIDE the 3px image border
+*/
+figure.media-with-caption{
+  position: relative;
+  display: block;
+  max-width: min(1100px, 92vw);
+  margin: 22px auto;                       /* centers the figure */
+}
+figure.media-with-caption > img.section-image,
+.page-hero-placeholder.section-image{      /* in case the hero is a bare <img> */
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;                  /* includes the 3px border in the box */
+}
+.media-caption{
+  position: absolute;
+  left: 3px;                               /* 3px = image border thickness */
+  right: 3px;
+  bottom: 3px;                             /* sits exactly on the inside bottom */
+  background: rgba(0,0,0,.80);
+  color: #fff;
+  font: 14pt "Times New Roman", serif;
+  line-height: 1.35;
+  padding: 6px 10px;
+  border: none;
+  pointer-events: none;
+}
+
+/* 2) Standardize content-image width (e.g., daphnia, experiment)
+   — if either image has a dedicated class/id, this keeps them the same width */
+.experiment-diagram,
+#experiment-diagram,
+.daphnia-photo{
+  width: 100%;
+  height: auto;
+}
+
+/* 3) KEY INSIGHTS — caret same size as collapse arrow AND vertically centered */
+body.is-insights-page .content-container .secondary-title{
+  display: inline-flex !important;
+  align-items: center !important;          /* TRUE vertical centering */
+  gap: 12px;
+}
+body.is-insights-page .content-container .secondary-title .insight-caret{
+  position: relative !important;
+  display: inline-block;
+  width: 44px;                             /* matches your bottom “pull‑up” arrow */
+  height: 28px;
+  margin-left: 8px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+body.is-insights-page .content-container .secondary-title .insight-caret::before{
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);        /* centers triangle inside the box */
+  width: 0; height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 12px solid #fff;            /* white by default */
+}
+body.is-insights-page .content-container .secondary-title:hover .insight-caret::before,
+body.is-insights-page .content-container .secondary-title:focus-visible .insight-caret::before{
+  border-top-color: #000;                 /* turns black over the lightgrey hover */
+}
+
+/* 4) HOME — give the title’s backdrop a 3px LIGHTGREY border (no rounding) */
+#home .centered::before{
+  border: 3px solid lightgrey !important;
+  border-radius: 0 !important;            /* perfect rectangle */
+  background: rgba(0,0,0,.80) !important; /* ensure consistent shade */
+}
