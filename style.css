@@ -29,11 +29,18 @@ p { font-family: 'Times New Roman', serif; font-size: 16pt; }
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   z-index: 9999999; display: flex; justify-content: center; gap: 20px; padding: 10px 0;
 }
+
 .navbar button {
-  background: none; border: none; color: white; font-family: 'Times New Roman', serif;
-  font-size: 20px; cursor: pointer; transition: color 0.3s; text-transform: uppercase;
+  transition: transform var(--menu-pulse-duration) ease, color 0.3s ease;
+  transform-origin: center;
 }
+
 .navbar button:hover { color: #869cb3; }
+
+.navbar button:hover,
+.navbar button:focus-visible {
+  transform: scale(var(--menu-pulse-scale));
+}
 
 /* ================= Hero ================= */
 .fullscreen-image {
@@ -41,19 +48,59 @@ p { font-family: 'Times New Roman', serif; font-size: 16pt; }
   display: flex; position: relative; justify-content: center; align-items: center;
   text-align: center; overflow: hidden;
 }
+
 .big-title.compressed-center { white-space: nowrap; display: inline-block; }
 
 .about-section { background-color: black; padding: 100px 20px; }
+
 .about-content { max-width: 800px; margin: 0 auto; background-color: #222; padding: 40px; }
 
-.banner { height: 100px; background-color: black; display: flex; align-items: center; justify-content: center; }
-.title-block { display: flex; flex-direction: column; align-items: baseline; }
+.banner {
+  height: auto !important;
+  padding-top: 0px;
+  padding-bottom: 6px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+.title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
 .transparent { color: #4b5b6b; }
 
 .content-container { background-color: black; padding: 50px 20px; max-width: 900px; margin: auto; }
 
-.main-title { color: #4b5b6b; font-size: 48px; text-transform: uppercase; }
-.big-title { color: #4b5b6b; font-size: 72px; text-transform: uppercase; margin-bottom: 10px; padding-bottom: 0; margin-top: 4vh; }
+.main-title {
+  margin-left: 0;
+  margin-right: 0;
+  width: auto;
+  display: block;
+}
+
+.main-title:hover,
+.main-title:focus-visible { font-size: 48px !important; }
+
+.main-title:hover,
+.main-title:focus-visible { --pulse-scale: 1.0833333333; }
+
+.big-title {
+  transition: font-size 0.75s ease;
+  will-change: font-size;
+}
+
+.big-title:hover { font-size: 76px; }
+
+.big-title:hover,
+.big-title:focus-visible { font-size: 72px !important; }
+
+.big-title:hover,
+.big-title:focus-visible { --pulse-scale: 1.0555555556; }
 
 .secondary-title { color: #869cb3d8; font-size: 30pt; margin-bottom: 0; margin-top: 30px; text-transform: none; }
 
@@ -65,7 +112,6 @@ p { font-family: 'Times New Roman', serif; font-size: 16pt; }
   margin-bottom: 10 px;
 }
 
-/* Global paragraph dividers (kept for other pages) */
 .paragraph::before {
   content: "";
   display: block;
@@ -74,16 +120,27 @@ p { font-family: 'Times New Roman', serif; font-size: 16pt; }
   margin-bottom: 10px;
 }
 
-/* Title divider (default) */
-.title-divider { width: 100px; height: 1px; background-color: white; margin: 0px auto; }
+.title-divider {
+  margin-top: 6px;
+  margin-bottom: 12px;
+}
 
 /* ================= Colored lines ================= */
-.hr1, .hr2, .hr3 { height:40px; border: none; margin: 0; }
+.hr1, .hr2, .hr3 {
+  box-shadow: 0 -6px 12px rgba(0,0,0,.28), 0 6px 12px rgba(0,0,0,.28);
+}
+
+.hr1, .hr2, .hr3,
+.hr1.animated-line, .hr2.animated-line, .hr3.animated-line {
+  box-shadow: 0 10px 18px rgba(0,0,0,.35);
+}
+
 .hr1{ background-color: lightgrey; }
+
 .hr2{ background-color: #869cb3; }
+
 .hr3{ background-color: #4b5b6b; }
 
-/* Animated version (for middle of index only) */
 .animated-line {
   height: 40px;
   width: 0%;
@@ -92,34 +149,65 @@ p { font-family: 'Times New Roman', serif; font-size: 16pt; }
 }
 
 /* ================= Footer ================= */
-#shadow {
-  background-color: transparent; position: absolute; width: 105vw; left: -25vw;
-  z-index: 2; top: 0; border-top: 3px solid lightgrey; box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
-}
+#shadow { display: none !important; }
+
 .footer {
-  background-color: #5e5e5e; height: 150px; padding: 20px; border-top: 3px solid lightgrey;
-  display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding-left: 40px;
+  height:150px; min-height:150px;
 }
+
 .footer .secondary-title { text-transform: uppercase; font-size: 48px; }
+
+.footer .paragraph,
+.footer .footer-contact {
+  font-size: 14pt !important;
+  line-height: 1.55;
+}
+
 .extra-space { padding-top: 75px; }
 
-.compressed { display: inline-block; transform: scaleX(0.75); transform-origin: left; }
-.compressed-center { display: inline-block; transform: scaleX(0.7); transform-origin: center; }
+.compressed {
+  transition: transform var(--title-pulse-duration) ease;
+}
 
-.leadership-section { display: inline-block; transform: scaleX(0.7); transform-origin: center; color: lightgrey; font-size: 28pt; }
+.compressed {
+  transform: scaleX(0.75) scale(var(--pulse-scale, 1));
+  transform-origin: left;
+}
+
+.compressed-center {
+  transition: transform var(--title-pulse-duration) ease;
+}
+
+.compressed-center {
+  transform: scaleX(0.7) scale(var(--pulse-scale, 1));
+  transform-origin: center;
+}
+
+.leadership-section {
+  display: block;
+  margin: 20px 0 20px 0;
+  transform-origin: left;
+}
 
 #mound { position: absolute; bottom: 0; left: 0; width: 100%; z-index: -1; }
+
 #mound svg { display: block; width: 100%; height: auto; }
+
 .collage-box { position: relative; overflow: hidden; }
-.collage-box img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.collage-box img {
+  border: 0 !important;
+}
 
 /* ================= Key Insights (badges + dropdown) ================= */
 body.is-insights-page .content-container { counter-reset: insight-counter; }
+
 body.is-insights-page .content-container .secondary-title {
-  position: relative; counter-increment: insight-counter; line-height: 1.05; display: block;
-  margin-top: 40px; /* +10px from earlier */
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px;
 }
-/* Circle badge */
+
 body.is-insights-page .content-container .secondary-title::before {
   content: counter(insight-counter);
   position: absolute; left: -140px; top: 50%; transform: translateY(-50%);
@@ -129,88 +217,163 @@ body.is-insights-page .content-container .secondary-title::before {
   font-family: 'Times New Roman', serif; font-weight: 700; font-size: 48px; line-height: 1;
   box-shadow: 0 6px 18px rgba(0,0,0,0.4);
 }
+
 body.is-insights-page .content-container .secondary-title.compressed::before {
   transform: translateY(-50%) scaleX(1.3333333333);
 }
+
 @media (max-width: 900px) {
   body.is-insights-page .content-container .secondary-title::before { left: -110px; width: 88px; height: 88px; font-size: 36px; }
   body.is-insights-page .content-container .secondary-title.compressed::before { transform: translateY(-50%) scaleX(1.3333333333); }
 }
+
 @media (max-width: 520px) {
   body.is-insights-page .content-container .secondary-title::before { left: -14px; width: 70px; height: 70px; font-size: 28px; }
   body.is-insights-page .content-container .secondary-title { padding-left: 10px; }
   body.is-insights-page .content-container .secondary-title.compressed::before { transform: translateY(-50%) scaleX(1.3333333333); }
 }
 
-/* Click-to-reveal body */
 body.is-insights-page .content-container .secondary-title { cursor: pointer; transition: background-color 180ms ease, color 180ms ease; }
+
 body.is-insights-page .content-container .secondary-title:hover,
 body.is-insights-page .content-container .secondary-title:focus-visible { background-color: lightgrey; color: #000; outline: none; }
+
 body.is-insights-page .insight-body {
   position: relative; overflow: hidden; max-height: 0; opacity: 0;
   transition: max-height 600ms cubic-bezier(.2,.8,.2,1), opacity 260ms ease; will-change: max-height, opacity;
 }
+
 body.is-insights-page .insight-body::before {
   content: ""; position: absolute; inset: 0; background: #000; transform-origin: top center; transform: scaleY(1);
   transition: transform 600ms cubic-bezier(.2,.8,.2,1); pointer-events: none; z-index: 1;
 }
+
 body.is-insights-page .insight-body.revealed { opacity: 1; }
+
 body.is-insights-page .insight-body.revealed::before { transform: scaleY(0); }
 
 body.is-insights-page .content-container .secondary-title.is-open .insight-caret { display: none; }
+
 body.is-insights-page .insight-body .insight-collapse {
-  display: none; width: 44px; height: 28px; background: transparent; border: 0; padding: 0; cursor: pointer; margin: 12px auto 0; position: relative; z-index: 2;
+  display: none;
+  width: 44px; height: 28px; margin: 12px auto 0; position: relative;
 }
+
 body.is-insights-page .insight-body .insight-collapse::before {
-  content: ""; position: absolute; left: 50%; top: 6px; transform: translateX(-50%);
-  width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent; border-bottom: 12px solid lightgrey;
+  content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  width:0; height:0;
+  border-left:12px solid transparent;
+  border-right:12px solid transparent;
+  border-bottom:12px solid lightgrey;
 }
-body.is-insights-page .insight-body .insight-collapse:focus-visible { outline: 2px solid lightgrey; outline-offset: 2px; }
+
 body.is-insights-page .insight-body.revealed .insight-collapse { display: block; }
 
 /* ================= Insight PDF attachments (shared with Resume) ================= */
 .insight-attachments { margin-top: 12px; display: grid; gap: 10px; }
+
 .attachment-card {
   display: flex; align-items: center; gap: 14px; background: #1e1e1e; border: 1px solid #2a2a2a; border-radius: 10px; padding: 12px 14px;
 }
+
 .attachment-icon {
-  width: 36px; height: 44px; border-radius: 4px; background: linear-gradient(180deg, #869cb3, #4b5b6b); box-shadow: inset 0 0 0 2px rgba(0,0,0,0.25);
+  width: 36px; height: 44px; border-radius: 6px;
+  background: linear-gradient(180deg, #93a9c1, #6f849b);
+  position: relative;
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,0.25);
 }
+
+.attachment-icon::after {
+  content: "";
+  position: absolute;
+  top: 0; right: 0;
+  width: 0; height: 0;
+  border-left: 12px solid transparent;
+  border-top: 12px solid rgba(255,255,255,0.9);
+}
+
+.attachment-icon::before {
+  content: "";
+  position: absolute;
+  left: 6px; right: 8px; top: 16px; height: 2px;
+  background: rgba(255,255,255,0.85);
+  box-shadow:
+    0 6px 0 rgba(255,255,255,0.78),
+    0 12px 0 rgba(255,255,255,0.72);
+}
+
 .attachment-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
 .attachment-title { font-weight: 700; color: #d7dfeb; }
+
 .pdf-pill {
-  display: inline-block; padding: 8px 14px; border-radius: 999px; border: 1px solid #869cb3; color: #869cb3; text-decoration: none;
-  transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #869cb3;
+  color: #869cb3;
+  text-decoration: none;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease,
+              transform .18s ease, box-shadow .18s ease;
+  cursor: pointer;
 }
-.pdf-pill:hover { background: #869cb3; color: #000; transform: translateY(-1px); }
+
+.pdf-pill:hover {
+  background: #869cb3;
+  color: #000;
+  transform: translateY(-1px);
+  border-color: #869cb3;
+  box-shadow: 0 6px 16px rgba(134,156,179,0.25);
+}
+
+.pdf-pill:active,
+.pdf-pill.pressed {
+  transform: scale(0.98);
+  background: #9db0c6;
+  color: #000;
+  border-color: #9db0c6;
+  box-shadow: inset 0 0 0 3px rgba(0,0,0,0.15);
+}
+
+.pdf-pill:focus-visible {
+  outline: 2px solid #c9d3dd;
+  outline-offset: 2px;
+}
+
 .pdf-pill[aria-disabled="true"] { pointer-events: none; opacity: .65; }
 
 /* ================= About Me: requested adjustments ================= */
-/* 1) Remove paragraph lines only in About; keep dedicated divider near title */
 #about .paragraph::before { content: none; }
-#about .about-divider { margin-top: 6px; margin-bottom: 24px; } /* closer to title, farther from “Dear reader,” */
 
-/* 2) Resume card aligns with headshot edges, same width, centered under image */
+#about .about-divider { margin-top: 6px; margin-bottom: 24px; }
+
 #about .about-figure { float: right; margin: 0 0 20px 20px; width: 320px; }
+
 #about .about-image { width: 100%; height: auto; object-fit: cover; display: block; }
+
 #about .resume-card { width: 100%; margin: 10px 0 0 0; box-sizing: border-box; }
+
 #about .about-text::after { content: ""; display: table; clear: both; }
 
-/* 3) About Me list: indented and 20pt (no numbers, light blue retained) */
 #about .about-insights-list {
   list-style: none; padding-left: 0;
-  margin: 12px 0 20px 24px;   /* indent from regular paragraphs */
+  margin: 12px 0 20px 24px;
   color: #869cb3;
-  font-size: 20pt;            /* requested size */
+  font-size: 20pt;
   line-height: 1.5;
 }
+
 #about .about-insights-list li { margin: 8px 0; }
 
+#about .main-title::after {
+  margin-left: 0;
+}
+
 /* ================= Classy, removable effects ================= */
-/* 4) Reverted sheen: simple hover sweep with soft gradient edges (no cursor-follow) */
 .effects-enabled .sheen-title,
 .effects-enabled .main-title,
 .effects-enabled .big-title { position: relative; overflow: hidden; }
+
 .effects-enabled .sheen-title::after,
 .effects-enabled .main-title::after,
 .effects-enabled .big-title::after {
@@ -226,9 +389,10 @@ body.is-insights-page .insight-body.revealed .insight-collapse { display: block;
     rgba(255,255,255,0) 100%
   );
   transform: skewX(-20deg);
-  transition: left .8s ease;  /* original speed */
+  transition: left .8s ease;
   pointer-events: none;
 }
+
 .effects-enabled .sheen-title:hover::after,
 .effects-enabled .main-title:hover::after,
 .effects-enabled .big-title:hover::after { left: 150%; }
@@ -237,162 +401,89 @@ body.is-insights-page .insight-body.revealed .insight-collapse { display: block;
 @media (max-width: 900px) {
   #about .about-figure { width: 280px; }
 }
+
 @media (max-width: 720px) {
   #about .about-figure { float: none; margin: 0 auto 16px auto; width: min(360px, 90%); }
   #about .resume-card { margin-left: auto; margin-right: auto; }
 }
 
-/* Reduce motion */
 @media (prefers-reduced-motion: reduce) {
   .effects-enabled .sheen-title::after,
   .effects-enabled .main-title::after,
   .effects-enabled .big-title::after { display: none; }
 }
 
-/* =========================================
-   Key Insights — inline dropdown caret, larger,
-   baseline-aligned, and color-swap on highlight
-   ========================================= */
-
-/* Put the title text and caret on one line and align baselines */
-body.is-insights-page .content-container .secondary-title {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 12px;
-  /* a touch more spacing between insights */
-  margin-top: 42px;
+@media (prefers-reduced-motion: reduce) {
+  .big-title, .main-title { transition: none; }
 }
 
-/* Size and colors for the triangle carats */
+@media (prefers-reduced-motion: reduce) {
+  .compressed,
+  .compressed-center,
+  .navbar button {
+    transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .banner + .page-hero-placeholder { margin-top: clamp(72px, 10vw, 120px); }
+}
+
+@media (max-width: 520px) {
+  .banner { padding-top: 28 px; }
+  .banner + .page-hero-placeholder { margin-top: clamp(64px, 14vw, 110px) !important; }
+}
+
+@media (max-width: 640px) {
+  .banner { padding-top: 28px; }
+  .banner + .page-hero-placeholder {
+    margin-top: 24px !important;
+    margin-bottom: 18px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #home .centered { padding: 10px 18px; }
+  #home .centered::before { inset: -8px -16px; }
+}
+
 :root {
-  /* Adjust these two numbers if you want the caret bigger/smaller */
-  --caret-v: 20px;               /* triangle height (≈ 26–27pt on very large titles) */
-  --caret-h: 26px;               /* triangle half-width (controls the wide “V” look) */
+  --caret-h: 18px;
+  --caret-v: 12px;
   --caret-color: lightgrey;
-  --caret-color-hover: #000;     /* when highlighted */
+  --caret-color-hover:#000;
 }
 
-/* ▲ collapse caret at the bottom of expanded content — keep in sync with top caret size */
-body.is-insights-page .insight-body .insight-collapse::before {
-  border-left: var(--caret-h) solid transparent;
-  border-right: var(--caret-h) solid transparent;
-  border-bottom: var(--caret-v) solid var(--caret-color);
-}
-body.is-insights-page .insight-body .insight-collapse:hover::before,
-body.is-insights-page .insight-body .insight-collapse:focus-visible::before {
-  border-bottom-color: var(--caret-color-hover);
+:root {
+  --title-pulse-duration: 420ms;
+  --menu-pulse-duration: 300ms;
+  --menu-pulse-scale: 1.2;
 }
 
-/* =========================================
-   About Me — divider alignment
-   ========================================= */
+:root{ --media-width: min(980px, 92vw); }
 
-/* Keep the single divider, but align it with the left edge of the text block */
-#about .main-title::after {
-  margin-left: 0;        /* flush with container’s left padding */
+.sheen-title::after,
+.main-title::after,
+.big-title::after {
+  content: none !important;
+  display: none !important;
 }
 
-/* =========================================
-   Leadership — left-align section headings
-   ========================================= */
-
-.leadership-section {
-  display: block;        /* start on its own line */
-  transform-origin: left;
-  margin-left: 0;
-  /* keep your styling */
-  transform: scaleX(0.7);
-  color: lightgrey;
-  font-size: 28pt;
-}
-
-/* =========================================
-   Sheen — soften edges & rounded rectangle
-   (keeps your original hover wipe; just prettier)
-   ========================================= */
-
-.effects-enabled .sheen-title::after,
-.effects-enabled .main-title::after,
-.effects-enabled .big-title::after {
-  /* same positioning/animation you already have;
-     just improving how it blends into the black bg */
-  border-radius: 12px; 
-  background: linear-gradient(
-    120deg,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.16) 35%,
-    rgba(255,255,255,0.24) 50%,
-    rgba(255,255,255,0.16) 65%,
-    rgba(255,255,255,0) 100%
-  );
-}
-
-/* =========================================================
-   KEY INSIGHTS — dropdown caret at end of title:
-   - larger (same as your collapse arrow)
-   - baseline-aligned with the text
-   - switches to black on title hover highlight
-   ========================================================= */
-
-/* Make the title and caret share a line and align on baseline */
-body.is-insights-page .content-container .secondary-title {
-  display: inline-flex;       /* overrides earlier block */
-  align-items: baseline;      /* baseline with the text */
-  gap: 12px;                  /* space before caret */
-}
-
-/* Keep your existing bottom collapse arrow as-is, but ensure it matches sizing */
-body.is-insights-page .insight-body .insight-collapse::before {
-  border-left: 18px solid transparent;
-  border-right: 18px solid transparent;
-  border-bottom: 12px solid lightgrey;
-}
-
-/* =========================================================
-   ABOUT ME — left-align the divider under the “About Me” title
-   (requires a small HTML addition; see section B)
-   ========================================================= */
-.about-title-divider {
-  width: 100px;
-  height: 1px;
-  background-color: white;
-  margin: 6px 0 18px 0;  /* left-aligned: no auto-centering */
-}
-
-/* =========================================================
-   LEADERSHIP — align “Issue” & “Solution”, reduce space under them
-   (works with your existing markup that uses <span class="leadership-section">)
-   ========================================================= */
-.leadership-section {
-  display: block;          /* put on its own line */
-  margin: 20px 0 20px 0;   /* ~20px above and below */
-  transform-origin: left;  /* keep your scaleX compressed but left-anchored */
-}
-
-/* Clean up extra <br> the file uses around the headings */
-.content-container .paragraph > br:first-child { display: none; }   /* remove the leading <br> */
-.content-container .paragraph .leadership-section + br { display: none; } /* remove the <br> right after the heading */
-
-/* =========================================================
-   TITLES — sheen with rounded edges + soft fade
-   (same original hover sweep; just blends better)
-   ========================================================= */
 .main-title, .big-title, .sheen-title {
   position: relative;
-  overflow: hidden;   /* crop rounded overlay edges cleanly */
+  overflow: hidden;
 }
 
-/* The overlay itself (rounded rectangle with a subtle gradient) */
 .main-title::after,
 .big-title::after,
 .sheen-title::after {
   content: "";
   position: absolute;
   top: 0;
-  left: -150%;            /* start off-left */
-  width: 55%;             /* a bit wider for nicer coverage */
+  left: -150%;
+  width: 55%;
   height: 100%;
-  border-radius: 14px;    /* rounded corners */
+  border-radius: 14px;
   background: linear-gradient(
     120deg,
     rgba(255,255,255,0)    0%,
@@ -402,125 +493,31 @@ body.is-insights-page .insight-body .insight-collapse::before {
     rgba(255,255,255,0)    100%
   );
   transform: skewX(-20deg);
-  transition: left 0.85s ease;  /* slightly slower, still crisp */
-  pointer-events: none;         /* click-through */
+  transition: left 0.85s ease;
+  pointer-events: none;
 }
 
 .main-title:hover::after,
 .big-title:hover::after,
 .sheen-title:hover::after {
-  left: 150%;            /* one clean sweep on hover */
+  left: 150%;
 }
 
-/* =========================================
-   Replace “sheen” with a hover pulse (+4px)
-   ========================================= */
-
-/* If any prior sheen rules exist, hard-disable them */
-.sheen-title::after,
-.main-title::after,
-.big-title::after {
-  content: none !important;
-  display: none !important;
+.about-title-divider {
+  width: 100px;
+  height: 1px;
+  background-color: white;
+  margin: 6px 0 18px 0;
 }
 
-/* Smooth grow/shrink just on hover */
-.big-title,
-.main-title {
-  /* Keep the typography smooth when size changes */
-  transition: font-size 0.75s ease;
-  will-change: font-size;
-}
+.content-container .paragraph > br:first-child { display: none; }
 
-/* Your current base sizes:
-   - .big-title = 72px (home hero)  -> hover = 76px
-   - .main-title = 48px (page titles) -> hover = 52px
-   If you change those base sizes later, just bump these two by +4px again. */
-.big-title:hover { font-size: 76px; }  /* 72 + 4 */
-.main-title:hover { font-size: 52px; } /* 48 + 4 */
+.content-container .paragraph .leadership-section + br { display: none; }
 
-/* Respect reduced-motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .big-title, .main-title { transition: none; }
-}
-
-/* =========================================================
-   Remove any sheen overlay if present
-   ========================================================= */
-.sheen-title::after,
-.main-title::after,
-.big-title::after {
-  content: none !important;
-  display: none !important;
-}
-
-/* =========================================================
-   Pulse without layout shift (titles + navbar)
-   Uses transform: scale(...) so surrounding content never moves.
-   ========================================================= */
-
-/* Timing variables */
-:root {
-  --title-pulse-duration: 420ms;    /* gentle hover grow */
-  --menu-pulse-duration: 300ms;     /* slightly snappier in nav */
-  --menu-pulse-scale: 1.2;          /* 20px -> ~24px visual size */
-}
-
-/* Cancel the previous font-size hover from the last step so it can't reflow */
-.main-title:hover,
-.main-title:focus-visible { font-size: 48px !important; } /* base from stylesheet */
-.big-title:hover,
-.big-title:focus-visible { font-size: 72px !important; }  /* base from stylesheet */
-
-/* Compose pulse with your horizontal compression transforms */
-.compressed,
-.compressed-center {
-  transition: transform var(--title-pulse-duration) ease;
-}
-
-/* Keep your original squish and add a scalable layer we can pulse */
-.compressed {
-  transform: scaleX(0.75) scale(var(--pulse-scale, 1));
-  transform-origin: left;
-}
-.compressed-center {
-  transform: scaleX(0.7) scale(var(--pulse-scale, 1));
-  transform-origin: center;
-}
-
-/* Titles set the pulse amount by changing a CSS variable on hover */
-.main-title:hover,
-.main-title:focus-visible { --pulse-scale: 1.0833333333; } /* 48 -> 52 */
-
-.big-title:hover,
-.big-title:focus-visible { --pulse-scale: 1.0555555556; }  /* 72 -> 76 */
-
-/* Navbar buttons (HOME / KEY INSIGHTS / LEADERSHIP) */
-.navbar button {
-  transition: transform var(--menu-pulse-duration) ease, color 0.3s ease;
-  transform-origin: center;
-}
-.navbar button:hover,
-.navbar button:focus-visible {
-  transform: scale(var(--menu-pulse-scale));
-}
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .compressed,
-  .compressed-center,
-  .navbar button {
-    transition: none;
-  }
-}
-
-/* =========================================
-   Centered picture placeholders (shared)
-   ========================================= */
 .section-image.placeholder {
   width: min(780px, 92%);
   aspect-ratio: 16 / 9;
-  margin: 16px auto 28px auto;          /* centered */
+  margin: 16px auto 28px auto;
   border: 1px solid #444;
   box-shadow: 0 4px 14px rgba(0,0,0,0.25);
   background:
@@ -531,205 +528,61 @@ body.is-insights-page .insight-body .insight-collapse::before {
     );
 }
 
-/* Optional: slightly different spacing on page-hero placeholders */
-.page-hero-placeholder { margin-top: 12px; margin-bottom: 32px; }
+.page-hero-placeholder {
+  display:block;
+  width:var(--media-width);
+  margin:8px auto 22px;
+}
 
-/* Experiment diagram placeholder — same look, just a little taller if needed */
 .experiment-diagram { aspect-ratio: 3 / 2; }
 
-/* =========================================
-   Push page-hero placeholders down so they
-   do not overlay the title or divider line
-   (Key Insights + Leadership)
-   ========================================= */
-
-/* Make the banner a stacking context so it always paints above later content */
-.banner { position: relative; z-index: 1; }
-
-/* Placeholders that immediately follow a .banner block */
 .banner + .page-hero-placeholder {
-  /* Push down to clear the overhanging title + divider inside .banner */
-  margin-top: clamp(96px, 12vw, 160px); /* responsive: ~100–160px depending on width */
-  margin-bottom: 24px;                  /* modest space before the first section heading */
-}
-
-/* General placeholder styling stays the same; just ensure it's below the banner */
-.page-hero-placeholder { position: relative; z-index: 0; }
-
-/* Optional: a bit less top push on small screens so it doesn’t feel too low */
-@media (max-width: 640px) {
-  .banner + .page-hero-placeholder { margin-top: clamp(72px, 10vw, 120px); }
-}
-
-/* =========================================
-   About Me headshot placeholder styling
-   (matches Leadership / Key Insights style)
-   ========================================= */
-.about-headshot-placeholder {
-  width: 320px;
-  height: 460px;
-  aspect-ratio: 3 / 4;
-  border: 1px solid #444;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
-  background:
-    repeating-linear-gradient(
-      135deg,
-      #2b2b2b, #2b2b2b 12px,
-      #333,    #333    24px
-    );
-}
-
-/* 1) Force the banner title to be strictly centered (stable layout) */
-.banner .title-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;      /* centers title & subtitle horizontally */
-  text-align: center;
-}
-
-/* Ensure main title itself doesn't shift surrounding flow */
-.main-title {
-  margin-left: 0;
-  margin-right: 0;
-  width: auto;
+  margin-top: 30px !important;
+  margin-bottom: 20px !important;
+  margin-left: auto;
+  margin-right: auto;
   display: block;
 }
 
-/* 2) Prevent the about-page headshot placeholder from affecting other pages
-   If you haven't done so, add <body class="about-page"> to your index.html page.
-   This CSS scopes the headshot placeholder only to the about page. */
+.about-headshot-placeholder {
+  border:3px solid lightgrey !important;box-shadow:0 10px 30px rgba(0,0,0,.45);
+}
+
 body.about-page .about-headshot-placeholder {
   width: 320px;
   height: 445px;
-  float: left;              /* restore the original floating behavior if desired */
+  float: left;
   margin-right: 20px;
   margin-bottom: 20px;
 }
 
-/* 3) Keep page hero placeholders centered but make sure they don't affect title centering */
-.banner + .page-hero-placeholder {
-  margin-top: clamp(96px, 10vw, 140px);
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 92%;
-}
-
-/* 4) If you want the placeholder style to be used only for leadership/insights
-   but NOT globally, scope it to those pages (preferable): */
 body.is-insights-page .section-image.placeholder,
 body.is-leadership-page .section-image.placeholder {
   width: min(780px, 92%);
   margin: 16px auto 28px auto;
 }
 
-/* 5) Small safety: ensure the nav/title area has top stacking (no overlap) */
-.banner { position: relative; z-index: 2; }
-
-/* ========= fix: spacing between menu, title, and hero placeholder ========= */
-/* ensure banner doesn't overlap the nav and give consistent vertical spacing */
-.banner {
-  /* allow the banner to size with its content instead of a fixed 100px */
-  height: auto !important;
-  padding-top: 0px;       /* space below the navbar */
-  padding-bottom: 6px;     /* small gap below the title area */
-  box-sizing: border-box;
-  position: relative;
-  z-index: 1;
-}
-
-/* center content inside the banner explicitly (robust centering) */
-.banner .title-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 8px; /* small vertical breathing room between title / divider / subtitle */
-}
-
-/* gently move the main title a touch down so it is visually centered
-   between the nav and the divider. Adjust the value if you want more/less space. */
 .main-title.extra-space {
-  margin-top: 6px;        /* small nudge down from the top of the banner */
+  margin-top: 6px;
   margin-bottom: 6px;
 }
 
-/* Force the divider to sit a consistent distance below the title */
-.title-divider {
-  margin-top: 6px;
-  margin-bottom: 12px;
-}
-
-/* Move the hero / page-hero placeholder down so it clears the title + divider
-   Uses clamp() to remain responsive (smaller on phones, larger on wide screens) */
-.banner + .page-hero-placeholder {
-  margin-top: clamp(90px, 12vw, 160px) !important;
-  margin-bottom: 28px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-/* If you want a slightly larger gap on ultra-wide screens, uncomment below:
-.banner + .page-hero-placeholder { margin-top: clamp(110px, 14vw, 220px); }
-*/
-
-/* Small-screen tweak: slightly reduce the top gap on very small devices */
-@media (max-width: 520px) {
-  .banner { padding-top: 28 px; }
-  .banner + .page-hero-placeholder { margin-top: clamp(64px, 14vw, 110px) !important; }
-}
-
-/* =========================================================
-   Fine-tune vertical spacing on Key Insights hero section
-   ========================================================= */
-
-/* Keep banner spacing comfortable below the nav */
-.banner {
-  padding-top: 40px;   /* space below navbar */
-  padding-bottom: 0;   /* trim extra gap */
-}
-
-/* Title, divider, and subtitle — balanced distances */
-.main-title.extra-space { margin-top: 8px; margin-bottom: 6px; }
-.title-divider { margin-top: 8px; margin-bottom: 10px; }
 .subtitle-title {
-  margin-top: 10px;   /* closer to divider */
-  margin-bottom: 18px;/* less gap above image */
+  margin-top: 10px;
+  margin-bottom: 18px;
 }
 
-/* Hero placeholder: move upward slightly and tighten bottom gap */
-.banner + .page-hero-placeholder {
-  margin-top: 30px !important;   /* was too far below subtitle */
-  margin-bottom: 20px !important;/* reduce gap before first insight */
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-/* Small-screen tweak for better balance */
-@media (max-width: 640px) {
-  .banner { padding-top: 28px; }
-  .banner + .page-hero-placeholder {
-    margin-top: 24px !important;
-    margin-bottom: 18px !important;
-  }
-}
-
-/* ============ CENTER ANY <img> PLACEHOLDER (Key Insights hero) ============ */
 .section-image.placeholder {
-  display: block;                /* allow margin auto to center <img> */
+  display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* =========================================
-   LEADERSHIP — remove paragraph lines except the first
-   ========================================= */
 body.is-leadership-page .content-container .paragraph::before {
-  content: none;                 /* no lines between paragraphs */
+  content: none;
 }
+
 body.is-leadership-page .content-container > .paragraph:first-of-type::before {
-  /* keep the single line under “Tackling Issues…” */
   content: "";
   display: block;
   width: 50%;
@@ -737,356 +590,92 @@ body.is-leadership-page .content-container > .paragraph:first-of-type::before {
   margin-bottom: 10px;
 }
 
-/* =========================================
-   LEADERSHIP — Sources with hanging indents
-   ========================================= */
 .citation-list {
   list-style: none;
   margin: 4px 0 20px 0;
   padding-left: 0;
 }
+
 .citation-list li {
   margin: 10px 0;
   line-height: 1.6;
-  padding-left: 1.6em;           /* hanging indent amount */
-  text-indent: -1.6em;           /* first line outdents back to the left margin */
-  word-break: break-word;        /* long URLs wrap cleanly */
+  padding-left: 1.6em;
+  text-indent: -1.6em;
+  word-break: break-word;
 }
 
-/* =========================================
-   PDF buttons: hover + active (pressed)
-   ========================================= */
-.pdf-pill {
-  cursor: pointer;
-  box-shadow: 0 0 0 0 rgba(134,156,179,0);             /* base */
-}
-.pdf-pill:hover {
-  background: #869cb3;
-  color: #000;
-  transform: translateY(-1px);
-  border-color: #869cb3;
-  box-shadow: 0 6px 16px rgba(134,156,179,0.25);
-}
-.pdf-pill:active,
-.pdf-pill.pressed {                                    /* JS adds .pressed briefly */
-  transform: scale(0.98);
-  background: #9db0c6;
-  color: #000;
-  border-color: #9db0c6;
-  box-shadow: inset 0 0 0 3px rgba(0,0,0,0.15);
-}
-.pdf-pill:focus-visible {
-  outline: 2px solid #c9d3dd;
-  outline-offset: 2px;
-}
-
-/* Kill any old 'shadow' line globally just in case */
-#shadow { display: none !important; }
-
-/* =================== PDF BUTTONS & ICON =================== */
-
-/* Hover/active/focus for “View” pills (works across pages) */
-.pdf-pill {
+body.is-insights-page .content-container .secondary-title .insight-caret {
+  position: relative !important;
   display: inline-block;
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid #869cb3;
-  color: #869cb3;
-  text-decoration: none;
-  transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .18s ease, box-shadow .18s ease;
+  width: 44px;
+  height: 28px;
+  margin-left: 8px;
+  background: transparent;
+  border: 0;
+  padding: 0;
   cursor: pointer;
 }
-.pdf-pill:hover {
-  background: #869cb3;
-  color: #000;
-  transform: translateY(-1px);
-  border-color: #869cb3;
-  box-shadow: 0 6px 16px rgba(134,156,179,0.25);
-}
-.pdf-pill:active,
-.pdf-pill.pressed {
-  transform: scale(0.98);
-  background: #9db0c6;
-  color: #000;
-  border-color: #9db0c6;
-  box-shadow: inset 0 0 0 3px rgba(0,0,0,0.15);
-}
-.pdf-pill:focus-visible {
-  outline: 2px solid #c9d3dd;
-  outline-offset: 2px;
-}
-.pdf-pill[aria-disabled="true"] {
-  pointer-events: none;
-  opacity: .65;
-}
 
-/* Make the blue square icon look like a document page with a folded corner */
-.attachment-icon {
-  width: 36px; height: 44px; border-radius: 6px;
-  background: linear-gradient(180deg, #93a9c1, #6f849b);
-  position: relative;
-  box-shadow: inset 0 0 0 2px rgba(0,0,0,0.25);
-}
-/* folded corner (top-right) */
-.attachment-icon::after {
+body.is-insights-page .content-container .secondary-title .insight-caret::before {
   content: "";
-  position: absolute;
-  top: 0; right: 0;
-  width: 0; height: 0;
-  border-left: 12px solid transparent;
-  border-top: 12px solid rgba(255,255,255,0.9);   /* fold color */
-}
-/* a few “text lines” on the page */
-.attachment-icon::before {
-  content: "";
-  position: absolute;
-  left: 6px; right: 8px; top: 16px; height: 2px;
-  background: rgba(255,255,255,0.85);
-  box-shadow:
-    0 6px 0 rgba(255,255,255,0.78),
-    0 12px 0 rgba(255,255,255,0.72);
-}
-
-/* Hide the extra horizontal line, just in case it's still in the DOM */
-#home #shadow { display: none !important; }
-
-/* ================== HOME — hard-center title stack + backdrop ================== */
-
-/* Keep the text above the overlay */
-#home .centered > * {
-  position: relative;
-  z-index: 2;
-}
-
-/* Kill the extra horizontal line if it still exists in the DOM */
-#home #shadow { display: none !important; }
-
-/* Small screens: slightly tighter backdrop */
-@media (max-width: 640px) {
-  #home .centered { padding: 10px 18px; }
-  #home .centered::before { inset: -8px -16px; }
-}
-
-/* ===================== HOME — collage fill + centered title ===================== */
-
-/* Each tile cross-fades smoothly */
-#home .collage-box { position: relative; overflow: hidden; }
-#home .collage-box img {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover;
-  opacity: 1;
-  transition: opacity 1.1s ease-in-out !important;  /* force smooth fade */
-  will-change: opacity;
-}
-
-/* Hide the old line element if present */
-#home #shadow { display: none !important; }
-
-/* ===================== PDF buttons ===================== */
-.pdf-pill {
-  display: inline-block;
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid #869cb3;
-  color: #869cb3;
-  text-decoration: none;
-  transition: background-color .2s ease, color .2s ease, border-color .2s ease,
-              transform .18s ease, box-shadow .18s ease;
-  cursor: pointer;
-}
-.pdf-pill:hover {
-  background: #869cb3;
-  color: #000;
-  transform: translateY(-1px);
-  border-color: #869cb3;
-  box-shadow: 0 6px 16px rgba(134,156,179,0.25);
-}
-.pdf-pill:active,
-.pdf-pill.pressed {
-  transform: scale(0.98);
-  background: #9db0c6;
-  color: #000;
-  border-color: #9db0c6;
-  box-shadow: inset 0 0 0 3px rgba(0,0,0,0.15);
-}
-.pdf-pill:focus-visible {
-  outline: 2px solid #c9d3dd;
-  outline-offset: 2px;
-}
-.pdf-pill[aria-disabled="true"] { pointer-events: none; opacity: .65; }
-
-/* ===================== Document-style icon ===================== */
-.attachment-icon {
-  width: 36px; height: 44px; border-radius: 6px;
-  background: linear-gradient(180deg, #93a9c1, #6f849b);
-  position: relative;
-  box-shadow: inset 0 0 0 2px rgba(0,0,0,0.25);
-}
-/* folded corner (top-right) */
-.attachment-icon::after {
-  content: "";
-  position: absolute;
-  top: 0; right: 0;
-  width: 0; height: 0;
-  border-left: 12px solid transparent;
-  border-top: 12px solid rgba(255,255,255,0.9);
-}
-/* a few “text lines” */
-.attachment-icon::before {
-  content: "";
-  position: absolute;
-  left: 6px; right: 8px; top: 16px; height: 2px;
-  background: rgba(255,255,255,0.85);
-  box-shadow:
-    0 6px 0 rgba(255,255,255,0.78),
-    0 12px 0 rgba(255,255,255,0.72);
-}
-
-/* =================== HOME HERO — final, deduped =================== */
-
-#home .collage-box { position: relative; overflow: hidden; }
-#home .collage-box img {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  opacity: 1;
-  transition: opacity 1.1s ease-in-out !important;  /* smooth crossfade */
-  will-change: opacity;
-}
-
-/* Remove the extra horizontal line that was above the title */
-#home #shadow { display: none !important; }
-
-/* ===================== HOME — final, centered overlay + full-bleed collage ===================== */
-
-#home .collage-box { position: relative; overflow: hidden; }
-#home .collage-box img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%; object-fit: cover;
-  opacity: 1;
-  transition: opacity 1.1s ease-in-out !important; /* guarantees smooth cross‑fades */
-  will-change: opacity;
-}
-
-/* Hide the extra horizontal line above the main title if it's still in the DOM */
-#home #shadow { display: none !important; }
-
-/* Centered overlay: title + divider + subtitle */
-#home .centered {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%) !important;   /* true center */
-  z-index: 2;                                     /* above collage */
-  margin: 0;
-  border-top: 0 !important;                       /* remove stray line */
-  padding: 12px 24px;                             /* breathing room for the backdrop */
+  transform: translate(-50%,-50%);
+  width: 0; height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 12px solid #fff;
 }
 
-/* Hide the old horizontal line if it still exists in the DOM */
-#home #shadow { display: none !important; }
-
-/* =========================================================
-   MEDIA CAPTIONS (non-collage images)
-   - 14pt Times New Roman white text
-   - Over black 80% background
-   - Works for <img> or <div.section-image> placeholders
-   ========================================================= */
-.media-with-caption {
-  position: relative;
-  display: block;
-  max-width: min(980px, 92vw);
-  margin: 0 auto 22px;
-}
-.media-with-caption > img,
-
-/* Also give non-collage images a white border by default */
-.section-image,
-img.section-image {
-  border: 3px solid lightgrey;                 /* 2) white border */
-  box-sizing: border-box;
-}
-.collage-box img { border: 0; }           /* never border the collage */
-
-/* =========================================================
-   KEY INSIGHTS — caret position (vertically centered)
-   - The caret sits beside the title, centered within the title row
-   - Color flips to black on highlighted (hovered) title
-   ========================================================= */
-body.is-insights-page .content-container .secondary-title {
-  display: inline-flex !important;        /* keep text + caret on one line */
-  align-items: center !important;         /* 4) center vertically */
-  gap: 12px;
+body.is-insights-page .content-container .secondary-title:hover .insight-caret::before,
+body.is-insights-page .content-container .secondary-title:focus-visible .insight-caret::before {
+  border-top-color: #000;
 }
 
-/* =========================================================
-   FOOTER — add space + LinkedIn icon styles
-   ========================================================= */
-.footer {
-  min-height: 190px;                      /* 3) room for social row */
-}
 .footer-social {
   display: flex; gap: 14px; margin-top: 10px;
 }
+
 .footer .social-link {
   display: inline-flex; align-items: center; justify-content: center;
   width: 32px; height: 32px;
 }
+
 .footer .social-link svg {
   width: 28px; height: 28px; fill: #fff; transition: transform .15s ease, fill .15s ease;
 }
+
 .footer .social-link:hover svg { transform: translateY(-2px); fill: #cfd6de; }
 
-/* =========================================================
-   KEY INSIGHTS hero & leadership page tweaks already present
-   (kept from your latest style.css)
-   ========================================================= */
-
-/* =========================================================
-   Borders for non-collage images (now LIGHTGREY)
-   ========================================================= */
 .section-image {
-  border: 3px solid lightgrey;     /* global non-collage border */
+  border: 3px solid lightgrey !important;
   box-sizing: border-box;
 }
-.collage-box img { border: 0 !important; }  /* never border the collage */
 
-/* Headshot uses the same rule via its .section-image class on index.html. */
-
-/* =========================================================
-   Footer – LinkedIn (brand blue square with drop shadow)
-   ========================================================= */
-.footer { min-height: 190px; padding-top: 24px; padding-bottom: 24px; }
 .footer-social { display: flex; align-items: center; gap: 14px; margin-top: 8px; }
+
 .footer-social a { display: inline-flex; width: 36px; height: 36px; }
+
 .footer-social a .li-badge {
   width: 100%; height: 100%;
-  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35)); /* soft shadow like other elements */
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));
 }
 
-/* ===== Image + caption overlay (exact width, sits inside the 3px border) ===== */
-.media-with-caption {               /* wrapper around the image */
+.media-with-caption {
   position: relative;
-  display: inline-block;            /* shrink to the image’s width */
-  line-height: 0;                   /* remove stray descender gap */
+  display: inline-block;
+  line-height: 0;
   margin: 0 auto 22px;
 }
+
 .media-with-caption > img.section-image {
-  display: block;                   /* wrapper width == image width */
+  display: block;
   width: 100%;
   height: auto;
   box-sizing: border-box;
 }
 
-/* ===== Non‑collage image borders (headshot included) ===== */
-.section-image {                    /* used across About, Insights, Leadership */
-  border: 3px solid lightgrey !important;
-  box-sizing: border-box;
-}
-.collage-box img { border: 0 !important; }   /* never border the collage tiles */
-
-/* ===== Hanging indent for single inline citations ===== */
 .hanging-cite {
   font-family: "Times New Roman", serif;
   font-size: 14pt;
@@ -1096,345 +685,45 @@ body.is-insights-page .content-container .secondary-title {
   text-indent: -28px;
 }
 
-/* ===== Footer contact row with inline LinkedIn badge ===== */
+.hanging-cite .source-label{ color:#869cb3; font-weight:600; }
+
 .footer-contact {
   margin-top: 6px;
   display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
   font-size: 12pt;
 }
+
 .footer-contact .sep { opacity: .6; margin: 0 6px; }
+
 .footer-contact a.linkedin-inline {
   display: inline-flex; width: 22px; height: 22px; vertical-align: middle;
 }
+
 .footer-contact a.linkedin-inline svg {
   width: 22px; height: 22px; display: block;
   filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));
 }
 
-/* ---------- Captions: fixed width inside border (exactly matches image) ---------- */
-figure.media-with-caption { margin: 18px auto 24px; max-width: min(1100px, 92vw); }
-figure.media-with-caption > img.section-image { display:block; width:100%; height:auto; box-sizing:border-box; }
-
-figure.media-with-caption{ position:relative; }
-
-/* Center the stand-alone page hero image (when not using <figure>) */
-.page-hero-placeholder{ display:block; margin:18px auto 16px; max-width:min(1100px,92vw); }
-
-/* Global non-collage image border (incl. headshot) */
-.section-image{ border:3px solid lightgrey !important; box-sizing:border-box; }
-.collage-box img{ border:0 !important; }
-
-/* Headshot — match site shadows */
-.about-headshot-placeholder{ box-shadow:0 10px 24px rgba(0,0,0,.45); }
-
-body.is-insights-page .insight-body .insight-collapse{ display:none; width:44px; height:28px; margin:12px auto 0; position:relative; }
-body.is-insights-page .insight-body .insight-collapse::before{
-  content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-  width:0; height:0; border-left:12px solid transparent; border-right:12px solid transparent; border-bottom:12px solid lightgrey;
-}
-body.is-insights-page .insight-body.revealed .insight-collapse{ display:block; }
-
-/* Footer height: revert to the original smaller size */
-.footer{ height:150px; min-height:150px; }
-
-/* Shadow on the three lines (bottom of page and mid‑index animated set) */
-.hr1, .hr2, .hr3{ box-shadow:0 2px 10px rgba(0,0,0,.35); }
-
-/* Remove the “random” line that appears when a paragraph follows an image */
-.section-image + .paragraph::before,
-figure.media-with-caption + .paragraph::before{ content:none; }
-
-/* Hanging indent + highlighted “Source:” label */
-.hanging-cite{ font-family:"Times New Roman",serif; font-size:14pt; line-height:1.5; margin:10px 0 0; padding-left:28px; text-indent:-28px; }
-.hanging-cite .source-label{ color:#869cb3; font-weight:600; }
-
-/* =========================
-   FIX PACK — 2025-11-24
-   ========================= */
-
-/* -------- HOME (hero overlay + collage crossfade) -------- */
-#home.fullscreen-image{
-  position:relative;
-  display:flex;align-items:center;justify-content:center;
-  min-height:100vh;text-align:center;
-}
-#home .collage-grid{
-  position:absolute;inset:0;
-  display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);
-}
-#home .collage-box{position:relative;overflow:hidden;}
-#home .collage-box img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  opacity:1;transition:opacity 1.1s ease-in-out !important;will-change:opacity;
-}
-#home .centered{
-  position:relative;z-index:2;margin:0;border:0 !important;transform:none !important;
-  padding:12px 24px;
-}
-
-/* Hide any stray line above the hero title if still present */
-#home #shadow{display:none !important;}
-
-/* -------- GLOBAL media width (used by hero + captions) -------- */
-:root{ --media-width: min(980px, 92vw); }
-
-/* -------- Image + bottom caption band (inside the border) -------- */
-.media-with-caption > img.section-image{display:block;width:100%;height:auto;border:0;}
-
-/* Headshot: 3px light‑grey border + the same soft shadow */
-.about-headshot-placeholder{
-  border:3px solid lightgrey !important;box-shadow:0 10px 30px rgba(0,0,0,.45);
-}
-
-/* Collage tiles never have borders */
-.collage-box img{border:0 !important;}
-
-/* -------- Three blue lines: add subtle drop shadow everywhere -------- */
-.hr1,.hr2,.hr3{box-shadow:0 -6px 12px rgba(0,0,0,.28), 0 6px 12px rgba(0,0,0,.28);}
-
-/* -------- Key Insights: dropdown caret (same size as fold‑up) -------- */
-:root{
-  /* collapse/up triangle on your page ≈ 18/12; keep both carats in sync */
-  --caret-h: 18px; /* half width */
-  --caret-v: 12px; /* height    */
-  --caret-color: lightgrey;
-  --caret-color-hover:#000;
-}
-
-body.is-insights-page .content-container .secondary-title{
-  display:inline-flex;align-items:baseline;gap:12px;
-}
-
-/* ▲ fold‑up (already present on your page) — ensure same sizing */
-body.is-insights-page .insight-body .insight-collapse::before{
-  border-left:var(--caret-h) solid transparent;border-right:var(--caret-h) solid transparent;
-  border-bottom:var(--caret-v) solid var(--caret-color);
-}
-/* turn carat black when the title row is highlighted */
-body.is-insights-page .content-container .secondary-title:hover .insight-caret::before,
-body.is-insights-page .content-container .secondary-title:focus-visible .insight-caret::before{
-  border-top-color:var(--caret-color-hover);
-}
-
-/* -------- Key Insights hero image (center it) -------- */
-.page-hero-placeholder{display:block;width:var(--media-width);margin:8px auto 22px;}
-/* If the hero is wrapped in .media-with-caption, it will inherit that centering */
-  
-/* -------- Hanging citations (incl. the REMEDY source) -------- */
-.citation.hanging{
-  max-width:var(--media-width);margin:6px auto 18px;
-  text-indent:-1.6em;padding-left:1.6em;color:#fff;font-family:"Times New Roman",serif;
-  font-size:14pt;line-height:1.5;
-}
-.citation .source-label{color:#869cb3;font-weight:700;}
-
-/* ===========================
-   HOME HERO — Authoritative Overrides
-   =========================== */
-
-/* Ensure the hero section is a positioning context */
-#home.fullscreen-image {
-  position: relative !important;
-}
-
-/* Center the title block both horizontally & vertically */
-#home .centered {
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-
-  /* layout & sizing */
-  display: inline-block !important;
-  max-width: min(92vw, 960px) !important;
-  padding: 32px 48px 28px !important; /* room for the backdrop */
-
-  /* reset any stray styles that crept in */
-  text-align: center !important;
-  z-index: 3 !important;              /* above the collage */
-}
-
-/* Remove the old extra line if it ever reappears */
-#home #shadow { display: none !important; }
-
-/* The dark rectangular backdrop behind the text */
-#home .centered::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;                /* exactly the size of .centered */
-  background: rgba(0, 0, 0, 0.8) !important;
-  border: 3 px solid lightgrey !important; /* lightgrey border */
-  border-radius: 0 !important;        /* square corners (no rounding) */
-  box-shadow: 0 20px 40px rgba(0,0,0,.45) !important;
-  z-index: 1 !important;              /* behind text, above collage */
-  pointer-events: none !important;
-}
-
-/* Keep the text above the backdrop */
-#home .centered > * {
-  position: relative !important;
-  z-index: 2 !important;
-}
-
-/* Tidy hero typography so margins don’t push the block around */
-#home .big-title {
-  margin: 0 0 16px !important;
-  color: #4b5b6b !important;
-}
-#home .title-divider {
-  width: 140px !important;
-  height: 2px !important;
-  background: #fff !important;
-  margin: 0 auto 12px !important;
-}
-#home .subtitle {
-  margin: 0 !important;
-  line-height: 1.4 !important;
-}
-
-/* =========================================================
-   FIX PACK — captions, carets, line shadows, footer text
-   (Drop in at the END of style.css)
-   ========================================================= */
-
-/* ---------- Captions: fixed width inside border (exactly matches image) ---------- */
-figure.media-with-caption { 
-  position: relative; 
-  display: inline-block;    /* wrapper shrinks to image width */
-  line-height: 0; 
-  margin: 18px auto 22px; 
-  max-width: min(1100px, 92vw); 
+figure.media-with-caption {
+  position: relative;
+  display: block;
+  max-width: min(1100px, 92vw);
+  margin: 22px auto;
 }
 
 figure.media-with-caption > img.section-image,
-figure.media-with-caption > .section-image {
+.page-hero-placeholder.section-image {
   display: block;
   width: 100%;
   height: auto;
   box-sizing: border-box;
-  /* Keep the non‑collage 3px border */
-  border: 3px solid lightgrey !important;
 }
 
-/* Caption sits ON TOP of the image, inset by the border thickness (3px) */
 .media-caption {
   position: absolute;
-  left: 3px;            /* exactly inside the 3px image border */
+  left: 3px;
   right: 3px;
   bottom: 3px;
-  padding: 6px 10px;
-  background: rgba(0,0,0,0.80);
-  color: #fff;
-  font-family: "Times New Roman", serif;
-  font-size: 14pt;
-  line-height: 1.35;
-  pointer-events: none; /* avoids stealing clicks from image links */
-}
-
-/* Global non‑collage image border (incl. headshot) */
-.section-image { 
-  border: 3px solid lightgrey !important; 
-  box-sizing: border-box; 
-}
-.collage-box img { border: 0 !important; }  /* no borders on collage tiles */
-
-/* Headshot — add the site’s soft shadow */
-.about-headshot-placeholder { 
-  box-shadow: 0 10px 24px rgba(0,0,0,.45); 
-}
-
-/* ---------- Key Insights: dropdown caret (▼) aligned + matched to fold‑up (▲) ---------- */
-body.is-insights-page .content-container .secondary-title {
-  display: inline-flex !important;
-  align-items: center !important;  /* vertical centering for text + caret */
-  gap: 12px;
-}
-body.is-insights-page .content-container .secondary-title .insight-caret {
-  position: relative !important;
-  display: inline-block;
-  width: 44px !important;
-  height: 28px !important;
-  margin-left: 12px;
-  background: transparent;
-  border: 0;
-  padding: 0;
-  vertical-align: middle;
-  cursor: pointer;
-}
-body.is-insights-page .content-container .secondary-title .insight-caret::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%); /* true middle */
-  width: 0; height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-top: 12px solid lightgrey;       /* ▼ same visual weight as ▲ */
-}
-/* Keep the fold‑up arrow the same geometry */
-body.is-insights-page .insight-body .insight-collapse {
-  display: none;
-  width: 44px; height: 28px; margin: 12px auto 0; position: relative;
-}
-body.is-insights-page .insight-body .insight-collapse::before {
-  content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-  width:0; height:0;
-  border-left:12px solid transparent; 
-  border-right:12px solid transparent; 
-  border-bottom:12px solid lightgrey;    /* ▲ */
-}
-body.is-insights-page .insight-body.revealed .insight-collapse { display: block; }
-
-/* ---------- Line shadows: below each line (both static and animated sets) ---------- */
-.hr1, .hr2, .hr3,
-.hr1.animated-line, .hr2.animated-line, .hr3.animated-line {
-  /* positive Y-offset => shadow below the line */
-  box-shadow: 0 10px 18px rgba(0,0,0,.35);
-}
-
-/* ---------- Footer contact info: 14pt regardless of markup variant ---------- */
-.footer .paragraph,
-.footer .footer-contact {
-  font-size: 14pt !important;
-  line-height: 1.55;
-}
-
-/* ---------- Remove the stray rule that draws a line after an image ---------- */
-.section-image + .paragraph::before,
-figure.media-with-caption + .paragraph::before {
-  content: none !important;
-}
-
-/* =========================================================
-   FIX PACK — 4 issues (hero sizing/centering, caption alignment,
-   KI caret vertical centering, home-title border)
-   ========================================================= */
-
-/* 1) Canonical image + caption wrapper (used for hero images too)
-   - keeps images centered
-   - prevents left shift / oversized image
-   - makes caption EXACTLY as wide as the visible image
-   - seats caption flush on the bottom INSIDE the 3px image border
-*/
-figure.media-with-caption{
-  position: relative;
-  display: block;
-  max-width: min(1100px, 92vw);
-  margin: 22px auto;                       /* centers the figure */
-}
-figure.media-with-caption > img.section-image,
-.page-hero-placeholder.section-image{      /* in case the hero is a bare <img> */
-  display: block;
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;                  /* includes the 3px border in the box */
-}
-.media-caption{
-  position: absolute;
-  left: 3px;                               /* 3px = image border thickness */
-  right: 3px;
-  bottom: 3px;                             /* sits exactly on the inside bottom */
   background: rgba(0,0,0,.80);
   color: #fff;
   font: 14pt "Times New Roman", serif;
@@ -1444,124 +733,88 @@ figure.media-with-caption > img.section-image,
   pointer-events: none;
 }
 
-/* 2) Standardize content-image width (e.g., daphnia, experiment)
-   — if either image has a dedicated class/id, this keeps them the same width */
+.section-image + .paragraph::before,
+figure.media-with-caption + .paragraph::before {
+  content: none !important;
+}
+
+#home.fullscreen-image{
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;text-align:center;
+}
+
+#home .collage-grid{
+  position:absolute;inset:0;
+  display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);
+}
+
+#home .collage-box{position:relative;overflow:hidden;}
+
+#home .collage-box img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:1;transition:opacity 1.1s ease-in-out !important;will-change:opacity;
+}
+
+#home .centered {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+
+  display: inline-block !important;
+  max-width: min(92vw, 960px) !important;
+  padding: 32px 48px 28px !important;
+
+  text-align: center !important;
+  z-index: 3 !important;
+}
+
+#home .centered::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  border: 3px solid lightgrey !important;
+  border-radius: 0 !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,.45) !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+#home .centered > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+#home .big-title {
+  margin: 0 0 16px !important;
+  color: #4b5b6b !important;
+}
+
+#home .title-divider {
+  width: 140px !important;
+  height: 2px !important;
+  background: #fff !important;
+  margin: 0 auto 12px !important;
+}
+
+#home .subtitle {
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+.citation.hanging{
+  max-width:var(--media-width);margin:6px auto 18px;
+  text-indent:-1.6em;padding-left:1.6em;color:#fff;font-family:"Times New Roman",serif;
+  font-size:14pt;line-height:1.5;
+}
+
+.citation .source-label{color:#869cb3;font-weight:700;}
+
 .experiment-diagram,
 #experiment-diagram,
 .daphnia-photo{
   width: 100%;
   height: auto;
 }
-
-/* 3) KEY INSIGHTS — caret same size as collapse arrow AND vertically centered */
-body.is-insights-page .content-container .secondary-title{
-  display: inline-flex !important;
-  align-items: center !important;          /* TRUE vertical centering */
-  gap: 12px;
-}
-body.is-insights-page .content-container .secondary-title .insight-caret{
-  position: relative !important;
-  display: inline-block;
-  width: 44px;                             /* matches your bottom “pull‑up” arrow */
-  height: 28px;
-  margin-left: 8px;
-  background: transparent;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-}
-body.is-insights-page .content-container .secondary-title .insight-caret::before{
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);        /* centers triangle inside the box */
-  width: 0; height: 0;
-  border-left: 18px solid transparent;
-  border-right: 18px solid transparent;
-  border-top: 12px solid #fff;            /* white by default */
-}
-body.is-insights-page .content-container .secondary-title:hover .insight-caret::before,
-body.is-insights-page .content-container .secondary-title:focus-visible .insight-caret::before{
-  border-top-color: #000;                 /* turns black over the lightgrey hover */
-}
-
-/* 4) HOME — give the title’s backdrop a 3px LIGHTGREY border (no rounding) */
-#home .centered::before{
-  border: 3px solid lightgrey !important;
-  border-radius: 0 !important;            /* perfect rectangle */
-  background: rgba(0,0,0,.80) !important; /* ensure consistent shade */
-}
-
-/* =========================================================
-   HERO IMAGES + CAPTIONS (insights & leadership)
-   – same sizing/centering as the Daphnia example
-   – caption sits ON the image with its bottom edge exactly
-     aligned to the image’s bottom border
-   ========================================================= */
-
-.media-with-caption{
-  position:relative;
-  display:block;
-  width:min(980px, 92vw);
-  margin:0 auto 22px;
-  line-height:0; /* remove stray descender gap */
-}
-
-.media-with-caption > img.section-image,
-.media-with-caption > .section-image{
-  display:block;
-  width:100%;
-  height:auto;
-  box-sizing:border-box;  /* keeps the caption inset correct */
-}
-
-/* Caption sits ON TOP of the image, inset by the 3px border */
-.media-caption{
-  position:absolute;
-  left:3px;
-  right:3px;
-  bottom:3px;                  /* bottom edge aligns with image border */
-  background:rgba(0,0,0,.80);
-  color:#fff;
-  font:14pt/1.35 "Times New Roman", serif;
-  padding:6px 10px;
-  pointer-events:none;
-}
-
-/* Ensure every non‑collage photo has the light‑grey border */
-.section-image{
-  border:3px solid lightgrey !important;
-  box-sizing:border-box;
-}
-.collage-box img{ border:0 !important; }   /* never border the collage */
-
-/* Make the top-of-page hero placeholders honor the same sizing */
-.page-hero-placeholder{ display:block; width:min(980px, 92vw); margin:0 auto; }
-
-/* Experiment diagram: match Daphnia’s width and centering even if used alone */
-.experiment-diagram{ display:block; width:min(980px, 92vw); margin:0 auto; }
-
-/* =========================================================
-   HOME OVERLAY: keep centered and give it a 3px lightgrey border
-   (overrides any older rules)
-   ========================================================= */
-#home .centered{
-  position:absolute;
-  left:50%; top:50%;
-  transform:translate(-50%, -50%) !important;
-  z-index:2;
-  padding:12px 24px;
-  margin:0;
-}
-#home .centered::before{
-  content:"";
-  position:absolute;
-  inset:-12px -24px;           /* same padding around the block */
-  background:rgba(0,0,0,.80);
-  border:3px solid lightgrey !important;  /* requested border */
-  border-radius:0;                          /* no rounded corners */
-  box-shadow:0 16px 40px rgba(0,0,0,.45);
-  z-index:-1;
-}
-
