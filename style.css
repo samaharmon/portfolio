@@ -1136,6 +1136,45 @@ figure.media-with-caption > img.section-image {
   line-height: 1.4 !important;
 }
 
+/* About Me: divider sits flush-left under the "About Me" heading */
+#about .about-title-divider {
+  width: 140px;            /* keep your current length */
+  height: 2px;
+  background: #fff;
+  margin: 8px 0 18px 0;    /* left-aligned (no auto centering) */
+}
+
+/* ===== Unified media sizing (same as the perfect Daphnia figure) ===== */
+:root {
+  /* one place to change later if you want them bigger/smaller */
+  --media-width: min(1100px, 92vw);
+}
+
+/* The figure wrapper – same max width everywhere and centered */
+figure.media-with-caption,
+.media-with-caption {
+  position: relative;
+  display: block;
+  max-width: var(--media-width);
+  margin: 0 auto 22px;
+  line-height: 0; /* remove descender gap under images */
+}
+
+/* The caption band – sits INSIDE the 3px border, flush with the bottom */
+.media-caption {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  font-family: "Times New Roman", serif;
+  font-size: 14pt;
+  line-height: 1.35;
+  padding: 8px 12px;
+  pointer-events: none;
+}
+
 figure.media-with-caption > img.section-image,
 figure.media-with-caption > .section-image {
   display: block;
