@@ -434,7 +434,7 @@ body.is-insights-page .insight-body .insight-collapse:focus-visible::before {
   transition: left .8s ease;
   /* original speed */
   pointer-events: none;
-  just improving how it blends into the black bg */
+  /*just improving how it blends into the black bg */
   border-radius: 12px;
 }
 
@@ -1041,7 +1041,7 @@ figure.media-with-caption > img.section-image {
   /* slightly snappier in nav */
   --menu-pulse-scale: 1.2;
   --media-width: min(980px, 92vw);
-  keep both carats in sync */
+  /*keep both carats in sync */
   --caret-h: 18px;
   /* half width */
   --caret-v: 12px;
