@@ -1492,3 +1492,76 @@ body.is-insights-page .content-container .secondary-title:focus-visible .insight
   border-radius: 0 !important;            /* perfect rectangle */
   background: rgba(0,0,0,.80) !important; /* ensure consistent shade */
 }
+
+/* =========================================================
+   HERO IMAGES + CAPTIONS (insights & leadership)
+   – same sizing/centering as the Daphnia example
+   – caption sits ON the image with its bottom edge exactly
+     aligned to the image’s bottom border
+   ========================================================= */
+
+.media-with-caption{
+  position:relative;
+  display:block;
+  width:min(980px, 92vw);
+  margin:0 auto 22px;
+  line-height:0; /* remove stray descender gap */
+}
+
+.media-with-caption > img.section-image,
+.media-with-caption > .section-image{
+  display:block;
+  width:100%;
+  height:auto;
+  box-sizing:border-box;  /* keeps the caption inset correct */
+}
+
+/* Caption sits ON TOP of the image, inset by the 3px border */
+.media-caption{
+  position:absolute;
+  left:3px;
+  right:3px;
+  bottom:3px;                  /* bottom edge aligns with image border */
+  background:rgba(0,0,0,.80);
+  color:#fff;
+  font:14pt/1.35 "Times New Roman", serif;
+  padding:6px 10px;
+  pointer-events:none;
+}
+
+/* Ensure every non‑collage photo has the light‑grey border */
+.section-image{
+  border:3px solid lightgrey !important;
+  box-sizing:border-box;
+}
+.collage-box img{ border:0 !important; }   /* never border the collage */
+
+/* Make the top-of-page hero placeholders honor the same sizing */
+.page-hero-placeholder{ display:block; width:min(980px, 92vw); margin:0 auto; }
+
+/* Experiment diagram: match Daphnia’s width and centering even if used alone */
+.experiment-diagram{ display:block; width:min(980px, 92vw); margin:0 auto; }
+
+/* =========================================================
+   HOME OVERLAY: keep centered and give it a 3px lightgrey border
+   (overrides any older rules)
+   ========================================================= */
+#home .centered{
+  position:absolute;
+  left:50%; top:50%;
+  transform:translate(-50%, -50%) !important;
+  z-index:2;
+  padding:12px 24px;
+  margin:0;
+}
+#home .centered::before{
+  content:"";
+  position:absolute;
+  inset:-12px -24px;           /* same padding around the block */
+  background:rgba(0,0,0,.80);
+  border:3px solid lightgrey !important;  /* requested border */
+  border-radius:0;                          /* no rounded corners */
+  box-shadow:0 16px 40px rgba(0,0,0,.45);
+  z-index:-1;
+}
+
