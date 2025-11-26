@@ -283,7 +283,7 @@ body.is-insights-page .insight-body.revealed::before {
 }
 
 body.is-insights-page .content-container .secondary-title.is-open .insight-caret {
-  display: none;
+  visibility: hidden;
 }
 
 body.is-insights-page .insight-body .insight-collapse:focus-visible {
@@ -1385,4 +1385,40 @@ body.is-insights-page .content-container .secondary-title:focus-visible .insight
   border-radius: 0 !important;
   /* perfect rectangle */
   background: rgba(0,0,0,.80) !important;
+}
+
+/* === Layered horizontal lines (animated + static trios) === */
+.hr1, .hr2, .hr3 { position: relative; display: block; }
+.hr1 { z-index: 3; box-shadow: 0 6px 0 #869cb3, 0 12px 18px rgba(0,0,0,.35); }
+.hr2 { z-index: 2; margin-top: -8px; box-shadow: 0 6px 0 #4b5b6b, 0 12px 18px rgba(0,0,0,.35); }
+.hr3 { z-index: 1; margin-top: -8px; box-shadow: 0 12px 18px rgba(0,0,0,.35); }
+/* keep scroll-driven width smooth (no layout shift) */
+.hr1.animated-line, .hr2.animated-line, .hr3.animated-line { will-change: width; }
+
+/* === Unified media sizing (match the “perfect” daphnia.png) === */
+:root { --media-width: min(980px, 92vw); }
+
+/* Center all figure-based media to the same width */
+figure.media-with-caption { max-width: var(--media-width); margin-left: auto; margin-right: auto; }
+figure.media-with-caption > img.section-image {
+  max-width: var(--media-width); width: 100%; height: auto; display: block; margin: 16px auto 28px;
+}
+
+/* Heroes on Insights + Leadership (cooking.png / lab.jpeg) */
+body.is-insights-page .section-image.page-hero-placeholder,
+body.is-leadership-page .section-image.page-hero-placeholder {
+  max-width: var(--media-width);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Experiment diagram (experiment.jpeg) — remove the smaller placeholder cap */
+body.is-insights-page .section-image.placeholder,
+body.is-leadership-page .section-image.placeholder {
+  max-width: var(--media-width);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  aspect-ratio: auto;
 }
