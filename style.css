@@ -1301,7 +1301,9 @@ figure.media-with-caption > img.section-image,
 
 .experiment-diagram,
 #experiment-diagram,
-.daphnia-photo {
+.daphnia-photo,
+.lab-photo,
+.cooking-photo {
   width: 100%;
   height: auto;
 }
