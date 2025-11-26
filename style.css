@@ -1422,3 +1422,39 @@ body.is-leadership-page .section-image.placeholder {
   margin-right: auto;
   aspect-ratio: auto;
 }
+
+/* === PATCH: bottom trios + hero image clamp ================================= */
+
+/* 1) STATIC bottom trios — match the animated set’s geometry & overlap */
+.hr1, .hr2, .hr3 { border: none; position: relative; display: block; }
+
+/* Give only the static bars the same thickness; keep animated widths untouched */
+.hr1:not(.animated-line),
+.hr2:not(.animated-line),
+.hr3:not(.animated-line) {
+  height: 40px;     /* same as animated bars */
+  width: 100%;      /* full width for static sets */
+  margin: 0;        /* remove default HR gaps */
+}
+
+/* Layered/overlap illusion (same shadows used on the animated trio) */
+.hr1 { z-index: 3; box-shadow: 0 6px 0 #869cb3, 0 12px 18px rgba(0,0,0,.35); }
+.hr2 { z-index: 2; margin-top: -8px; box-shadow: 0 6px 0 #4b5b6b, 0 12px 18px rgba(0,0,0,.35); }
+.hr3 { z-index: 1; margin-top: -8px; box-shadow: 0 12px 18px rgba(0,0,0,.35); }
+
+/* Keep the middle animated set smooth (no layout shift) */
+.hr1.animated-line, .hr2.animated-line, .hr3.animated-line { will-change: width; }
+
+/* 2) Hero image width — clamp cooking.png & lab.jpeg to match daphnia/experiment */
+:root { --media-width: min(1035px, 92vw); }    /* intrinsic target: 1035×690 */
+
+/* Figures + images: one canonical width site‑wide */
+figure.media-with-caption { max-width: var(--media-width) !important; margin-left: auto; margin-right: auto; }
+figure.media-with-caption > img.section-image { max-width: var(--media-width) !important; width: 100% !important; height: auto; }
+
+/* Top hero images (Insights & Leadership) specifically */
+figure.media-with-caption > img.section-image.page-hero-placeholder {
+  max-width: var(--media-width) !important;
+  width: 100% !important;
+}
+
