@@ -403,8 +403,7 @@ body.is-insights-page .insight-body .insight-collapse:focus-visible {
 
 body.is-insights-page .insight-body .insight-collapse:hover::before,
 body.is-insights-page .insight-body .insight-collapse:focus-visible::before {
-  border-bottom-color: var(--caret-color-hover);
-  border-bottom: 12px #869cb3;
+  border-bottom-color: #869cb3;
 }
 
 #about .main-title::after {
