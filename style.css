@@ -1371,7 +1371,7 @@ body.is-insights-page .content-container .secondary-title:focus-visible .insight
 
 .hr1 {
   background-color: lightgrey;
-  z-index: 1;
+  z-index: 3;
 }
 .hr2 {
   background-color: #869cb3;
@@ -1379,7 +1379,7 @@ body.is-insights-page .content-container .secondary-title:focus-visible .insight
 }
 .hr3 {
   background-color: #4b5b6b;
-  z-index: 3;
+  z-index: 1;
 }
 
 .hr1:not(.animated-line),
