@@ -1112,7 +1112,7 @@ figure.media-with-caption > img.section-image {
 
 #home .title-divider {
   width: 140px !important;
-  height: 2px !important;
+  height: 1px !important;
   background: #fff !important;
   margin: 0 auto 12px !important;
 }
@@ -1125,7 +1125,7 @@ figure.media-with-caption > img.section-image {
 /* About Me: divider sits flush-left under the "About Me" heading */
 #about .about-title-divider {
   width: 140px;            /* keep your current length */
-  height: 2px;
+  height: 1px;
   background: #fff;
   margin: 8px 0 18px 0;    /* left-aligned (no auto centering) */
 }
