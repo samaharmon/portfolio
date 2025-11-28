@@ -904,7 +904,7 @@ img.section-image {
 .media-with-caption {
   position: relative;
   display: inline-block;
-  width: 75 vw;
+  width: 20vw;
   margin: 0 auto 22px;
   /* wrapper around the image */
   position: relative;
