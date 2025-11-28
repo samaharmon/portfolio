@@ -1383,13 +1383,11 @@ body.is-insights-page .content-container .secondary-title:focus-visible .insight
 .hr2 {
   background-color: #869cb3;
   z-index: 2;
-  margin-top: -8px;
   box-shadow: 0 12px 20px rgba(0,0,0,.35);
 }
 .hr3 {
   background-color: #4b5b6b;
   z-index: 1;
-  margin-top: -8px;
   box-shadow: 0 12px 20px rgba(0,0,0,.35);
 }
 .hr1:not(.animated-line),
