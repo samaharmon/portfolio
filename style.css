@@ -159,7 +159,7 @@ p {
 }
 
 .extra-space {
-  padding-top: 75px;
+  padding-top: 5vw;
 }
 
 #mound {
@@ -904,7 +904,7 @@ img.section-image {
 .media-with-caption {
   position: relative;
   display: inline-block;
-  width: 63.33333333333vw;
+  width: 63vw;
   margin: 0 auto 22px;
   /* wrapper around the image */
   position: relative;
