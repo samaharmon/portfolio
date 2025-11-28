@@ -1201,8 +1201,8 @@ figure.media-with-caption > .section-image {
 
 body.is-insights-page .insight-body .insight-collapse {
   display: none;
-  width: 44px;
-  height: 28px;
+  width: 44px !important;
+  height: 28px !important;
   background: transparent;
   border: 0;
   padding: 0;
@@ -1326,7 +1326,6 @@ body.is-insights-page .content-container .secondary-title .insight-caret {
   vertical-align: middle;
   cursor: pointer;
   /* matches your bottom “pull‑up” arrow */
-  height: 28px;
   flex: 0 0 44px;
 }
 
