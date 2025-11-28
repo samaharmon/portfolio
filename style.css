@@ -955,7 +955,7 @@ figure.media-with-caption > img.section-image {
   height: 40px;
   border: none;
   margin: 0;
-  box-shadow: 0 10px 24px rgba(0,0,0,.9);
+  box-shadow: 0 10px 24px 6px rgba(0,0,0,.45);
 }
 
 .hanging-cite {
@@ -1194,7 +1194,7 @@ figure.media-with-caption > .section-image {
   height: 460px;
   aspect-ratio: 3 / 4;
   border: 3px solid lightgrey !important;
-  box-shadow: 0 10px 24px rgba(0,0,0,.45);
+  box-shadow: 0 10px 24px 6px rgba(0,0,0,.45);
   background: repeating-linear-gradient( 135deg, #2b2b2b, #2b2b2b 12px, #333, #333 24px );
 }
 
