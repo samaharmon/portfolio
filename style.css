@@ -955,7 +955,7 @@ figure.media-with-caption > img.section-image {
   height: 40px;
   border: none;
   margin: 0;
-  box-shadow: 0 6px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .hanging-cite {
