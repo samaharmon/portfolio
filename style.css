@@ -955,7 +955,8 @@ figure.media-with-caption > img.section-image {
 .hr1, .hr2, .hr3 {
   height: 40px;
   border: none;
-  margin: 0;;
+  margin: 0;
+  box-shadow: 0 10px 24px rgba(0,0,0,.45);
 }
 
 .hanging-cite {
