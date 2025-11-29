@@ -951,7 +951,7 @@ figure.media-with-caption > img.section-image {
   min-height: 150px;
   padding-top: 24px;
   padding-bottom: 24px;
-  z-index: 1;
+  z-index: 0;
 }
 
 .hr1, .hr2, .hr3 {
@@ -1410,13 +1410,13 @@ body.is-leadership-page .content-container .secondary-title:focus-visible .insig
 .hr1 {
   background-color: lightgrey;
   z-index: 3;
-  box-shadow: 0 6px 0 #869cb3, 0 12px 20px rgba(0,0,0,.35);
+  box-shadow: 0 12px 20px rgba(0,0,0,.35);
 }
 .hr2 {
   background-color: #869cb3;
   z-index: 2;
   margin-top: -8px;
-  box-shadow: 0 6px 0 #4b5b6b, 0 12px 20px rgba(0,0,0,.35);
+  box-shadow: 0 12px 20px rgba(0,0,0,.35);
 }
 .hr3 {
   background-color: #4b5b6b;
