@@ -232,7 +232,8 @@ body.is-insights-page .content-container .secondary-title:focus-visible {
   outline: none;
 }
 
-body.is-insights-page .insight-body {
+body.is-insights-page .insight-body,
+body.is-leadership-page .insight-body {
   position: relative;
   overflow: hidden;
   max-height: 0;
@@ -241,7 +242,8 @@ body.is-insights-page .insight-body {
   will-change: max-height, opacity;
 }
 
-body.is-insights-page .insight-body::before {
+body.is-insights-page .insight-body::before,
+body.is-leadership-page .insight-body::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -253,21 +255,25 @@ body.is-insights-page .insight-body::before {
   z-index: 1;
 }
 
-body.is-insights-page .insight-body.revealed {
+body.is-insights-page .insight-body.revealed,
+body.is-leadership-page .insight-body.revealed {
   opacity: 1;
 }
 
-body.is-insights-page .insight-body.revealed::before {
+body.is-insights-page .insight-body.revealed::before,
+body.is-leadership-page .insight-body.revealed::before {
   transform: scaleY(0);
 }
 
-body.is-insights-page .content-container .secondary-title.is-open .insight-caret {
+body.is-insights-page .content-container .secondary-title.is-open .insight-caret,
+body.is-leadership-page .content-container .secondary-title.is-open .insight-caret {
   opacity: 0;
   visibility: visible;
   pointer-events: none;
 }
 
-body.is-insights-page .insight-body .insight-collapse:focus-visible {
+body.is-insights-page .insight-body .insight-collapse:focus-visible,
+body.is-leadership-page .insight-body .insight-collapse:focus-visible {
   outline: 2px solid lightgrey;
   outline-offset: 2px;
 }
@@ -393,7 +399,9 @@ body.is-insights-page .insight-body .insight-collapse:focus-visible {
 }
 
 body.is-insights-page .insight-body .insight-collapse:hover::before,
-body.is-insights-page .insight-body .insight-collapse:focus-visible::before {
+body.is-insights-page .insight-body .insight-collapse:focus-visible::before,
+body.is-leadership-page .insight-body .insight-collapse:hover::before,
+body.is-leadership-page .insight-body .insight-collapse:focus-visible::before {
   border-bottom-color: #869cb3;
 }
 
@@ -663,7 +671,7 @@ body.is-leadership-page .section-image.placeholder {
   margin-top: 10px;
   margin-bottom: 24px;
   font-family: 'Times New Roman', serif;
-  font-size: 16 pt;
+  font-size: 16 pt !important;
   font-weight: 600;
   color: lightgrey;
 }
@@ -1193,7 +1201,8 @@ figure.media-with-caption > .section-image {
   background: repeating-linear-gradient( 135deg, #2b2b2b, #2b2b2b 12px, #333, #333 24px );
 }
 
-body.is-insights-page .insight-body .insight-collapse {
+body.is-insights-page .insight-body .insight-collapse,
+body.is-leadership-page .insight-body .insight-collapse {
   display: none;
   width: 44px !important;
   height: 28px !important;
@@ -1206,7 +1215,8 @@ body.is-insights-page .insight-body .insight-collapse {
   z-index: 2;
 }
 
-body.is-insights-page .insight-body .insight-collapse::before {
+body.is-insights-page .insight-body .insight-collapse::before,
+body.is-leadership-page .insight-body .insight-collapse::before {
   content: "";
   position: absolute;
   left: 50%;
@@ -1219,7 +1229,8 @@ body.is-insights-page .insight-body .insight-collapse::before {
   border-bottom: 12px solid lightgrey;
 }
 
-body.is-insights-page .insight-body.revealed .insight-collapse {
+body.is-insights-page .insight-body.revealed .insight-collapse,
+body.is-leadership-page .insight-body.revealed .insight-collapse {
   display: block;
 }
 
@@ -1308,7 +1319,26 @@ body.is-insights-page .content-container .secondary-title {
   gap: 12px;
 }
 
-body.is-insights-page .content-container .secondary-title .insight-caret {
+body.is-leadership-page .content-container .secondary-title {
+  position: relative;
+  line-height: 1.05;
+  display: inline-flex !important;
+  margin-top: 40px;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease;
+  align-items: center !important;
+  gap: 12px;
+}
+
+body.is-leadership-page .content-container .secondary-title:hover,
+body.is-leadership-page .content-container .secondary-title:focus-visible {
+  background-color: #fff;
+  color: #4b5b6b;
+  outline: none;
+}
+
+body.is-insights-page .content-container .secondary-title .insight-caret,
+body.is-leadership-page .content-container .secondary-title .insight-caret {
   position: relative !important;
   display: inline-block;
   width: 44px !important;
@@ -1320,10 +1350,12 @@ body.is-insights-page .content-container .secondary-title .insight-caret {
   vertical-align: middle;
   cursor: pointer;
   /* matches your bottom “pull‑up” arrow */
+  height: 28px;
   flex: 0 0 44px;
 }
 
-body.is-insights-page .content-container .secondary-title .insight-caret::before {
+body.is-insights-page .content-container .secondary-title .insight-caret::before,
+body.is-leadership-page .content-container .secondary-title .insight-caret::before {
   content: "";
   position: absolute;
   left: 50%;
@@ -1342,6 +1374,11 @@ body.is-insights-page .content-container .secondary-title .insight-caret::before
 body.is-insights-page .content-container .secondary-title:hover .insight-caret::before,
 body.is-insights-page .content-container .secondary-title:focus-visible .insight-caret::before {
   border-top-color: #000;
+}
+
+body.is-leadership-page .content-container .secondary-title:hover .insight-caret::before,
+body.is-leadership-page .content-container .secondary-title:focus-visible .insight-caret::before {
+  border-top-color: #4b5b6b;
 }
 
 #home .centered::before {
@@ -1363,24 +1400,36 @@ body.is-insights-page .content-container .secondary-title:focus-visible .insight
   background: rgba(0,0,0,.80) !important;
 }
 
+.hr1, .hr2, .hr3 {
+  position: relative;
+  display: block;
+  height: 40px;
+  border: none;
+  margin: 0;
+}
 .hr1 {
   background-color: lightgrey;
   z-index: 3;
+  box-shadow: 0 6px 0 #869cb3, 0 12px 20px rgba(0,0,0,.35);
 }
 .hr2 {
   background-color: #869cb3;
   z-index: 2;
+  margin-top: -8px;
+  box-shadow: 0 6px 0 #4b5b6b, 0 12px 20px rgba(0,0,0,.35);
 }
 .hr3 {
   background-color: #4b5b6b;
   z-index: 1;
+  margin-top: -8px;
+  box-shadow: 0 12px 20px rgba(0,0,0,.35);
 }
-
 .hr1:not(.animated-line),
 .hr2:not(.animated-line),
 .hr3:not(.animated-line) {
   width: 100%;
 }
+
 .hr1.animated-line, .hr2.animated-line, .hr3.animated-line { will-change: width; }
 
 /* === Unified media sizing (match the “perfect” daphnia.png) === */
@@ -1393,15 +1442,6 @@ figure.media-with-caption {
   line-height: 0;
 }
 
-/* Heroes on Insights + Leadership (cooking.png / lab.jpeg) */
-figure.media-with-caption > img.section-image {
-  display: block;
-  max-width: var(--media-width);
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-}
-
 /* Experiment diagram (experiment.jpeg) — remove the smaller placeholder cap */
 body.is-insights-page .section-image.page-hero-placeholder,
 body.is-leadership-page .section-image.page-hero-placeholder,
@@ -1412,4 +1452,10 @@ body.is-leadership-page .section-image.placeholder {
   margin-left: auto;
   margin-right: auto;
   aspect-ratio: auto;
+}
+
+figure.media-with-caption > img.section-image {
+  display: block;
+  height: auto;
+  margin: 0 auto;
 }
