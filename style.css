@@ -443,7 +443,7 @@ body.is-leadership-page .insight-body .insight-collapse:focus-visible::before {
   display: block;
   transform: scaleX(0.7);
   transform-origin: center;
-  color: lightgrey;
+  color: lightgrey !important;
   font-size: 28pt;
   /* start on its own line */
   transform-origin: left;
