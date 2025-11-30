@@ -1,180 +1,1467 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Key Insights</title>
-  <link rel="stylesheet" href="style.css" />
+body {
+  margin: 0;
+  font-family: 'Times New Roman', serif;
+  background-color: black;
+  color: white;
+  transition: all 0.4s ease;
+}
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-</head>
-<body class="effects-enabled">
-  <header class="navbar">
-    <button onclick="window.location.href='index.html#home'">HOME</button>
-    <button onclick="navigateTo('insights')">KEY INSIGHTS</button>
-    <button onclick="window.location.href='leadership.html'">LEADERSHIP</button>
-  </header>
+#home {
+  position: relative;
+}
 
-  <div class="banner">
-    <div class="title-block">
-      <h1 class="main-title compressed-center extra-space">Key Insights</h1>
-      <div class="title-divider"></div>
-      <h3 class="subtitle-title">Graduation With Leadership Distinction in Research</h3>
-    </div>
-  </div>
+h1, h2 {
+  font-family: 'Times New Roman', serif;
+}
 
-  <br>
+p {
+  font-family: 'Times New Roman', serif;
+  font-size: 16pt;
+}
 
-<figure class="media-with-caption">
-  <img src="cooking.jpeg" alt="Sam is demonstrating a cooking skill for a REMEDY Intervention class."
-       class="section-image page-hero-placeholder">
-  <figcaption class="media-caption">
-    Sam is demonstrating a cooking skill for a REMEDY Intervention class.
-  </figcaption>
-</figure>
-  
-<br>
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  border-bottom: 3px solid lightgrey;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 9999999;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 0;
+}
 
-<hr class="hr1 animated-line" />
-<hr class="hr2 animated-line" />
-<hr class="hr3 animated-line" />
+.navbar button:hover {
+  color: #869cb3;
+}
 
-  <div class="content-container">
-    <!-- Insight 1 -->
-    <h2 class="secondary-title compressed">Scientific research requires creativity, organization, and resolve.</h2>
-    <p class="paragraph">
-      As a high-schooler set on cruising through college to reach medical school—yes, I would most certainly become a doctor—I never once considered that my experiences as a biology student could lead me off the path I had set years ago. However, during my first two years as an undergraduate at USC, I took several biology courses with professors who encouraged me and likeminded peers to consider a future in the broader field of scientific research. Through class assignments, I learned to think in new ways, designing lab experiments in BIOL 303: Fundamentals of Genetics and BIOL 302: Cell and Molecular Biology, while diving deep into the works of Darwin in BIOL 301: Ecology and Evolution.  
-      <br><br>
-      Particularly in <span style="font-weight: bold">BIOL 301: Ecology and Evolution Lab </span>, led by Teaching Assistant Sierra Jaeger, I learned to associate a creative approach to data collection with biological research. My expectation of biological research was shattered by my experience in this lab during my first semester as a sophomore. As a class, we embarked on field trips to scout test sites, collect data, and consider the implications of the questions we formulated. Our semester-long experiment with fruit flies (D. melanogaster) served as a simple test, demonstrating that populations evolve despite unnatural (“laboratory”) conditions (e.g., see "Research Article for BIOL 301L"). The process of this experiment taught me to take a far more creative approach to scientific research than I had previously deemed necessary. Not only could I enjoy the organizationally-intense processes of designing and carrying out experiments, I could also interpret the collected data to answer secondary questions, spark new connections, and broaden the implications that my research might have. 
-      <br><br>
-      <span style="color: #869cb3">That same semester, I began working in the Dudycha Environmental Ecology and Evolutionary Genomics Laboratory at USC, performing a genetic cross project with the end goal of determining the degree to which inbreeding depression impacted population-level fitness in <span style="font-style: italic">Daphnia dentifera</span> (“the water flea”).</span> What I learned in Ecology and Evolution Lab not only supported the bank of knowledge required for performing research in this field but also improved my confidence in shaping projects to satisfy changing expectations and unanticipated obstacles. While not initially interested in the genetics project at hand, I considered that its current focus would serve as a helpful “jumping-off” point for any biological research I may want to perform in the future. Now, the project has metamorphosed into a larger-scale experiment related to the effects of common pharmaceutical wastes on population-level fitness for D. pulicaria (e.g., see "<span style="font-style: italic">Daphnia</span> Genetic Crossing Research Proposal"). I spent many weeks formulating plans to transform this project into something applicable for my medicine-related ambitions and am constantly re-evaluating the end goals of this project to adapt to various changes. The implications of my research foster my ever-maturing creative nature, a necessary characteristic for any good scientist—particularly during an era in which science is increasingly politicized. 
-      <br><br>
-      Together, these experiences introduced me to new ways of thinking and learning, allowing me to explore the opportunities of a medicine-related, yet, entirely new field of work and academia. Among several others, these select experiences catalyzed a shift in my career aspirations. <span style="font-weight: bold">As a student at the University of South Carolina, I have crafted my student experience to bolster my character traits of creativity, organization, and resolve through academic and extracurricular work.</span> Now, I work toward earning a PhD in immunology, microbiology, or pharmacology and hope to contribute to the global fight to better the human condition.
-    </p>
-    <br>
-    <!-- Hidden attachments (2 for Insight 1) -->
-    <div class="insight-attachments">
-      <div class="attachment-card">
-        <div class="attachment-icon" aria-hidden="true"></div>
-        <div class="attachment-meta">
-          <div class="attachment-title">Research Article for BIOL 301L: Ecology and Evolution Laboratory</div>
-          <a class="pdf-pill" href="ecoreport2.pdf" aria-disabled="true">View</a>
-        </div>
-      </div>
-      <div class="attachment-card">
-        <div class="attachment-icon" aria-hidden="true"></div>
-        <div class="attachment-meta">
-          <div class="attachment-title"><span style="font-style: italic">Daphnia</span> Genetic Crossing Research Proposal</div>
-          <a class="pdf-pill" href="eeegProposal2.pdf" aria-disabled="true">View</a>
-        </div>
-      </div>
-    </div>
+.fullscreen-image {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
 
-    <!-- Insight 2 -->
-    <h2 class="secondary-title compressed">By definition, scientific research is diverse and flexible, not restrictive or immutable.</h2>
-    <p class="paragraph">
-      As a freshman at USC, I fundamentally misunderstood what it meant to be a “researcher.” Part of this misunderstanding stemmed from my lack of exposure to research-oriented courses and jobs, as well as a lack of care to learn about the broad field. During my first semester at USC, however, my mindset changed. In the Honors section of <span style="font-weight: bold">BIOL 303: Fundamentals of Genetics</span>, Dr. Bert Ely (the professor) based the course content on recent (within the past decade) genetics research. Each class began with a student presentation on recent genetics research articles, and the ensuing lecture covered the genetics concepts involved in the presented articles. While all scientific education is research-based, Dr. Ely pushed me to learn like researchers do—reading primary sources (research articles) to make rational generalizations and to apply those generalizations in other contexts. Early in the course, I struggled to make necessary connections. In some cases, the data were too plentiful and the implications were not so easy to identify. For example, my personal study of mutational load in embryonic stem cells (e.g., see "Research Paper for BIOL 303") involved articles with data presented in formats previously unknown to me (e.g., diagrams for whole-genome analyses). However, I became better accustomed to niche genetics standards and concepts, developing the skills necessary to parse information in an efficient and effective manner. Good research is built upon a foundation of literacy—determining what information is important, drawing connections between sources, and forming questions and hypotheses to expand beyond existing information. 
-      <br><br>
-      Research also requires testing, and this phase of the research process is diverse in methodology. For example, basic genetics research often involves the analysis of genetic information, in the form of DNA or RNA. I learned to obtain DNA samples from humans, perform PCR reactions to multiply the “data” (DNA) obtained by sampling, and analyze that data with gel electrophoresis (a method of determining whether gene segments of interest are present in a sample). As someone generally interested in medical technology, these basic genetics experiments excited me and helped me begin to realize my interest in medical research. At this stage, however, I had not experienced the true breadth of the field of medical research and would not consider myself “hooked.” 
-      <br><br>
-      <span style="color: #869cb3">But, in the spring semester of my sophomore year, I began volunteering for The Cancer Prevention and Control Program (CPCP) at USC, which provided me the opportunity to witness nearly every major type of scientific research under the umbrella of one massive project—the REMEDY Study.</span> Broadly, this study involved research into the prevention of gastrointestinal (GI) cancers, particularly those related to obesity or inflammatory conditions of the digestive tract. The study comprised joint efforts between USC's schools of medicine, pharmacy, and public health, led by the renowned inflammation researcher Dr. James Hébert.  
-      <br><br>
-      On the medical and pharmaceutical sides, researchers studied the risk factors for GI cancers, looking specifically at gut microbiome diversity. Researchers from all three schools worked to build the "Dietary Inflammatory Index” (“DII”) as a means of quantifying and comparing the inflammatory consequences of ingested foods. On the public health front, in the form of an intervention, researchers worked with patients to manage any present, non-genetic risk factors for GI cancer (primarily obesity). In the intervention classes, dieticians and assistants, such as myself, taught the importance of an overall healthy lifestyle (including diet, exercise, sleep, and mindfulness); though, the primary focus of the intervention involved helping participants build healthier, more anti-inflammatory diets (e.g., see "REMEDY Intervention Lesson Plan Excerpt"). What separates REMEDY from other research on healthy lifestyles is the focus on anti-inflammatory diets. While anti-inflammatory foods are generally considered healthy, not all healthy foods are necessarily anti-inflammatory (e.g., whole grains comprise a necessary part of a healthy diet but are generally pro-inflammatory or have a neutral effect). As a student interested in healthy living and dieting, I was intrigued by the unique approach to preventing cancer and other inflammatory diseases, witnessing how participants reacted to these major dietary changes in real time. 
-      <br><br>
-      Interacting with the participants in REMEDY Intervention classes helped me realize my love for research with human participants. As someone initially interested in becoming a doctor because of the opportunities to help real people live better lives, I enjoyed the experience of positively impacting the health of others through medical research. On a weekly basis, I witnessed the same group of people actively making changes to their lifestyles and reaping the benefits that ensued. At the same time, I experienced the benefits myself by implementing what I learned and taught in my own eating habits. I have learned through REMEDY that nutritious, anti-inflammatory meals are paramount to living a cancer-free lifestyle. However, the average American is generally reluctant to build a diet based on this ideal because of numerous systemic issues, the greatest among these issues being access to and affordability of healthy foods, as well as, education on choosing the right foods and preparing them for enjoyment. These issues drive my commitment to lowering the barriers to healthy eating through a career in research and public outreach. Overall, exposure to the interactions between researchers on all sides of the REMEDY Study further shaped my career aspirations, broadening my interests in public health and pharmaceutical research. 
-      <br><br>
-      In the field of human health research, there are two sides to the research: that which occurs with and without human subjects present. In my freshman-year genetics course, I learned basic lab techniques, giving me an inside look into the “background” of many human health experiments. I learned to compartmentalize projects in terms of data collection (requiring participants) and data analysis. In larger projects, like REMEDY, a different set of researchers (with different backgrounds and goals) performs related experimentation at separate times and places. However, these parts of the experiment are connected, so there exists a need for professionals well-versed in both sub-fields. I previously enjoyed the idea of becoming a doctor because of the diversity within the profession. You can see patients, run tests, consult research, and correspond with professionals in an array of related fields—and, each of these duties contributes to the “whole” of human medicine. I have learned that the field of research contains this same occupational diversity and, certainly, opportunities to concentrate on one’s strong suits or preferences. As an avid learner, I appreciate the idea of a more flexible career—one that can change with new interests and goals. <span style="font-weight: bold"> My experiences in the Fundamentals of Genetics course and the REMEDY Intervention set me on what I believed to be a course where I must choose the side of medicine I prefer; however, I overcame this idea of a false dichotomy and made a significant change to my career goals. Since I appreciate the flexibility of research and the creative opportunity to chart my own course, I find it prudent to chase a career in research. </span>
-    </p>
-    <br>
-    <!-- Hidden attachments (3 for Insight 2) -->
-    <div class="insight-attachments">
-      <div class="attachment-card">
-        <div class="attachment-icon" aria-hidden="true"></div>
-        <div class="attachment-meta">
-          <div class="attachment-title">Research Paper for BIOL 303: Fundamentals of Genetics</div>
-          <a class="pdf-pill" href="midtermPaper.pdf" aria-disabled="true">View</a>
-        </div>
-      </div>
-      <div class="attachment-card">
-        <div class="attachment-icon" aria-hidden="true"></div>
-        <div class="attachment-meta">
-          <div class="attachment-title">REMEDY Intervention Lesson Plan Excerpt</div>
-          <a class="pdf-pill" href="remedy.pdf" aria-disabled="true">View</a>
-        </div>
-      </div>
-    </div>
+.big-title.compressed-center {
+  white-space: nowrap;
+  display: inline-block;
+}
 
-    <p class="hanging-cite">
-      <span class="source-label">Source:</span> Connecting Health Innovations, LLC. (2017).
-      <em>REMEDY Intervention Course Materials</em>.
-    </p>
-    <!-- Insight 3 -->
-    <h2 class="secondary-title compressed">With the right support systems, personal struggles can motivate you to achieve more.</h2>
-    <p class="paragraph">
-      To argue that personal struggles ought to be motivational is certainly overstated.  Intelligent people learn from their mistakes, and they capitalize on that learning. However, in the midst of significant obstacles, “learning” is easier said than done—especially when the obstacles are intangible and hard to control. I had not faced any serious health problems before college. In fact, I was quite proud to live a healthy life and thankful to those who helped me achieve it. The transition to college changed my situation, though. On just one year’s time, I was plagued with a litany of health scares: well over a dozen infections, chronic hypertension, and mental health issues. Medications helped sometimes, but not always. Regardless, frustration and worry consumed me as my grades slipped, social life collapsed, and motivation to continue doing great things was non-existent.
-      <br><br><br>
-      While I still face related struggles, my situation improved immensely during junior year. Though the symptoms of illness subsided, my motivation to achieve was still lacking.  I needed to find a way to cope with the facts that I had lost time and momentum and that I was “behind” (in experience and achievement) compared to the high-achievers I identified with. I questioned the reasons, scientifically, as to why my illnesses had occurred, why symptoms lasted for so long, and why I still felt the way I did. Those questions motivated me to learn more about the conditions I faced, allowing me to realize that my love for learning had not died off. Not only did I rediscover my love for learning, I also had realized that these my two-year health episode contained great potential for scientific exploration. Through these experiences, I carefully observed my symptoms to develop research questions.
-      <br><br>
-      For example, I wondered whether there existed a connection between climate and the development of mood disorders (mainly, bipolar disorder). During this two-year period in which my symptoms were most significant, I began to notice trends—seasonality. As the climate shifted from hot and sunny to cold and dark, I generally experienced heightened senses of sadness, worry, anxiety, and hopelessness. These symptoms comprised my baseline mood during the cold months. However, when temperatures began to rise and the sun shone longer, some of those emotions largely disappeared. My new emotional baseline consisted of frustration, anxiety, and excitability. On days when the climate changed drastically, so did my mood. I seized the opportunity to develop a preliminary research project (a literature review) for the final project (e.g., see "Research Paper for ANTH 552" below) in <span style="font-weight: bold">ANTH 552: Medical Anthropology</span> at USC. 
-      <br><br>
-      Dr. Simmons, the professor structured the course to focus on newer research, contributing to my pursuit of graduating with leadership distinction on the research pathway. His lectures reflected his own post-doctoral research in the Dominican Republic and Zimbabwe, where he worked with teams of public health experts to educate civilians on disease prevention and treatment. Each week of class began with structured debates on medical controversies and grey areas, particularly those involving disenfranchised or underprivileged people groups. For the final project, I hoped to demonstrate an example of how corporate greed fuels the fire that burns—figuratively and literally—our planet and its limited resources. Extreme heat, after all, is more common nowadays, existing as a direct result of greenhouse gas emissions, enabled by corporate and political corruption. Through my own frustrations and the requirement of a project for class, I discovered a passion for researching one particular consequence of climate change: an increase in the prevalence of mood disorders.
-      <br><br>
-      Extreme heat significantly impacts the development of many symptoms of mood disorders and can exacerbate those that already exist. The human body tolerates a range of conditions (including temperatures) and evolves over generations to adapt to changing environmental conditions (like climate). However, as anthropogenic (manmade) stressors accumulate, pushing environmental conditions to their extremes, humans cannot evolve quickly or drastically enough to cope with extreme stressors. As a result, humans suffer the symptoms reflective of a dying planet—mood disorders, brain damage, sunburns and cancers, cardiovascular diseases, and many other severe conditions. In the group project for medical anthropology, group mates and I explored the mechanisms underlying these symptoms and underscored the dire need for political intervention.
-      <br><br>
-      Another example of a research project based on my experiences with sickness includes a physiological experiment related to blood pressure (e.g., see "Research Article for BIOL 460" below). Broadly, I became interested in how various teas could influence blood pressure, a common physiological measure that varies in pattern during bouts of common respiratory illnesses. Even for mood disorders, tea is a common fixture. I considered that the tea leaves, themselves, contained beneficial compounds (antioxidants) as well as that the ingestion of water could impact a person’s perception of symptoms. Honing in on the latter thought, I developed an experiment for a project in <span style="font-weight: bold">BIOL 460: Advanced Human Physiology Lab</span> at USC. In the experiment, two group-mates and I tracked participants’ blood pressures at baseline, immediately after ingesting water, and several minutes after ingesting water. With three specific temperatures of water to be ingested, we calculated the differences in blood pressure changes after ingestion to determine which temperature of water, when ingested, is best for lowering blood pressure and, plausibly, “calming down.” Our results indicated that the act of drinking water causes an immediate spike in blood pressure, which makes sense considering that movement is required. After several minutes, systolic blood pressure stabilized, while diastolic blood pressure increased at a rate directly proportional to temperature. These preliminary results suggested that drinking cooler water is more likely to help someone control their blood pressure. While hot water is important for extracting beneficial compounds from tea leaves, it may not be the best choice for a person who drinks tea to regulate blood pressure. Steep hot, drink cold!
-      <br><br>
-      The most distinct moment that pushed me to reframe the way that I thought about my experiences with physical and mental illness occurred sophomore year. I attended a guest lecture as a member of Alpha Epsilon Delta (AED), a pre-professional pre-medical fraternity at the University. <span style="color: #869cb3">Through AED, I accessed nearly all of the tools necessary to prepare myself for medical school. As a pre-professional fraternity, the organization aimed to provide experiences that bolster a pre-medical education.</span> These experiences were plentiful and diverse: lectures by current doctors, workshops for first aid and professional skills, social events for “networking,” MCAT studying tools, academic support, and community service opportunities. Most lectures consisted of doctors explaining their life stories as they pertain to medicine, and several of these lectures motivated me to direct my career aspirations elsewhere. Dr. Poinsett, the mother of one of my close friends, left a lasting impression on me. Her story is inspirational—she overcame the difficulties of trying to succeed as a first-generation immigrant from Lebanon as well as the tragic loss of her parents and younger sister. After the loss of her immediate family, Dr. Poinsett postponed her plans to enter medical school, taking a few years cope and find ways to move forward. She eventually attended medical school and graduated; one step closer to becoming a dermatologist. Despite immense loss, she persevered, building the life her parents hoped she would achieve. 
-      <br><br>
-      I have not experienced any kind of loss comparable to that of Dr. Poinsett, and I cannot recall a loss like this occurring to anyone I cared about deeply. To me, this form of empathy was new—someone I knew well had experienced unexpected, unimaginable tragedy. However, she discovered a new purpose, inspiring her path to achievement. The barriers I perceive as preventing my success are different; however, I have learned to adapt. <span style="font-weight: bold"> Through the health obstacles I faced in college, I have discovered the catalysts for my creativity and passion. I am a passionate researcher, and my purpose is to figure things out as a means of adaptation. Undying curiosity will allow me to overcome whatever obstacles I face in the pursuit of success. </span>
-    </p>
-    <br>
-    <!-- Hidden attachments (3 for Insight 3) -->
-    <div class="insight-attachments">
-      <div class="attachment-card">
-        <div class="attachment-icon" aria-hidden="true"></div>
-        <div class="attachment-meta">
-          <div class="attachment-title">Research Paper for ANTH 552: Medical Anthropology</div>
-          <a class="pdf-pill" href="anth.pdf" aria-disabled="true">View</a>
-        </div>
-      </div>
-      <div class="attachment-card">
-        <div class="attachment-icon" aria-hidden="true"></div>
-        <div class="attachment-meta">
-          <div class="attachment-title">Research Article for BIOL 460L: Advanced Human Physiology Lab</div>
-          <a class="pdf-pill" href="report.pdf" aria-disabled="true">View</a>
-        </div>
-      </div>
-    </div>
-  </div>
+.about-section {
+  background-color: black;
+  padding: 100px 20px;
+}
 
-  <br>
-  <br>
-  <br>
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #222;
+  padding: 40px;
+}
 
-  <!-- Bottom lines should be static -->
-<hr class="hr3" />
-<hr class="hr2" />
-<hr class="hr1" />
+.title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
 
-  <footer class="footer">
-    <h2 class="secondary-title compressed">Contact Information</h2>
-    <p class="footer-contact">
-      Samuel Harmon <span class="sep">|</span> (864) 409‑6231 <span class="sep">|</span> samaharmon@icloud.com
-      <span class="sep">|</span>
-      <a class="linkedin-inline" href="https://www.linkedin.com/in/samuelaharmon/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <!-- Brand blue square with white "in" -->
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="1" y="1" width="22" height="22" rx="4" fill="#0A66C2"/>
-          <path fill="#FFFFFF" d="M7.2 6.9c0 .9-.7 1.6-1.6 1.6S4 7.8 4 6.9s.7-1.6 1.6-1.6 1.6.7 1.6 1.6zM4.3 9.3h2.6v9.4H4.3V9.3zm5 0h2.5v1.3h.1c.3-.6 1.2-1.5 2.7-1.5 2.9 0 3.4 1.9 3.4 4.4v5.2H15V14c0-1.1 0-2.6-1.6-2.6-1.6 0-1.8 1.2-1.8 2.5v4.8H9.3V9.3z"/>
-        </svg>
-      </a>
-    </p>
-    <h6>Developed with coding support from ChatGPT. | 2025</h6>
-  </footer>
+.transparent {
+  color: #4b5b6b;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+.content-container {
+  background-color: black;
+  padding: 50px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.big-title {
+  color: #4b5b6b;
+  font-size: 72px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  padding-bottom: 0;
+  margin-top: 4vh;
+}
+
+.secondary-title {
+  color: #869cb3d8;
+  font-size: 30pt;
+  margin-bottom: 0;
+  margin-top: 30px;
+  text-transform: none;
+}
+
+.paragraph {
+  color: white;
+  font-size: 16pt;
+  line-height: 1.6;
+  font-family: 'Times New Roman', serif;
+  margin-bottom: 10px;
+}
+
+.leadership-experiment-list {
+  font-family: 'Times New Roman', serif;
+  font-size: 16 pt;
+  margin-bottom: 10 px;
+}
+
+.paragraph::before {
+  content: "";
+  display: block;
+  width: 50%;
+  border-top: 1px solid lightgrey;
+  margin-bottom: 10px;
+}
+
+.animated-line {
+  height: 40px;
+  width: 0%;
+  transition: width 0s;
+  margin: 0;
+  border: none;
+  transform-origin: left;
+}
+
+.footer .secondary-title {
+  text-transform: uppercase;
+  font-size: 48px;
+}
+
+.extra-space {
+  padding-top: 5vh;
+}
+
+#mound {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+#mound svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.collage-box {
+  position: relative;
+  overflow: hidden;
+}
+
+body.is-insights-page .content-container {
+  counter-reset: insight-counter;
+}
+
+body.is-insights-page .banner + figure.media-with-caption {
+  margin-top: 12px !important;
+}
+
+body.is-insights-page .content-container .secondary-title::before {
+  content: counter(insight-counter);
+  position: absolute;
+  left: -140px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 5;
+  width: 110px;
+  height: 110px;
+  border-radius: 100%;
+  box-sizing: border-box;
+  background-color: #869cb3;
+  border: 3px solid #4b5b6b;
+  color: #fff;
+  font-family: 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+body.is-insights-page .content-container .secondary-title.compressed::before {
+  transform: translateY(-50%) scaleX(1.3333333333);
+}
+
+@media (max-width: 900px) {
+  body.is-insights-page .content-container .secondary-title::before {
+    left: -110px;
+    width: 88px;
+    height: 88px;
+    font-size: 36px;
+  }
+
+  body.is-insights-page .content-container .secondary-title.compressed::before {
+    transform: translateY(-50%) scaleX(1.3333333333);
+  }
+
+}
+
+@media (max-width: 520px) {
+  body.is-insights-page .content-container .secondary-title::before {
+    left: -14px;
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+  }
+
+  body.is-insights-page .content-container .secondary-title {
+    padding-left: 10px;
+  }
+
+  body.is-insights-page .content-container .secondary-title.compressed::before {
+    transform: translateY(-50%) scaleX(1.3333333333);
+  }
+
+}
+
+body.is-insights-page .content-container .secondary-title:hover,
+body.is-insights-page .content-container .secondary-title:focus-visible {
+  background-color: lightgrey;
+  color: #000;
+  outline: none;
+}
+
+body.is-insights-page .insight-body,
+body.is-leadership-page .insight-body {
+  position: relative;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 600ms cubic-bezier(.2,.8,.2,1), opacity 260ms ease;
+  will-change: max-height, opacity;
+}
+
+body.is-insights-page .insight-body::before,
+body.is-leadership-page .insight-body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  transform-origin: top center;
+  transform: scaleY(1);
+  transition: transform 600ms cubic-bezier(.2,.8,.2,1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+body.is-insights-page .insight-body.revealed,
+body.is-leadership-page .insight-body.revealed {
+  opacity: 1;
+}
+
+body.is-insights-page .insight-body.revealed::before,
+body.is-leadership-page .insight-body.revealed::before {
+  transform: scaleY(0);
+}
+
+body.is-insights-page .content-container .secondary-title.is-open .insight-caret,
+body.is-leadership-page .content-container .secondary-title.is-open .insight-caret {
+  opacity: 0;
+  visibility: visible;
+  pointer-events: none;
+}
+
+body.is-insights-page .insight-body .insight-collapse:focus-visible,
+body.is-leadership-page .insight-body .insight-collapse:focus-visible {
+  outline: 2px solid lightgrey;
+  outline-offset: 2px;
+}
+
+.insight-attachments {
+  margin-top: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.attachment-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.attachment-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.attachment-title {
+  font-weight: 700;
+  color: #d7dfeb;
+}
+
+#about .paragraph::before {
+  content: none;
+}
+
+#about .about-divider {
+  margin-top: 6px;
+  margin-bottom: 24px;
+}
+
+#about .about-figure {
+  float: right;
+  margin: 0 0 20px 20px;
+  width: 320px;
+}
+
+#about .about-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+#about .resume-card {
+  width: 100%;
+  margin: 10px 0 0 0;
+  box-sizing: border-box;
+}
+
+#about .about-text::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#about .about-insights-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 20px 24px;
+  /* indent from regular paragraphs */
+  color: #869cb3;
+  font-size: 20pt;
+  /* requested size */
+  line-height: 1.5;
+}
+
+#about .about-insights-list li {
+  margin: 8px 0;
+}
+
+.effects-enabled .sheen-title,
+.effects-enabled .main-title,
+.effects-enabled .big-title {
+  position: relative;
+  overflow: hidden;
+}
+
+.effects-enabled .sheen-title:hover::after,
+.effects-enabled .main-title:hover::after,
+.effects-enabled .big-title:hover::after {
+  left: 150%;
+}
+
+@media (max-width: 900px) {
+  #about .about-figure {
+    width: 280px;
+  }
+
+}
+
+@media (max-width: 720px) {
+  #about .about-figure {
+    float: none;
+    margin: 0 auto 16px auto;
+    width: min(360px, 90%);
+  }
+
+  #about .resume-card {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .effects-enabled .sheen-title::after,
+  .effects-enabled .main-title::after,
+  .effects-enabled .big-title::after {
+    display: none;
+  }
+
+}
+
+body.is-insights-page .insight-body .insight-collapse:hover::before,
+body.is-insights-page .insight-body .insight-collapse:focus-visible::before,
+body.is-leadership-page .insight-body .insight-collapse:hover::before,
+body.is-leadership-page .insight-body .insight-collapse:focus-visible::before {
+  border-bottom-color: #869cb3;
+}
+
+#about .main-title::after {
+  margin-left: 0;
+}
+
+.effects-enabled .sheen-title::after,
+.effects-enabled .main-title::after,
+.effects-enabled .big-title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient( 120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.16) 35%, rgba(255,255,255,0.24) 50%, rgba(255,255,255,0.16) 65%, rgba(255,255,255,0) 100% );
+  transform: skewX(-20deg);
+  transition: left .8s ease;
+  /* original speed */
+  pointer-events: none;
+  /*just improving how it blends into the black bg */
+  border-radius: 12px;
+}
+
+.about-title-divider {
+  width: 100px;
+  height: 1px;
+  background-color: white;
+  margin: 6px 0 18px 0;
+  /* left-aligned: no auto-centering */;
+}
+
+.leadership-section {
+  display: block;
+  transform: scaleX(0.7);
+  transform-origin: center;
+  color: lightgrey !important;
+  font-size: 28pt;
+  /* start on its own line */
+  transform-origin: left;
+  margin-left: 0;
+  /* keep your styling */
+  transform: scaleX(0.7);
+  /* put on its own line */
+  margin: 20px 0 20px 0;
+  /* ~20px above and below */
+  transform-origin: left;
+}
+
+.content-container .paragraph > br:first-child {
+  display: none;
+}
+
+.content-container .paragraph .leadership-section + br {
+  display: none;
+}
+
+.main-title, .big-title, .sheen-title {
+  position: relative;
+  overflow: hidden;
+}
+
+.main-title::after,
+.big-title::after,
+.sheen-title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  /* start off-left */
+  width: 55%;
+  /* a bit wider for nicer coverage */
+  height: 100%;
+  border-radius: 14px;
+  /* rounded corners */
+  background: linear-gradient( 120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.10) 28%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.10) 72%, rgba(255,255,255,0) 100% );
+  transform: skewX(-20deg);
+  transition: left 0.85s ease;
+  /* slightly slower, still crisp */
+  pointer-events: none;
+}
+
+.main-title:hover::after,
+.big-title:hover::after,
+.sheen-title:hover::after {
+  left: 150%;
+}
+
+.big-title,
+.main-title {
+  /* keep the typography smooth when size changes */
+  transition: font-size 0.75s ease;
+  will-change: font-size;
+}
+
+.big-title:hover {
+  font-size: 76px;
+}
+
+.main-title:hover {
+  font-size: 52px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .big-title, .main-title {
+    transition: none;
+  }
+
+}
+
+.sheen-title::after,
+.main-title::after,
+.big-title::after {
+  content: none !important;
+  display: none !important;
+}
+
+.compressed,
+.compressed-center {
+  transition: transform var(--title-pulse-duration) ease;
+}
+
+.compressed {
+  display: inline-block;
+  transform: scaleX(0.75) scale(var(--pulse-scale, 1));
+  transform-origin: left;
+}
+
+.compressed-center {
+  display: inline-block;
+  transform: scaleX(0.7) scale(var(--pulse-scale, 1));
+  transform-origin: center;
+}
+
+.main-title:hover,
+.main-title:focus-visible {
+  font-size: 48px !important;
+  --pulse-scale: 1.0833333333;
+}
+
+.big-title:hover,
+.big-title:focus-visible {
+  font-size: 72px !important;
+  --pulse-scale: 1.0555555556;
+}
+
+.navbar button {
+  background: none;
+  border: none;
+  color: white;
+  font-family: 'Times New Roman', serif;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform var(--menu-pulse-duration) ease, color 0.3s ease;
+  text-transform: uppercase;
+  transform-origin: center;
+}
+
+.navbar button:hover,
+.navbar button:focus-visible {
+  transform: scale(var(--menu-pulse-scale));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .compressed,
+  .compressed-center,
+  .navbar button {
+    transition: none;
+  }
+
+}
+
+.experiment-diagram {
+  aspect-ratio: 3 / 2;
+}
+
+@media (max-width: 640px) {
+  .banner + .page-hero-placeholder {
+    margin-top: clamp(72px, 10vw, 120px);
+  }
+
+}
+
+.main-title {
+  color: #4b5b6b;
+  font-size: 48px;
+  text-transform: uppercase;
+  margin-left: 0;
+  margin-right: 0;
+  width: auto;
+  display: block;
+}
+
+body.about-page .about-headshot-placeholder {
+  width: 320px;
+  height: 445px;
+  float: left;
+  /* restore the original floating behavior if desired */
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+body.is-insights-page .section-image.placeholder,
+body.is-leadership-page .section-image.placeholder {
+  width: min(780px, 92%);
+  margin: 16px auto 28px auto;
+}
+
+.banner .title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* centers title & subtitle horizontally */
+  text-align: center;
+  text-align: center;
+  gap: 8px;
+}
+
+@media (max-width: 520px) {
+  .banner {
+    padding-top: 28 px;
+  }
+
+  .banner + .page-hero-placeholder {
+    margin-top: clamp(64px, 14vw, 110px) !important;
+  }
+
+}
+
+.banner {
+  height: 100px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  /* allow the banner to size with its content instead of a fixed 100px */
+  height: auto !important;
+  padding-top: 40px;
+  /* space below the navbar */
+  padding-bottom: 6px;
+  /* small gap below the title area */
+  box-sizing: border-box;
+  /* space below navbar */
+  padding-bottom: 0;
+}
+
+.main-title.extra-space {
+  margin-top: 8px;
+  /* small nudge down from the top of the banner */
+  margin-bottom: 6px;
+  margin-bottom: 6px;
+}
+
+.title-divider {
+  width: 100px;
+  height: 1px;
+  background-color: white;
+  margin: 0px auto;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.subtitle-title {
+  margin-top: 10px;
+  margin-bottom: 24px;
+  font-family: 'Times New Roman', serif;
+  font-size: 16 pt !important;
+  font-weight: 600;
+  color: lightgrey;
+}
+
+.banner + .page-hero-placeholder {
+  /* push down to clear the overhanging title + divider inside .banner */
+  margin-top: clamp(96px, 12vw, 160px);
+  /* responsive: ~100–160px depending on width */ margin-bottom: 24px;
+  margin-top: 30px !important;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 92%;
+  margin-bottom: 28px;
+  display: block;
+  /* was too far below subtitle */
+  margin-bottom: 20px !important;
+  /* reduce gap before first insight */
+  margin-left: auto;
+}
+
+@media (max-width: 640px) {
+  .banner {
+    padding-top: 28px;
+  }
+
+  .banner + .page-hero-placeholder {
+    margin-top: 24px !important;
+    margin-bottom: 18px !important;
+  }
+
+}
+
+.section-image.placeholder {
+  width: min(780px, 92%);
+  aspect-ratio: 16 / 9;
+  margin: 16px auto 28px auto;
+  /* centered */
+  border: 1px solid #444;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  background: repeating-linear-gradient( 135deg, #2b2b2b, #2b2b2b 12px, #333, #333 24px );
+  display: block;
+  /* allow margin auto to center <img> */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.is-leadership-page .content-container .paragraph::before {
+  content: none;
+}
+
+body.is-leadership-page .content-container > .paragraph:first-of-type::before {
+  /* keep the single line under “tackling issues…” */
+  content: "";
+  display: block;
+  width: 50%;
+  border-top: 1px solid lightgrey;
+  margin-bottom: 10px;
+}
+
+.citation-list {
+  list-style: none;
+  margin: 4px 0 20px 0;
+  padding-left: 0;
+}
+
+.citation-list li {
+  margin: 10px 0;
+  line-height: 1.6;
+  padding-left: 1.6em;
+  /* hanging indent amount */
+  text-indent: -1.6em;
+  /* first line outdents back to the left margin */
+  word-break: break-word;
+}
+
+#shadow {
+  background-color: transparent;
+  position: absolute;
+  width: 105vw;
+  left: -25vw;
+  z-index: 2;
+  top: 0;
+  border-top: 3px solid lightgrey;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  #home .centered {
+    padding: 10px 18px;
+  }
+
+  #home .centered::before {
+    inset: -8px -16px;
+  }
+
+}
+
+.pdf-pill {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #869cb3;
+  color: #869cb3;
+  text-decoration: none;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .18s ease, box-shadow .18s ease;
+  cursor: pointer;
+  box-shadow: 0 0 0 0 rgba(134,156,179,0);
+}
+
+.pdf-pill:hover {
+  background: #869cb3;
+  color: #000;
+  transform: translateY(-1px);
+  border-color: #869cb3;
+  box-shadow: 0 6px 16px rgba(134,156,179,0.25);
+}
+
+.pdf-pill:active,
+.pdf-pill.pressed {
+  /* js adds .pressed briefly */
+  transform: scale(0.98);
+  background: #9db0c6;
+  color: #000;
+  border-color: #9db0c6;
+  box-shadow: inset 0 0 0 3px rgba(0,0,0,0.15);
+  transform: scale(0.98);
+}
+
+.pdf-pill:focus-visible {
+  outline: 2px solid #c9d3dd;
+  outline-offset: 2px;
+}
+
+.pdf-pill[aria-disabled="true"] {
+  pointer-events: none;
+  opacity: .65;
+}
+
+.attachment-icon {
+  width: 36px;
+  height: 44px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #93a9c1, #6f849b);
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,0.25);
+  position: relative;
+}
+
+.attachment-icon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-top: 12px solid rgba(255,255,255,0.9);
+}
+
+.attachment-icon::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 8px;
+  top: 16px;
+  height: 2px;
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 6px 0 rgba(255,255,255,0.78), 0 12px 0 rgba(255,255,255,0.72);
+}
+
+.media-with-caption > img,
+
+/* Also give non-collage images a white border by default */
+.section-image,
+img.section-image {
+  border: 3px solid lightgrey;
+  /* 2) white border */
+  box-sizing: border-box;
+}
+
+.footer .social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.footer .social-link svg {
+  width: 28px;
+  height: 28px;
+  fill: #fff;
+  transition: transform .15s ease, fill .15s ease;
+}
+
+.footer .social-link:hover svg {
+  transform: translateY(-2px);
+  fill: #cfd6de;
+}
+
+.footer-social {
+  display: flex;
+  gap: 14px;
+  margin-top: 8px;
+  align-items: center;
+}
+
+.footer-social a {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+}
+
+.footer-social a .li-badge {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));
+}
+
+.media-with-caption {
+  position: relative;
+  display: inline-block;
+  width: 63vw;
+  margin: 0 auto 22px;
+  /* wrapper around the image */
+  position: relative;
+  /* shrink to the image’s width */
+  line-height: 0;
+  /* remove stray descender gap */
+  margin: 0 auto 22px;
+}
+
+.footer-contact {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 12pt;
+}
+
+.footer-contact .sep {
+  opacity: .6;
+  margin: 0 6px;
+}
+
+.footer-contact a.linkedin-inline {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+}
+
+.footer-contact a.linkedin-inline svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));
+}
+
+figure.media-with-caption > img.section-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.footer {
+  background-color: #5e5e5e;
+  height: 150px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 40px;
+  min-height: 150px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  z-index: 0;
+}
+
+.hr1, .hr2, .hr3 {
+  height: 40px;
+  border: none;
+  margin: 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.hanging-cite {
+  font-family: "Times New Roman",serif;
+  font-size: 14pt;
+  line-height: 1.5;
+  margin: 10px 0 0;
+  padding-left: 28px;
+  text-indent: -28px;
+}
+
+.hanging-cite .source-label {
+  color: #869cb3;
+  font-weight: 600;
+}
+
+#home .collage-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: repeat(2,1fr);
+}
+
+#home .collage-box {
+  position: relative;
+  overflow: hidden;
+}
+
+#home .collage-box img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity 1.1s ease-in-out !important;
+  /* force smooth fade */
+  will-change: opacity;
+  /* smooth crossfade */
+  will-change: opacity;
+  /* guarantees smooth cross‑fades */
+  will-change: opacity;
+  will-change: opacity;
+}
+
+.media-with-caption > img.section-image {
+  display: block;
+  /* wrapper width == image width */
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  width: 100%;
+  border: 0;
+}
+
+:root {
+  /* adjust these two numbers if you want the caret bigger/smaller */
+  --caret-v: 20px;
+  /* triangle height (≈ 26–27pt on very large titles) */
+  --caret-h: 26px;
+  /* triangle half-width (controls the wide “v” look) */
+  --caret-color: lightgrey;
+  --caret-color-hover: #000;
+  --title-pulse-duration: 420ms;
+  /* gentle hover grow */
+  --menu-pulse-duration: 300ms;
+  /* slightly snappier in nav */
+  --menu-pulse-scale: 1.2;
+  --media-width: min(980px, 92vw);
+  /*keep both carats in sync */
+  --caret-h: 18px;
+  /* half width */
+  --caret-v: 12px;
+  /* height    */
+  --caret-color: lightgrey;
+}
+
+.page-hero-placeholder {
+  margin-top: 12px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 0;
+  display: block;
+  margin: 8px auto 22px;
+  max-width: min(1100px,92vw);
+  width: var(--media-width);
+}
+
+.citation.hanging {
+  max-width: var(--media-width);
+  margin: 6px auto 18px;
+  text-indent: -1.6em;
+  padding-left: 1.6em;
+  color: #fff;
+  font-family: "Times New Roman",serif;
+  font-size: 14pt;
+  line-height: 1.5;
+}
+
+.citation .source-label {
+  color: #869cb3;
+  font-weight: 700;
+}
+
+#home.fullscreen-image {
+  position: relative !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+#home .centered {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  /* true center */
+  z-index: 2;
+  /* above collage */
+  margin: 0;
+  border-top: 0 !important;
+  /* remove stray line */
+  padding: 12px 24px;
+  z-index: 3 !important;
+  margin: 0;
+  border: 0 !important;
+  padding: 32px 48px 28px !important;
+  /* layout & sizing */
+  display: inline-block !important;
+  max-width: min(92vw, 960px) !important;
+  /* room for the backdrop */
+
+  /* reset any stray styles that crept in */
+  text-align: center !important;
+}
+
+#home #shadow {
+  display: none !important;
+}
+
+#home .centered > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+#home .big-title {
+  margin: 0 0 16px !important;
+  color: #4b5b6b !important;
+}
+
+#home .title-divider {
+  width: 140px !important;
+  height: 1px !important;
+  background: #fff !important;
+  margin: 0 auto 12px !important;
+}
+
+#home .subtitle {
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+/* About Me: divider sits flush-left under the "About Me" heading */
+#about .about-title-divider {
+  width: 140px;            /* keep your current length */
+  height: 1px;
+  background: #fff;
+  margin: 8px 0 18px 0;    /* left-aligned (no auto centering) */
+}
+
+/* ===== Unified media sizing (same as the perfect Daphnia figure) ===== */
+:root {
+  /* one place to change later if you want them bigger/smaller */
+  --media-width: min(1100px, 92vw);
+}
+
+/* The figure wrapper – same max width everywhere and centered */
+figure.media-with-caption,
+.media-with-caption {
+  position: relative;
+  display: block;
+  max-width: var(--media-width);
+  margin: 0 auto 22px;
+  line-height: 0; /* remove descender gap under images */
+}
+
+/* The caption band – sits INSIDE the 3px border, flush with the bottom */
+.media-caption {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  font-family: "Times New Roman", serif;
+  font-size: 14pt;
+  line-height: 1.35;
+  padding: 8px 12px;
+  pointer-events: none;
+}
+
+figure.media-with-caption > img.section-image,
+figure.media-with-caption > .section-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  /* keep the non‑collage 3px border */
+  border: 3px solid lightgrey !important;
+}
+
+.section-image {
+  border: 3px solid lightgrey !important;
+  /* global non-collage border */
+  box-sizing: border-box;
+  /* used across about, insights, leadership */
+  border: 3px solid lightgrey !important;
+  box-sizing: border-box;
+}
+
+.collage-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 0 !important;
+}
+
+.about-headshot-placeholder {
+  width: 320px;
+  height: 460px;
+  aspect-ratio: 3 / 4;
+  border: 3px solid lightgrey !important;
+  box-shadow: 0 10px 24px 6px rgba(0,0,0,.45);
+  background: repeating-linear-gradient( 135deg, #2b2b2b, #2b2b2b 12px, #333, #333 24px );
+}
+
+body.is-insights-page .insight-body .insight-collapse,
+body.is-leadership-page .insight-body .insight-collapse {
+  display: none;
+  width: 44px !important;
+  height: 28px !important;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  margin: 12px auto 0;
+  position: relative;
+  z-index: 2;
+}
+
+body.is-insights-page .insight-body .insight-collapse::before,
+body.is-leadership-page .insight-body .insight-collapse::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid lightgrey;
+}
+
+body.is-insights-page .insight-body.revealed .insight-collapse,
+body.is-leadership-page .insight-body.revealed .insight-collapse {
+  display: block;
+}
+
+.footer .paragraph,
+.footer .footer-contact {
+  font-size: 14pt !important;
+  line-height: 1.55;
+}
+
+.section-image + .paragraph::before,
+figure.media-with-caption + .paragraph::before {
+  content: none !important;
+}
+
+figure.media-with-caption {
+  margin: 22px auto;
+  max-width: min(1100px, 92vw);
+  position: relative;
+  display: block;
+  /* wrapper shrinks to image width */
+  line-height: 0;
+}
+
+figure.media-with-caption > img.section-image,
+.page-hero-placeholder.section-image {
+  /* in case the hero is a bare <img> */
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.media-caption {
+  position: absolute;
+  left: 3px;
+  /* exactly inside the 3px image border */
+  right: 3px;
+  bottom: 3px;
+  padding: 6px 10px;
+  background: rgba(0,0,0,0.80);
+  color: #fff;
+  font-family: "Times New Roman", serif;
+  font-size: 14pt;
+  line-height: 1.35;
+  pointer-events: none;
+  /* 3px = image border thickness */
+  right: 3px;
+  /* sits exactly on the inside bottom */
+  background: rgba(0,0,0,.80);
+  font: 14pt "Times New Roman", serif;
+  border: none;
+}
+
+.experiment-diagram,
+#experiment-diagram,
+.daphnia-photo,
+.lab-photo,
+.cooking-photo {
+  width: 100%;
+  height: auto;
+}
+
+body.is-insights-page .content-container .secondary-title {
+  position: relative;
+  counter-increment: insight-counter;
+  line-height: 1.05;
+  display: inline-flex !important;
+  margin-top: 40px;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease;
+  align-items: center !important;
+  gap: 12px;
+  /* a touch more spacing between insights */
+  margin-top: 42px;
+  /* overrides earlier block */
+  align-items: baseline;
+  /* baseline with the text */
+  gap: 12px;
+  /* keep text + caret on one line */
+  align-items: center !important;
+  /* 4) center vertically */
+  gap: 12px;
+  /* vertical centering for text + caret */
+  gap: 12px;
+  /* true vertical centering */
+  gap: 12px;
+}
+
+body.is-leadership-page .content-container .secondary-title {
+  position: relative;
+  line-height: 1.05;
+  display: inline-flex !important;
+  margin-top: 40px;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease;
+  align-items: center !important;
+  gap: 12px;
+}
+
+body.is-leadership-page .content-container .secondary-title.page-heading {
+  color: #4b5b6b;
+}
+
+body.is-leadership-page .content-container .secondary-title:hover,
+body.is-leadership-page .content-container .secondary-title:focus-visible {
+  background-color: #fff;
+  color: #4b5b6b;
+  outline: none;
+}
+
+body.is-insights-page .content-container .secondary-title .insight-caret,
+body.is-leadership-page .content-container .secondary-title .insight-caret {
+  position: relative !important;
+  display: inline-block;
+  width: 44px !important;
+  height: 28px !important;
+  margin-left: auto;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  vertical-align: middle;
+  cursor: pointer;
+  /* matches your bottom “pull‑up” arrow */
+  height: 28px;
+  flex: 0 0 44px;
+}
+
+body.is-insights-page .content-container .secondary-title .insight-caret::before,
+body.is-leadership-page .content-container .secondary-title .insight-caret::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  /* true middle */
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 12px solid lightgrey;
+  /* centers triangle inside the box */
+  width: 0;
+}
+
+body.is-insights-page .content-container .secondary-title:hover .insight-caret::before,
+body.is-insights-page .content-container .secondary-title:focus-visible .insight-caret::before {
+  border-top-color: #000;
+}
+
+body.is-leadership-page .content-container .secondary-title:hover .insight-caret::before,
+body.is-leadership-page .content-container .secondary-title:focus-visible .insight-caret::before {
+  border-top-color: #4b5b6b;
+}
+
+#home .centered::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  /* exactly the size of .centered */
+  background: rgba(0, 0, 0, 0.8) !important;
+  border: 3px solid lightgrey !important;
+  /* lightgrey border */
+  border-radius: 0 !important;
+  /* square corners (no rounding) */
+  box-shadow: 0 20px 40px rgba(0,0,0,.45) !important;
+  z-index: 1 !important;
+  /* behind text, above collage */
+  pointer-events: none !important;
+  border-radius: 0 !important;
+  /* perfect rectangle */
+  background: rgba(0,0,0,.80) !important;
+}
+
+.hr1, .hr2, .hr3 {
+  position: relative;
+  display: block;
+  height: 40px;
+  border: none;
+  margin: 0;
+}
+.hr1 {
+  background-color: lightgrey;
+  z-index: 3;
+  box-shadow: 0 12px 20px rgba(0,0,0,.35);
+}
+.hr2 {
+  background-color: #869cb3;
+  z-index: 2;
+  box-shadow: 0 12px 20px rgba(0,0,0,.35);
+}
+.hr3 {
+  background-color: #4b5b6b;
+  z-index: 1;
+  box-shadow: 0 12px 20px rgba(0,0,0,.35);
+}
+.hr1:not(.animated-line),
+.hr2:not(.animated-line),
+.hr3:not(.animated-line) {
+  width: 100%;
+}
+
+.hr1.animated-line, .hr2.animated-line, .hr3.animated-line { will-change: width; }
+
+/* === Unified media sizing (match the “perfect” daphnia.png) === */
+:root { --media-width: min(1035px, 92vw); }
+
+figure.media-with-caption {
+  display: block;
+  max-width: var(--media-width);
+  margin: 0 auto 22px;
+  line-height: 0;
+}
+
+/* Experiment diagram (experiment.jpeg) — remove the smaller placeholder cap */
+body.is-insights-page .section-image.page-hero-placeholder,
+body.is-leadership-page .section-image.page-hero-placeholder,
+body.is-insights-page .section-image.placeholder,
+body.is-leadership-page .section-image.placeholder {
+  max-width: var(--media-width);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  aspect-ratio: auto;
+}
+
+figure.media-with-caption > img.section-image {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+}
