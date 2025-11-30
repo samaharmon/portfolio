@@ -164,6 +164,10 @@ body.is-insights-page .content-container {
   counter-reset: insight-counter;
 }
 
+body.is-insights-page .banner + figure.media-with-caption {
+  margin-top: 12px !important;
+}
+
 body.is-insights-page .content-container .secondary-title::before {
   content: counter(insight-counter);
   position: absolute;
@@ -1330,6 +1334,10 @@ body.is-leadership-page .content-container .secondary-title {
   gap: 12px;
 }
 
+body.is-leadership-page .content-container .secondary-title.page-heading {
+  color: #4b5b6b;
+}
+
 body.is-leadership-page .content-container .secondary-title:hover,
 body.is-leadership-page .content-container .secondary-title:focus-visible {
   background-color: #fff;
@@ -1343,7 +1351,7 @@ body.is-leadership-page .content-container .secondary-title .insight-caret {
   display: inline-block;
   width: 44px !important;
   height: 28px !important;
-  margin-left: 8px;
+  margin-left: auto;
   background: transparent;
   border: 0;
   padding: 0;
