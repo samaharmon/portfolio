@@ -108,7 +108,7 @@ p {
 }
 
 .leadership-essay-title {
-  color: #4b5b6b;
+  color: white;
   font-size: 36pt;
   margin-bottom: 0;
   margin-top: 30px;
@@ -1482,16 +1482,15 @@ figure.media-with-caption > img.section-image {
 
 /* === Leadership: align all right-side arrows to a single vertical line === */
 body.is-leadership-page .content-container .secondary-title{
-  /* Make each title span the full row so the caret can sit in a shared column */
-  display: flex !important;     /* overrides the earlier inline-flex */
+  display: grid !important;
+  grid-template-columns: 1fr 44px;  /* text | caret column */
   align-items: center;
   width: 100%;
-  gap: 12px;
+  column-gap: 12px;
 }
-
 body.is-leadership-page .content-container .secondary-title .insight-caret{
-  margin-left: auto;            /* pins the caret to the same right edge */
-  flex: 0 0 44px;               /* keep caret width consistent across rows */
+  grid-column: 2;
+  justify-self: end;  /* keeps every caret on the same vertical axis */
 }
 
 /* If your page hero uses .secondary-title, ensure it never shows a caret */
