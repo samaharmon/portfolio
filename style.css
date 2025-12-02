@@ -1465,3 +1465,22 @@ figure.media-with-caption > img.section-image {
   height: auto;
   margin: 0 auto;
 }
+
+/* === Leadership: align all right-side arrows to a single vertical line === */
+body.is-leadership-page .content-container .secondary-title{
+  /* Make each title span the full row so the caret can sit in a shared column */
+  display: flex !important;     /* overrides the earlier inline-flex */
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+}
+
+body.is-leadership-page .content-container .secondary-title .insight-caret{
+  margin-left: auto;            /* pins the caret to the same right edge */
+  flex: 0 0 44px;               /* keep caret width consistent across rows */
+}
+
+/* If your page hero uses .secondary-title, ensure it never shows a caret */
+body.is-leadership-page .content-container .secondary-title.page-heading .insight-caret{
+  display: none !important;
+}
