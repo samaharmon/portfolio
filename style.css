@@ -108,7 +108,7 @@ p {
 }
 
 .leadership-essay-title {
-  color: white;
+  color: lightgrey;
   font-size: 36pt;
   margin-bottom: 0;
   margin-top: 30px;
@@ -1483,7 +1483,7 @@ figure.media-with-caption > img.section-image {
 /* === Leadership: align all right-side arrows to a single vertical line === */
 body.is-leadership-page .content-container .secondary-title{
   display: grid !important;
-  grid-template-columns: 1fr 44px;  /* text | caret column */
+  grid-template-columns: 1fr 12px;  /* text | caret column */
   align-items: center;
   width: 100%;
   column-gap: 12px;
