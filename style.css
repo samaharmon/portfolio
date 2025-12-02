@@ -103,6 +103,7 @@ p {
 
 .left {
   text-align: left !important;
+  justify-content: left !important;
 }
 
 .leadership-essay-title {
