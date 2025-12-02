@@ -101,6 +101,11 @@ p {
   text-transform: none;
 }
 
+.left {
+  text-align: left;
+  align-items: left;
+}
+
 .leadership-essay-title {
   color: #4b5b6b;
   font-size: 36pt;
