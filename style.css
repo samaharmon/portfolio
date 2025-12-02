@@ -102,8 +102,7 @@ p {
 }
 
 .left {
-  text-align: left;
-  align-items: left;
+  text-align: left !important;
 }
 
 .leadership-essay-title {
