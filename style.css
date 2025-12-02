@@ -104,6 +104,7 @@ p {
 .left {
   align-self: flex-start !important;  
   margin-left: 0 !important; 
+  margin-top: 20px;
 }
 
 .leadership-essay-title {
