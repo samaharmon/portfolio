@@ -103,6 +103,7 @@ p {
 
 .left {
   text-align: left !important;
+  display: flex !important;
   justify-content: left !important;
 }
 
