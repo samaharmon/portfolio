@@ -1498,3 +1498,17 @@ body.is-leadership-page .content-container .secondary-title .insight-caret{
 body.is-leadership-page .content-container .secondary-title.page-heading .insight-caret{
   display: none !important;
 }
+
+/* === Leadership: move all right-side arrows ~150px left === */
+body.is-leadership-page .content-container .secondary-title .insight-caret {
+  /* existing alignment */
+  margin-left: auto;
+
+  /* reduce its right offset */
+  margin-right: 150px;  /* move arrows 150px closer to the text */
+}
+
+/* If caret has a fixed width (44px) in your earlier rule, keep it */
+body.is-leadership-page .content-container .secondary-title .insight-caret {
+  flex: 0 0 44px;
+}
