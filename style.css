@@ -1505,7 +1505,7 @@ body.is-leadership-page .content-container .secondary-title .insight-caret {
   margin-left: auto;
 
   /* reduce its right offset */
-  margin-right: 150px;  /* move arrows 150px closer to the text */
+  margin-right: 300px;  /* move arrows 150px closer to the text */
 }
 
 /* If caret has a fixed width (44px) in your earlier rule, keep it */
