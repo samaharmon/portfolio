@@ -121,6 +121,7 @@ p {
   line-height: 1.6;
   font-family: 'Times New Roman', serif;
   margin-bottom: 10px;
+  text-align: justify;
 }
 
 .leadership-experiment-list {
